@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap');
+
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply font-readex;
+}
+
+app-home{
+
+    .p-carousel-content{
+        position: relative;
+        .p-carousel-indicators{
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - 60px);
+        }
+    }
+    .container-1{
+        .p-carousel-prev{
+            display: none;
+        }
+        .p-carousel-next{
+            display: none;
+        }
+        .p-carousel .p-carousel-indicators .p-carousel-indicator button{
+            width:0.8rem;
+            height:0.8rem;
+            border-radius: 100%;
+            background-color: rgb(166, 161, 161);
+        }
+        .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+            background-color: white;
+            width: 2rem;
+            border-radius: 10px;
+        }
+        .p-link:focus {
+            box-shadow: none;
+        }
+    }
+    .container-2{
+        .p-carousel-prev{
+            display: none;
+        }
+        .p-carousel-content .p-carousel-indicators{
+            display: none;
+        }
+        #pr_id_2 .p-carousel-item {
+            margin-right: 30px;
+        }
+        .p-button.p-button-secondary.p-button-outlined{
+            border: 1px solid #9BFF1C;
+            color: #9BFF1C;
+            padding:5px 20px 5px 20px;
+            border-radius: 30px;
+
+        }
+        .p-button.p-button-secondary.p-button-outlined:enabled:active{
+            border: 1px solid #9BFF1C;
+            color: #9BFF1C;
+        }
+        .p-button.p-button-secondary.p-button-outlined:enabled:hover{
+            border: 1px solid #9BFF1C;
+            color: #9BFF1C;
+        }
+        
+        .p-button.p-button-secondary:enabled:focus {
+            box-shadow: none;
+        }
+    }
+}
