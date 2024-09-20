@@ -4,6 +4,7 @@
 
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
 
 
 @tailwind base;
@@ -14,66 +15,114 @@ body {
     @apply font-readex;
 }
 
-app-home{
+$bg-primary: #869F44;
 
-    .p-carousel-content{
+.p-button {
+    background-color: $bg-primary;
+    border: none;
+    opacity: 1;
+}
+
+.p-button:focus {
+    box-shadow: unset;
+}
+.p-button:enabled:hover {
+    background-color: $bg-primary;
+    border-color: unset;
+    opacity: 0.8;
+}
+.p-button:enabled:active {
+    background-color: $bg-primary;
+    border-color: unset;
+    opacity: 1;
+}
+
+
+app-home {
+
+    .p-carousel-content {
         position: relative;
-        .p-carousel-indicators{
+
+        .p-carousel-indicators {
             position: absolute;
             bottom: 0;
             left: calc(50% - 60px);
         }
     }
-    .container-1{
-        .p-carousel-prev{
+
+    .container-1 {
+        .p-carousel-prev {
             display: none;
         }
-        .p-carousel-next{
+
+        .p-carousel-next {
             display: none;
         }
-        .p-carousel .p-carousel-indicators .p-carousel-indicator button{
-            width:0.8rem;
-            height:0.8rem;
+
+        .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+            width: 0.8rem;
+            height: 0.8rem;
             border-radius: 100%;
             background-color: rgb(166, 161, 161);
         }
+
         .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
             background-color: white;
             width: 2rem;
             border-radius: 10px;
         }
+
         .p-link:focus {
             box-shadow: none;
         }
     }
-    .container-2{
-        .p-carousel-prev{
+
+    .container-2 {
+        .p-carousel-prev {
             display: none;
         }
-        .p-carousel-content .p-carousel-indicators{
+
+        .p-carousel-content .p-carousel-indicators {
             display: none;
         }
+
         #pr_id_2 .p-carousel-item {
             margin-right: 30px;
         }
-        .p-button.p-button-secondary.p-button-outlined{
+
+        .p-button.p-button-secondary.p-button-outlined {
             border: 1px solid #9BFF1C;
             color: #9BFF1C;
-            padding:5px 20px 5px 20px;
+            padding: 5px 20px 5px 20px;
             border-radius: 30px;
 
         }
-        .p-button.p-button-secondary.p-button-outlined:enabled:active{
+
+        .p-button.p-button-secondary.p-button-outlined:enabled:active {
             border: 1px solid #9BFF1C;
             color: #9BFF1C;
         }
-        .p-button.p-button-secondary.p-button-outlined:enabled:hover{
+
+        .p-button.p-button-secondary.p-button-outlined:enabled:hover {
             border: 1px solid #9BFF1C;
             color: #9BFF1C;
         }
-        
+
         .p-button.p-button-secondary:enabled:focus {
             box-shadow: none;
+        }
+    }
+
+    .container-3,.container-4,.container-5,.container-6,.container-7,.container-8 {
+        .p-button {
+            border-radius: 30px;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 500;
+
+            .p-button-icon-right {
+                font-size: 1rem;
+            }
         }
     }
 }
