@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -40,7 +41,27 @@ export class HomeComponent implements OnInit {
   //     ]
   //   }
   // ];
+  blogs:any[]=[
+    {
+      img:'../../../../assets/home/blogs/img1.png',
+      title:'Best Hiking places in the Boracay',
+      subTitle:"Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
+    },
+    {
+      img:'../../../../assets/home/blogs/img2.png',
+      title:'Solo Travel: The Best Thing You Can Do for Yourself',
+      subTitle:"Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
+    },
+    {
+      img:'../../../../assets/home/blogs/img3.png',
+      title:'Solo Travel: The Best Thing You Can Do for Yourself',
+      subTitle:"Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
+    }
+  ];
 
+  contactForm!:FormGroup;  
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.responsiveOptions = [
@@ -66,6 +87,21 @@ export class HomeComponent implements OnInit {
         numScroll: 1
       }
     ];
+
+    this.contactForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: [null, Validators.required],
+      message: ['', Validators.required]
+    });
+    
+  }
+  
+  onSubmit() {
+    if (this.contactForm.valid) {
+      console.log(this.contactForm.value);
+    }
   }
 
 }

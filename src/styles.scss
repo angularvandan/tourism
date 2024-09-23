@@ -26,11 +26,13 @@ $bg-primary: #869F44;
 .p-button:focus {
     box-shadow: unset;
 }
+
 .p-button:enabled:hover {
     background-color: $bg-primary;
     border-color: unset;
     opacity: 0.8;
 }
+
 .p-button:enabled:active {
     background-color: $bg-primary;
     border-color: unset;
@@ -113,7 +115,8 @@ app-home {
         }
     }
 
-    .container-3,.container-4,.container-5,.container-6,.container-7,.container-8 {
+    .container-3,
+    .container-4,.container-6 {
         .p-button {
             border-radius: 30px;
             font-size: 16px;
@@ -123,6 +126,22 @@ app-home {
             .p-button-icon-right {
                 font-size: 1rem;
             }
+        }
+    }
+
+    .container-5{
+        .p-button{
+            box-shadow: none;
+        }
+        .p-button.p-button-outlined {
+            color:$bg-primary;
+            border-radius: 30px;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 500;
+        }
+        .p-button.p-button-outlined:enabled:hover,.p-button.p-button-outlined:enabled:active{
+            color: $bg-primary;
         }
     }
 }
