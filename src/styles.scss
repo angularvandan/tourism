@@ -116,7 +116,8 @@ app-home {
     }
 
     .container-3,
-    .container-4,.container-6 {
+    .container-4,
+    .container-6 {
         .p-button {
             border-radius: 30px;
             font-size: 16px;
@@ -129,36 +130,65 @@ app-home {
         }
     }
 
-    .container-5{
-        .p-button{
+    .container-5 {
+        .p-button {
             box-shadow: none;
         }
+
         .p-button.p-button-outlined {
-            color:$bg-primary;
+            color: $bg-primary;
             border-radius: 30px;
             font-size: 16px;
             line-height: 20px;
             font-weight: 500;
         }
-        .p-button.p-button-outlined:enabled:hover,.p-button.p-button-outlined:enabled:active{
+
+        .p-button.p-button-outlined:enabled:hover,
+        .p-button.p-button-outlined:enabled:active {
             color: $bg-primary;
         }
     }
 }
+
 app-blogs {
-    .container-1{
-        .p-button{
+    .container-1 {
+        .p-button {
             box-shadow: none;
         }
+
         .p-button.p-button-outlined {
-            color:$bg-primary;
+            color: $bg-primary;
             border-radius: 30px;
             font-size: 16px;
             line-height: 20px;
             font-weight: 500;
         }
-        .p-button.p-button-outlined:enabled:hover,.p-button.p-button-outlined:enabled:active{
+
+        .p-button.p-button-outlined:enabled:hover,
+        .p-button.p-button-outlined:enabled:active {
             color: $bg-primary;
         }
+    }
+}
+
+app-contactus {
+
+    /* Default state */
+    .p-checkbox .p-checkbox-box {
+        border-color: green;
+        /* Default border color */
+    }
+
+
+    .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+        border-color: $bg-primary;
+    }
+    .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+        box-shadow: none;
+        border-color: $bg-primary;
+    }
+    .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover{
+        border-color: $bg-primary;
+        background-color: $bg-primary;
     }
 }

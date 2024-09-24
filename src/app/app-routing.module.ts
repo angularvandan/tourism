@@ -9,6 +9,9 @@ const routes: Routes = [
   },
   { 
     path: 'about', loadComponent: () => import('./components/pages/aboutus/aboutus.component').then(c => c.AboutusComponent)
+  },
+  { 
+    path: 'contact', loadComponent: () => import('./components/pages/contactus/contactus.component').then(c => c.ContactusComponent)
   }
 ];
 

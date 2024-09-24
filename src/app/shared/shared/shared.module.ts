@@ -4,6 +4,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 @NgModule({
@@ -13,13 +14,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidebarModule,
     CarouselModule,
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CheckboxModule
   ],
   exports:[
     SidebarModule,
     CarouselModule,
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CheckboxModule
   ]
 })
 export class SharedModule { }
