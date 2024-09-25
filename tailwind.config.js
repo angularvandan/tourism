@@ -16,7 +16,13 @@ module.exports = {
       },
       textColor: {
         'primary': '#869F44',
-      }
+      },
+      placeholder: {
+        'bold': '700',
+        'semibold': '600',
+        'normal': '400',
+        'light':'300'
+      },
     },
   },
   plugins: [

@@ -19,4 +19,8 @@
         box-shadow: 4px 4px 20px 0px #00000014;
 
     }
+
+}
+.placeholder-light::placeholder {
+    font-weight: 300; /* Normal font */
 }

@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blogs.component.scss']
 })
 export class BlogsComponent implements OnInit{
+
+  innerBlogStatus:boolean=false;
+
   blogs:any[]=[
     {
       img:'../../../../assets/blogs/img1.png',
@@ -52,8 +55,14 @@ export class BlogsComponent implements OnInit{
       
     }
   ];
+  innerBlogData:any;
   ngOnInit(): void {
       
+  }
+
+  innerBlog(blog:any){
+    this.innerBlogStatus=true;
+    this.innerBlogData=blog;
   }
 
   shareLink() {

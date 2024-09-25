@@ -1,37 +1,51 @@
-<div class="container-1 w-full h-fit pt-10">
+<div class="container-1 w-full h-fit pt-10" *ngIf="!innerBlogStatus">
     <div class="header px-4 sm:px-8 md:px-12 py-8">
-        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">home > <span class="text-primary">Blogs</span>
+        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">home > <span
+                class="text-primary">Blogs</span>
         </div>
         <div class="flex justify-between items-center">
-            <div class="heading border-b pb-6 text-[22px] sm:text-[38px] leading-6 sm:leading-12 font-medium">Blogs you should refer along with travelling</div>
+            <div
+                class="heading border-b pb-6 text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium">
+                Blogs you
+                should refer along with travelling</div>
 
         </div>
     </div>
     <div class="details px-4 sm:px-8 md:px-12 mb-12">
         <div class="blogs-details">
             <div class="blogs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 ">
-                <div class="blog border bg-white flex flex-col justify-between rounded-lg p-2 md:p-4"
-                    *ngFor="let blog of blogs">
-                    <div class="image mb-4 relative">
-                        <img src="{{blog.img}}" alt="image" class="w-full object-cover">
-                        <div class="share absolute right-[5%] top-[5%]">
-                            <div class="bg-white rounded-2xl px-3 py-1 flex items-center text-primary cursor-pointer"(click)="shareLink()">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M11.6667 4.1665V7.49984C5.83333 8.33317 3.33333 12.4998 2.5 16.6665C4.58333 13.7498 7.5 12.4165 11.6667 12.4165V15.8332L17.5 9.99984L11.6667 4.1665ZM13.3333 8.1915L15.1417 9.99984L13.3333 11.8082V10.7498H11.6667C9.94167 10.7498 8.39167 11.0665 6.95 11.5415C8.11667 10.3832 9.61667 9.47484 11.9 9.1665L13.3333 8.9415V8.1915Z" fill="#869F44"/>
+                <ng-container *ngFor="let blog of blogs">
+                    <div class="blog border bg-white flex flex-col justify-between rounded-lg p-2 md:p-4 cursor-pointer"
+                        (click)="innerBlog(blog)">
+                        <div class="image mb-4 relative">
+                            <img src="{{blog.img}}" alt="image" class="w-full object-cover">
+                            <div class="share absolute right-[5%] top-[5%]">
+                                <div class="bg-white rounded-2xl px-3 py-1 flex items-center text-primary cursor-pointer"
+                                    (click)="shareLink()">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.6667 4.1665V7.49984C5.83333 8.33317 3.33333 12.4998 2.5 16.6665C4.58333 13.7498 7.5 12.4165 11.6667 12.4165V15.8332L17.5 9.99984L11.6667 4.1665ZM13.3333 8.1915L15.1417 9.99984L13.3333 11.8082V10.7498H11.6667C9.94167 10.7498 8.39167 11.0665 6.95 11.5415C8.11667 10.3832 9.61667 9.47484 11.9 9.1665L13.3333 8.9415V8.1915Z"
+                                            fill="#869F44" />
                                     </svg>
-                                    
-                                Share</div>
+
+                                    Share
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-2 text-base font-semibold  text-primary">
+                            <span class="bg-[#D6E8A733] p-2 rounded-lg">Travel</span>
+                        </div>
+                        <div class="sbuTitle mb-4 text-base sm:text-lg md:text-xl font-normal text-[#475467]">
+                            {{blog.title}}
+                        </div>
+                        <div class="button">
+                            <p-button label="Read More" icon="pi pi-arrow-right" iconPos="right"
+                                styleClass="px-8 py-2 p-button-outlined  p-button-raised text-nowrap"></p-button>
                         </div>
                     </div>
-                    <div class="title mb-2 text-base font-semibold  text-primary">
-                        <span class="bg-[#D6E8A733] p-2 rounded-lg">Travel</span>
-                    </div>
-                    <div class="sbuTitle mb-4 text-base sm:text-lg md:text-xl font-normal text-[#475467]">{{blog.title}}</div>
-                    <div class="button">
-                        <p-button label="Read More" icon="pi pi-arrow-right" iconPos="right"
-                            styleClass="px-8 py-2 p-button-outlined  p-button-raised text-nowrap"></p-button>
-                    </div>
-                </div>
+                </ng-container>
+
             </div>
             <div class="pegination flex justify-center pt-6">
                 <div class="flex gap-4">
@@ -42,5 +56,77 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<!-- below for inner blog  -->
+<div class="container-2 w-full h-fit pt-10" *ngIf="innerBlogStatus">
+    <div class="header px-4 sm:px-8 md:px-12 pt-10 pb-6">
+        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-4">home > <span
+                class="text-primary">Blogs</span>
+        </div>
+        <div class="flex justify-between items-center">
+            <div
+                class="heading border-b pb-6 text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium">
+                {{innerBlogData.title}}</div>
+
+        </div>
+    </div>
+    <div class="details px-4 sm:px-8 md:px-12 mb-12">
+        <div class="image overflow-hidden mb-6 sm:mb-8 md:mb-10">
+            <img class="w-full h-full object-cover" src="../../../../../assets/blogs/inner_blogs/banner.png"
+                alt="banner image">
+        </div>
+        <div
+            class="image-details px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]">
+            The Philippines is a breathtaking archipelago brimming with undiscovered wonders. Beyond the popular tourist
+            spots, the country is home to pristine islands, untouched beaches, and secluded natural treasures waiting to
+            be explored. From tranquil coastal villages to vibrant coral reefs, every corner offers a unique and
+            unforgettable experience for adventurers and travelers alike. Whether you're a nature lover, a
+            thrill-seeker, or someone looking to unwind, the Philippines has hidden gems that will captivate your
+            senses.<br><br>Journey through the country's less-explored islands, where you’ll find crystal-clear lagoons,
+            majestic
+            waterfalls, and lush tropical forests. Dive into vibrant marine sanctuaries teeming with life or take a
+            quiet stroll through charming local towns where the warmth of Filipino hospitality shines. These hidden
+            paradises offer a glimpse of the Philippines' raw beauty, away from the hustle and bustle, allowing you to
+            uncover a side of the country that few have seen. Embrace the journey and discover the secrets that make the
+            Philippines a must-visit destination.
+        </div>
+
+        <div class="px-4 sm:px-8 md:px-12 text-lg mb-6 sm:mb-8 md:mb-10 font-normal text-[#666666]">
+            <div class="px-10">
+                <blockquote class="px-4 text-lg sm:text-xl md:text-[24px] font-normal border-l-4 border-[#7C4EE4] mb-4">
+                    “Not all those who wander are lost. Sometimes, it is through wandering that we find our way. Travel
+                    teaches us to be adaptable, to seek beauty in the unexpected, and to find meaning in the journey
+                    itself rather than just the destination.”
+                </blockquote>
+                <footer class="text-lg text-[#333333] font-medium">– J.R.R. Tolkien</footer>
+            </div>
+        </div>
+        <div
+            class="image-details px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]">
+            Traveling is an extraordinary journey that expands our horizons and deepens our understanding of the world.
+            When we step out of our familiar surroundings and venture into the unknown, we are greeted with new
+            cultures, landscapes, and perspectives. Each destination offers a unique experience, from the bustling
+            streets of a vibrant city to the serene beauty of a remote village. As we navigate through these diverse
+            environments, we not only collect memories but also gain insights that challenge our preconceived notions
+            and broaden our worldview. Traveling fosters a sense of curiosity and adventure, pushing us to explore
+            beyond our comfort zones and embrace the richness of human experience.
+        </div>
+        <div class="px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10">
+            <div class="image overflow-hidden px-4 sm:px-8 md:px-12 ">
+                <img class="w-full h-full object-cover" src="../../../../../assets/blogs/inner_blogs/banner2.png"
+                    alt="banner image">
+            </div>
+        </div>
+        <div
+            class="image-details px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]">
+            Ultimately, the value of travel extends beyond the destinations we visit; it lies in the personal growth and
+            transformation that occurs along the way. Each trip is an opportunity to challenge ourselves, learn new
+            things, and embrace the beauty of the unknown. As we explore new places and meet new people, we discover
+            more about ourselves and the world around us. Travel enriches our lives, leaving us with a deeper sense of
+            wonder, appreciation, and connection. It is through these experiences that we truly come alive and find joy
+            in the journey.
+        </div>
+
     </div>
 </div>
