@@ -6,6 +6,7 @@ import { DestinationComponent } from './destination/destination.component';
 import { DestinationDetailsComponent } from './destination-details/destination-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PaymentComponent } from './payment/payment.component';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PaymentComponent } from './payment/payment.component';
   ],
   imports: [
     CommonModule,
-    DestinationsRoutingModule
+    DestinationsRoutingModule,
+    SharedModule
   ]
 })
 export class DestinationsModule { }

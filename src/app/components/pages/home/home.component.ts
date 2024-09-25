@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-
   responsiveOptions: any;
+
   bannerImage: any[] = [
     { img: '../../../../assets/home/home_banner.jpg' },
     { img: '../../../../assets/home/home_banner.jpg' },
@@ -41,27 +42,27 @@ export class HomeComponent implements OnInit {
   //     ]
   //   }
   // ];
-  blogs:any[]=[
+  blogs: any[] = [
     {
-      img:'../../../../assets/home/blogs/img1.png',
-      title:'Best Hiking places in the Boracay',
-      subTitle:"Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
+      img: '../../../../assets/home/blogs/img1.png',
+      title: 'Best Hiking places in the Boracay',
+      subTitle: "Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
     },
     {
-      img:'../../../../assets/home/blogs/img2.png',
-      title:'Solo Travel: The Best Thing You Can Do for Yourself',
-      subTitle:"Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
+      img: '../../../../assets/home/blogs/img2.png',
+      title: 'Solo Travel: The Best Thing You Can Do for Yourself',
+      subTitle: "Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
     },
     {
-      img:'../../../../assets/home/blogs/img3.png',
-      title:'Solo Travel: The Best Thing You Can Do for Yourself',
-      subTitle:"Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
+      img: '../../../../assets/home/blogs/img3.png',
+      title: 'Solo Travel: The Best Thing You Can Do for Yourself',
+      subTitle: "Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
     }
   ];
 
-  contactForm!:FormGroup;  
+  contactForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router:Router) { }
 
   ngOnInit(): void {
     this.responsiveOptions = [
@@ -95,9 +96,12 @@ export class HomeComponent implements OnInit {
       phoneNumber: [null, Validators.required],
       message: ['', Validators.required]
     });
-    
+
   }
-  
+  toursDetails() {
+    this.router.navigate(['/tours']);
+  }
+
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);

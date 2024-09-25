@@ -2,8 +2,8 @@
     <p-carousel [value]="bannerImage" [numVisible]="1" [numScroll]="1" [circular]="true">
         <ng-template pTemplate="item" *ngFor="let banner of bannerImage">
             <div class="relative">
-                <div class=" overflow-hidden">
-                    <img src="../../../../assets/home/home_banner.jpg" alt="banner" class="w-full " />
+                <div class="max-h-[800px] overflow-hidden">
+                    <img src="../../../../assets/home/home_banner.jpg" alt="banner" class="w-full max-h-[650px] object-cover" />
                 </div>
                 <div class="absolute top-[30%] md:top-[25%] lg:top-[20%] px-4 sm:px-8 md:px-12">
                     <div class="text-sm sm:text-[20px] leading-8 font-normal tracking-[2%] text-white">
@@ -173,7 +173,7 @@
                         </div>
                     </div>
                     <div>
-                        <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"></p-button>
+                        <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"(onClick)="toursDetails()"></p-button>
                     </div>
                 </div>
             </div>

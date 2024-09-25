@@ -7,6 +7,9 @@ const routes: Routes = [
   {
     path: 'blogs', loadChildren: () => import('./components/pages/blog/blog.module').then(m => m.BlogModule)
   },
+  {
+    path: 'tours', loadChildren: () => import('./components/pages/destinations/destinations.module').then(m => m.DestinationsModule)
+  },
   { 
     path: 'about', loadComponent: () => import('./components/pages/aboutus/aboutus.component').then(c => c.AboutusComponent)
   },

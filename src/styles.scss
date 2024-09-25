@@ -196,3 +196,35 @@ app-contactus {
         background-color: $bg-primary;  
     }
 }
+app-destination{
+    .container-2{
+
+        .p-button {
+            border-radius: 30px;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 500;
+
+            .p-button-icon-right {
+                font-size: 1rem;
+            }
+        }
+
+        .p-button {
+            box-shadow: none;
+        }
+
+        .p-button.p-button-outlined {
+            color: $bg-primary;
+            border-radius: 30px;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 500;
+        }
+
+        .p-button.p-button-outlined:enabled:hover,
+        .p-button.p-button-outlined:enabled:active {
+            color: $bg-primary;
+        }
+    }
+}
