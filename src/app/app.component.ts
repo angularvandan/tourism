@@ -12,7 +12,6 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log(event);
         // Scroll to the top of the page on route change
         window.scrollTo(0, 0);
       }

@@ -183,21 +183,25 @@ app-contactus {
     .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
         border-color: $bg-primary;
     }
+
     .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
         box-shadow: none;
         border-color: $bg-primary;
     }
-    .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover{
+
+    .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
         border-color: $bg-primary;
         background-color: $bg-primary;
     }
+
     .p-checkbox .p-checkbox-box.p-highlight {
         border-color: $bg-primary;
-        background-color: $bg-primary;  
+        background-color: $bg-primary;
     }
 }
-app-destination{
-    .container-2{
+
+app-destination {
+    .container-2 {
 
         .p-button {
             border-radius: 30px;
@@ -225,6 +229,39 @@ app-destination{
         .p-button.p-button-outlined:enabled:hover,
         .p-button.p-button-outlined:enabled:active {
             color: $bg-primary;
+        }
+    }
+}
+
+app-destination-details {
+    .container-2 {
+        .p-button {
+            border-radius: 30px;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 500;
+
+            .p-button-icon-right {
+                font-size: 1rem;
+            }
+        }
+        .p-button {
+            box-shadow: none;
+        }
+
+        .p-button.p-button-outlined {
+            color: #8f8f8f;
+            border-radius: 30px;
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        .p-button.p-button-outlined:enabled:hover,
+        .p-button.p-button-outlined:enabled:active {
+            color: #8f8f8f;
+        }
+        .p-button .p-button-label {
+            font-weight: 300;
         }
     }
 }
