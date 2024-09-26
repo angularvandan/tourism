@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { SidebarModule } from 'primeng/sidebar';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
-
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [],
@@ -15,14 +15,18 @@ import { CheckboxModule } from 'primeng/checkbox';
     CarouselModule,
     ButtonModule,
     ReactiveFormsModule,
-    CheckboxModule
+    CheckboxModule,
+    CalendarModule,
+    FormsModule
   ],
   exports:[
     SidebarModule,
     CarouselModule,
     ButtonModule,
     ReactiveFormsModule,
-    CheckboxModule
+    CheckboxModule,
+    CalendarModule,
+    FormsModule
   ]
 })
 export class SharedModule { }

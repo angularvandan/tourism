@@ -1,0 +1,12 @@
+.details {
+    .selected-spot {
+        svg {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+    }
+}

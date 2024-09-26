@@ -245,6 +245,7 @@ app-destination-details {
                 font-size: 1rem;
             }
         }
+
         .p-button {
             box-shadow: none;
         }
@@ -260,8 +261,51 @@ app-destination-details {
         .p-button.p-button-outlined:enabled:active {
             color: #8f8f8f;
         }
+
         .p-button .p-button-label {
             font-weight: 300;
         }
+    }
+}
+
+app-checkout {
+    .p-button {
+        border-radius: 30px;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 500;
+
+        .p-button-icon-right {
+            font-size: 1rem;
+        }
+
+        .p-button-label {
+            font-weight: 500;
+        }
+    }
+
+    .p-calendar {
+        .p-inputtext {
+            background-color: $bg-primary;
+            border: none;
+            max-width: 100px;
+            padding: 0px 0px;
+            cursor:pointer;
+            color: white;
+        }
+
+        .p-inputtext::placeholder {
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .p-inputtext:enabled:focus {
+            border: none;
+            box-shadow: none;
+        }
+    }
+    .p-calendar-w-btn .p-datepicker-trigger {
+        display: none;
     }
 }
