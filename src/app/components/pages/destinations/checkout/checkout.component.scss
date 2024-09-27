@@ -9,4 +9,7 @@
             transform: rotate(180deg);
         }
     }
+    .placeholder-light::placeholder {
+        font-weight: 300; /* Normal font */
+    }
 }

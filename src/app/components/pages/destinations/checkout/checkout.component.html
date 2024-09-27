@@ -40,7 +40,7 @@
             </div>
         </div>
         <!-- for select tours details  -->
-        <div class="tours-details">
+        <div class="tours-details" *ngIf="!(checkoutStatus.userDetailsStatus || checkoutStatus.paymentStatus)">
             <div class=" rounded-xl w-full h-[150px] my-6 overflow-hidden rounded-xl relative">
                 <div class="h-full w-full overflow-hidden rounded-xl">
                     <img class="rounded-xl h-full w-full object-cover" src="../../../../../assets/checkout/img1.png"
@@ -58,13 +58,12 @@
                                         class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
                                         <!-- Left Calendar Icon -->
                                         <i class="pi pi-calendar text-lg mr-2 text-white"></i>
-    
+
                                         <!-- PrimeNG Calendar with Placeholder -->
                                         <p-calendar #calendar [(ngModel)]="selectedDate" placeholder="Select Date"
                                             class="cursor-pointer" appendTo="body" [readonlyInput]="true"
-                                            [minDate]="minDate"
-                                            [showIcon]="true"></p-calendar>
-    
+                                            [minDate]="minDate" [showIcon]="true"></p-calendar>
+
                                         <!-- Right Arrow Icon -->
                                         <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
                                             (click)="openCalendar(calendar)"></i>
@@ -80,7 +79,8 @@
                                             fill="#869F44" />
                                     </svg>
                                 </div>
-                                <div class="text-[#606060] text-lg sm:text-xl md:text-[28px] md:leading-[35px] font-normal">
+                                <div
+                                    class="text-[#606060] text-lg sm:text-xl md:text-[28px] md:leading-[35px] font-normal">
                                     Island in Malay, Aklan, Philippines</div>
                             </div>
                         </div>
@@ -93,10 +93,10 @@
                                 <path d="M38.625 23.125L27 34.75L15.375 23.125" stroke="white" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-    
+
                         </div>
                     </div>
-    
+
                 </div>
             </div>
             <div class=" px-4 sm:px-8 md:px-12" *ngIf="isRotated">
@@ -110,28 +110,24 @@
                                     </div>
                                     <div class="text-lg sm:text-xl md:text-[24px] text-[#344054]">{{spot.title}}</div>
                                 </div>
-    
+
                                 <div>
                                     <div
                                         class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
                                         <!-- Left Calendar Icon -->
                                         <i class="pi pi-calendar text-lg mr-2 text-white"></i>
-    
+
                                         <!-- PrimeNG Calendar with Placeholder -->
                                         <p-calendar #timePicker [showTime]="true" hourFormat="12" [timeOnly]="true"
-                                            placeholder="Select Time"
-                                            appendTo="body"
-                                            [readonlyInput]="true"
-                                            
-                                            class=""
-                                            ></p-calendar>
-    
+                                            placeholder="Select Time" appendTo="body" [readonlyInput]="true"
+                                            class=""></p-calendar>
+
                                         <!-- Right Arrow Icon -->
                                         <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
                                             (click)="selectTime(timePicker)"></i>
                                     </div>
                                 </div>
-    
+
                             </div>
                         </div>
                         <div class="text-sm sm:text-base md:text-lg leading-8 font-normal text-[#666666]">
@@ -141,17 +137,158 @@
                 </div>
             </div>
             <div class="checkout flex justify-center py-6">
-                <p-button routerLink="/tours/checkout" label="Continue"
+                <p-button (onClick)="checkoutStatus.userDetailsStatus=true" label="Continue"
                     styleClass="min-w-[300px] flex justify-center"></p-button>
             </div>
         </div>
         <!-- personal info  -->
-         <div class="personal-info">
+        <div class="personal-info my-6" *ngIf="checkoutStatus.userDetailsStatus">
+            <div class="border rounded-[30px] p-6" style="box-shadow: 0px 7px 20px 0px #0000001A;">
+                <div class="title text-lg sm:text-xl md:text-[20px] md:leading-[32px] font-medium">
+                    Enter your details
+                </div>
+                <div class="form py-6">
+                    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class=" h-full flex flex-col justify-center">
+                        <div class=" flex flex-col md:flex-row justify-between gap-0 md:gap-8">
+                            <!-- First Name -->
+                            <div class="mb-4 w-full">
+                                <label for="firstName" class="block text-base font-medium text-gray-700 mb-1">First
+                                    Name</label>
+                                <input id="firstName" type="text" pInputText formControlName="firstName"
+                                    placeholder="Enter first name"
+                                    class="w-full px-4 py-3 border border-[#D0D5DD] rounded-md placeholder:text-base placeholder:text-[#cacaca] placeholder-light text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched"
+                                    class="text-red-500 text-sm mt-1">First Name is required</div>
+                            </div>
 
-         </div>
-         <!-- payment info  -->
-          <div class="payment-info">
-            
-          </div>
+                            <!-- Email -->
+                            <div class="mb-4 w-full">
+                                <label for="email" class="block text-base font-medium text-gray-700 mb-1">Email</label>
+                                <input id="email" type="email" pInputText formControlName="email"
+                                    placeholder="Enter email"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-md placeholder-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+                                    class="text-red-500 text-sm mt-1">A valid email is required</div>
+                            </div>
+                        </div>
+                        <div class=" flex flex-col md:flex-row justify-between gap-0 md:gap-8">
+                            <!-- First Name -->
+                            <div class="mb-4 w-full">
+                                <div class="w-full">
+                                    <label for="phone" class="block text-base font-medium text-gray-700 mb-1">Phone
+                                        Number</label>
+                                    <p-inputNumber id="phone" [minFractionDigits]="0" [maxFractionDigits]="0"
+                                        inputId="integeronly" formControlName="phone_no"
+                                        [placeholder]="'Enter phone number'" class="w-full placeholder:text-[#cacaca]"
+                                        styleClass="w-full "></p-inputNumber>
+                                    <div *ngIf="userForm.get('phone_no')?.invalid && userForm.get('phone_no')?.touched"
+                                        class="text-red-500 text-sm mt-1">A valid number is required</div>
+                                </div>
+                                <div class="block md:hidden">
+                                    <label for="message"
+                                        class="block text-base font-medium text-gray-700 mb-1">Message</label>
+                                    <textarea id="message" pInputTextarea rows="4" formControlName="message"
+                                        placeholder="Enter message"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-md placeholder-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent"></textarea>
+                                    <div *ngIf="userForm.get('message')?.invalid && userForm.get('message')?.touched"
+                                        class="text-red-500 text-sm mt-1">Message is required</div>
+                                </div>
+                                <div>
+                                    <div
+                                        class="title mt-4 text-lg sm:text-xl md:text-[20px] md:leading-[32px] font-medium">
+                                        Select No. of People</div>
+                                    <div>
+                                        <div class="border border-gray-300 rounded-md px-3 py-1 mb-4">
+                                            <div class="flex justify-between">
+                                                <div>
+                                                    <div class="text-lg font-light">Adult <span
+                                                            class="text-[#606060]">(above 18 yrs)</span></div>
+                                                    <div class="text-primary text-lg font-semibold">
+                                                        $420
+                                                    </div>
+                                                </div>
+                                                <div class="count-btn flex items-center gap-2 ">
+                                                    <div class="bg-[#F5F5F5] rounded-[20px] flex gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                        <span>2</span>
+                                                        <p-button icon="pi pi-plus"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="border border-gray-300 rounded-md px-3 py-1 mb-4">
+                                            <div class="flex justify-between">
+                                                <div>
+                                                    <div class="text-lg font-light">Child <span
+                                                            class="text-[#606060]">(6-17 yrs)</span></div>
+                                                    <div class="text-primary text-lg font-semibold">
+                                                        $210
+                                                    </div>
+                                                </div>
+                                                <div class="count-btn flex items-center gap-2 ">
+                                                    <div class="bg-[#F5F5F5] rounded-[20px] flex gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                        <span>2</span>
+                                                        <p-button icon="pi pi-plus"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="border border-gray-300 rounded-md px-3 py-1 mb-4">
+                                            <div class="flex justify-between ">
+                                                <div>
+                                                    <div class="text-lg font-light">Infant<span class="text-[#606060]">
+                                                            (0-5 yrs)</span></div>
+                                                    <div class="text-primary text-lg font-semibold">
+                                                        $90
+                                                    </div>
+                                                </div>
+                                                <div class="count-btn flex items-center gap-2 ">
+                                                    <div class="bg-[#F5F5F5] rounded-[20px] flex gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                        <span>1</span>
+                                                        <p-button icon="pi pi-plus"
+                                                            class="active:scale-90 transition-all duration-200 ease-out"></p-button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4 w-full">
+                                <div class="hidden md:block">
+                                    <label for="message"
+                                        class="block text-base font-medium text-gray-700 mb-1">Message</label>
+                                    <textarea id="message" pInputTextarea rows="4" formControlName="message"
+                                        placeholder="Enter message"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-md placeholder-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent"></textarea>
+                                    <div *ngIf="userForm.get('message')?.invalid && userForm.get('message')?.touched"
+                                        class="text-red-500 text-sm mt-1">Message is required</div>
+                                </div>
+
+                                <div class="button flex flex-col justify-center items-center mt-4 gap-4 w-full">
+                                    <p-button label="Pay Now"
+                                        styleClass="px-10 p-button-outlined  p-button-raised text-nowrap min-w-[300px]"></p-button>
+
+                                    <p-button label="Pay at Pickup"
+                                        styleClass="px-10  text-nowrap min-w-[300px]"></p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- payment info  -->
+        <div class="payment-info" *ngIf="checkoutStatus.paymentStatus">
+
+        </div>
     </div>
 </div>

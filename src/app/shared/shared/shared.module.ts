@@ -6,6 +6,10 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CalendarModule } from 'primeng/calendar';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
 
 @NgModule({
   declarations: [],
@@ -17,7 +21,10 @@ import { CalendarModule } from 'primeng/calendar';
     ReactiveFormsModule,
     CheckboxModule,
     CalendarModule,
-    FormsModule
+    FormsModule,
+    InputNumberModule,
+    InputTextModule,
+    InputTextareaModule
   ],
   exports:[
     SidebarModule,
@@ -26,7 +33,10 @@ import { CalendarModule } from 'primeng/calendar';
     ReactiveFormsModule,
     CheckboxModule,
     CalendarModule,
-    FormsModule
+    FormsModule,
+    InputNumberModule,
+    InputTextModule,
+    InputTextareaModule
   ]
 })
 export class SharedModule { }

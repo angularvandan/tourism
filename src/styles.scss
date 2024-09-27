@@ -308,4 +308,51 @@ app-checkout {
     .p-calendar-w-btn .p-datepicker-trigger {
         display: none;
     }
+
+    .p-button.p-button-outlined {
+        color: #8f8f8f;
+        border-radius: 30px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .p-button.p-button-outlined:enabled:hover,
+    .p-button.p-button-outlined:enabled:active {
+        color: #8f8f8f;
+    }
+    .p-button.p-button-raised {
+        box-shadow: none;
+    }
+    .personal-info{
+        .p-inputtext{
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 300;
+            color:#00000080;
+        }
+        .p-inputtext::placeholder{
+            color: #cacaca;
+        }
+        .p-inputtext:enabled:focus {
+            box-shadow: none;
+            border: 1px solid #CFCFCF;
+        }
+        .p-inputtext:enabled:focus::placeholder{
+            color: transparent;
+        }
+        .p-inputtext:enabled:hover{
+            border: 1px solid #CFCFCF;
+        }
+        .p-inputnumber.ng-dirty.ng-invalid > .p-inputnumber > .p-inputtext {
+            border: 1px solid #CFCFCF;
+        }
+    }
+    .count-btn{
+        .p-button.p-button-icon-only {
+            width:1.8rem;
+            padding: 0px 0.1rem;
+            background: white;
+            color: black;
+        }
+    }
 }

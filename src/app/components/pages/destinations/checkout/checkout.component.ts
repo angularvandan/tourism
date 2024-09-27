@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit{
 
 
   selectedDate: Date | null = null;
@@ -27,9 +28,35 @@ export class CheckoutComponent {
     },
   ];
   minDate:Date;
-  constructor(){
+
+  userForm!: FormGroup;
+
+  //this is for shwing checkout specific section
+  checkoutStatus:any={
+    userDetailsStatus:false,
+    paymentStatus:false
+  }
+
+  constructor(private fb: FormBuilder) { 
     this.minDate = new Date();
   }
+
+  ngOnInit(): void {
+    this.userForm = this.fb.group({
+      firstName: ['', Validators.required],
+      phone_no: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required],
+      checked:['',Validators.required]
+    });
+  }
+  onSubmit() {
+    if (this.userForm.valid) {
+      console.log(this.userForm.value);
+    }
+  }
+
+
   toggleRotation() {
     this.isRotated = !this.isRotated;
     
