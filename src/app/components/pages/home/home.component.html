@@ -2,8 +2,8 @@
     <p-carousel [value]="bannerImage" [numVisible]="1" [numScroll]="1" [circular]="true">
         <ng-template pTemplate="item" *ngFor="let banner of bannerImage">
             <div class="relative">
-                <div class="max-h-[800px] overflow-hidden">
-                    <img src="../../../../assets/home/home_banner.jpg" alt="banner" class="w-full max-h-[650px] object-cover" />
+                <div class="max-h-screen overflow-hidden">
+                    <img src="../../../../assets/home/home_banner.jpg" alt="banner" class="w-full max-h-screen object-cover" />
                 </div>
                 <div class="absolute top-[30%] md:top-[25%] lg:top-[20%] px-4 sm:px-8 md:px-12">
                     <div class="text-sm sm:text-[20px] leading-8 font-normal tracking-[2%] text-white">
@@ -91,7 +91,7 @@
                     <div class=" overflow-hidden">
                         <img src="{{card.img}}" alt="banner" class="h-96 rounded-[30px] object-cover" />
                     </div>
-                    <!-- <div class="flex flex-col absolute bottom-[10%] px-6">
+                    <div class="flex flex-col absolute bottom-[10%] px-6">
                         <div class="  flex flex-col mb-6">
                             <div class="text-[20px] leading-8 font-semibold tracking-[2%] text-white">
                                 {{card.title}}
@@ -102,10 +102,11 @@
                             </div>
                         </div>
                         <div class="button mx-auto">
-                            <p-button label="Read More" styleClass="p-button-outlined p-button-secondary"></p-button>
+
+                            <p-button label="Read More"icon="pi pi-arrow-right" iconPos="right" styleClass="p-button-outlined p-button-secondary text-secondary"></p-button>
 
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </ng-template>
         </p-carousel>
@@ -113,7 +114,7 @@
 </div>
 <!-- container-3 -->
 <div class="w-full h-fit bg-[#F7FFED] container-3 pb-4"id="container-3">
-    <div class="header px-4 sm:px-8 md:px-12 py-8">
+    <div class="header px-4 sm:px-8 md:px-12 pt-8 pb-3">
         <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">Explore & Travel Along popular
             <br class="block sm:hidden"> destinations
         </div>
@@ -124,16 +125,16 @@
     </div>
     <!-- first details  -->
     <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
-        <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
+        <div class="bg-[#FFFFFF] p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
             <div class="left w-full lg:w-[50%]">
                 <div class="image">
                     <img src="../../../../assets/home/container3/image.png" class="rounded-[30px] w-full object-cover"
                         alt="image">
                 </div>
             </div>
-            <div class="right w-full lg:w-[55%]">
-                <div>
-                    <div class="text-[22px] leading-8 font-semibold text-[#0E3D4D] mb-3">Boracay</div>
+            <div class="right w-full lg:w-[55%] flex flex-col justify-center">
+                <div class="">
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Boracay</div>
                     <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
                     </div>
                     <div class="text-base font-semibold leading-5 mb-3">Here are you must-know Boracay tips for every
@@ -182,9 +183,9 @@
     <!-- second details  -->
     <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
-            <div class="left w-full lg:w-[55%] order-2 lg:order-1">
+            <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
                 <div>
-                    <div class="text-[22px] leading-8 font-semibold text-[#0E3D4D] mb-3">Balesin, Quezon</div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Balesin, Quezon</div>
                     <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
                     </div>
                     <div class="text-base font-semibold leading-5 mb-3">Here are your essential Balesin tips for every
@@ -245,9 +246,9 @@
                         alt="image">
                 </div>
             </div>
-            <div class="right w-full lg:w-[55%]">
+            <div class="right w-full lg:w-[55%] flex flex-col justify-center">
                 <div>
-                    <div class="text-[22px] leading-8 font-semibold text-[#0E3D4D] mb-3">Siargao, Surigao del Norte
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Siargao, Surigao del Norte
                     </div>
                     <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
                     </div>
@@ -297,9 +298,9 @@
     <!-- four details  -->
     <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
-            <div class="left w-full lg:w-[55%] order-2 lg:order-1">
+            <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
                 <div>
-                    <div class="text-[22px] leading-8 font-semibold text-[#0E3D4D] mb-3">El Nido, Palawan</div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">El Nido, Palawan</div>
                     <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
                     </div>
                     <div class="text-base font-semibold leading-5 mb-3">Check out these must-have El Nido tips for every
@@ -360,9 +361,9 @@
                         alt="image">
                 </div>
             </div>
-            <div class="right w-full lg:w-[55%]">
+            <div class="right w-full lg:w-[55%] flex flex-col justify-center">
                 <div>
-                    <div class="text-[22px] leading-8 font-semibold text-[#0E3D4D] mb-3">Coron, Palawan</div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Coron, Palawan</div>
                     <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
                     </div>
                     <div class="text-base font-semibold leading-5 mb-3">Discover your essential Coron tips for every
@@ -411,9 +412,9 @@
     <!-- six details  -->
     <div class="details h-full px-4 sm:px-8 md:px-12 mb-12">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
-            <div class="left w-full lg:w-[55%] order-2 lg:order-1">
+            <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
                 <div>
-                    <div class="text-[22px] leading-8 font-semibold text-[#0E3D4D] mb-3">Pamalican Island Palawan</div>
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Pamalican Island Palawan</div>
                     <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
                     </div>
                     <div class="text-base font-semibold leading-5 mb-3">Uncover your must-know Pamalican Island tips for

@@ -32,7 +32,7 @@ export class PaymentComponent {
             subTotalPrice: ''
           }
         ],
-      totalPrice: '$440',
+      totalPrice: '$830',
   }
   selectAccount: any;
   cardNumber:any;

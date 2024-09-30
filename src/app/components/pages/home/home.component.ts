@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
     { img: '../../../../assets/home/container2/img1.png', title: 'Deep Diving', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
     { img: '../../../../assets/home/container2/img2.png', title: 'Fire shows at beaches', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
     { img: '../../../../assets/home/container2/img3.png', title: 'Jump off limestones', subTitle: 'Renting a kayak and paddling along the coast is one of the top things to do in Phi Phi Island tour. ..., ' },
-    { img: '../../../../assets/home/container2/img1.png', title: 'Deep Diving', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
-    { img: '../../../../assets/home/container2/img2.png', title: 'Fire shows at beaches', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
-    { img: '../../../../assets/home/container2/img3.png', title: 'Jump off limestones', subTitle: 'Renting a kayak and paddling along the coast is one of the top things to do in Phi Phi Island tour. ..., ' }
+    { img: '../../../../assets/home/container2/img4.png', title: 'Deep Diving', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
+    { img: '../../../../assets/home/container2/img1.png', title: 'Fire shows at beaches', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
+    { img: '../../../../assets/home/container2/img1.png', title: 'Jump off limestones', subTitle: 'Renting a kayak and paddling along the coast is one of the top things to do in Phi Phi Island tour. ..., ' }
   ];
 
   // tours_package: any[] = [
@@ -67,7 +67,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.responsiveOptions = [
       {
-        breakpoint: '1199px',
+        breakpoint: '1799px',
+        numVisible: 5,
+        numScroll: 1
+      },
+      {
+        breakpoint: '1399px',
         numVisible: 4,
         numScroll: 1
       },
