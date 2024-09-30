@@ -290,7 +290,7 @@ app-checkout {
             border: none;
             max-width: 100px;
             padding: 0px 0px;
-            cursor:pointer;
+            cursor: pointer;
             color: white;
         }
 
@@ -305,6 +305,7 @@ app-checkout {
             box-shadow: none;
         }
     }
+
     .p-calendar-w-btn .p-datepicker-trigger {
         display: none;
     }
@@ -320,39 +321,132 @@ app-checkout {
     .p-button.p-button-outlined:enabled:active {
         color: #8f8f8f;
     }
+
     .p-button.p-button-raised {
         box-shadow: none;
     }
-    .personal-info{
-        .p-inputtext{
+
+    .personal-info {
+        .p-inputtext {
             font-size: 16px;
             line-height: 20px;
             font-weight: 300;
-            color:#00000080;
+            color: #00000080;
         }
-        .p-inputtext::placeholder{
+
+        .p-inputtext::placeholder {
             color: #cacaca;
         }
+
         .p-inputtext:enabled:focus {
             box-shadow: none;
             border: 1px solid #CFCFCF;
         }
-        .p-inputtext:enabled:focus::placeholder{
+
+        .p-inputtext:enabled:focus::placeholder {
             color: transparent;
         }
-        .p-inputtext:enabled:hover{
+
+        .p-inputtext:enabled:hover {
             border: 1px solid #CFCFCF;
         }
-        .p-inputnumber.ng-dirty.ng-invalid > .p-inputnumber > .p-inputtext {
+
+        .p-inputnumber.ng-dirty.ng-invalid>.p-inputnumber>.p-inputtext {
             border: 1px solid #CFCFCF;
         }
     }
-    .count-btn{
+
+    .count-btn {
         .p-button.p-button-icon-only {
-            width:1.8rem;
+            width: 1.8rem;
             padding: 0px 0.1rem;
             background: white;
             color: black;
         }
+    }
+}
+
+app-payment {
+    .p-inputtext {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 300;
+        color: #00000080;
+    }
+    .p-inputmask{
+        border-color: #CFCFCF;
+    }
+
+    .p-inputtext::placeholder {
+        color: #cacaca;
+    }
+
+    .p-inputtext:enabled:focus {
+        box-shadow: none;
+        border: 1px solid #CFCFCF;
+    }
+
+    .p-inputtext:enabled:focus::placeholder {
+        color: transparent;
+    }
+
+    .p-inputtext:enabled:hover {
+        border: 1px solid #CFCFCF;
+    }
+
+    .p-inputnumber.ng-dirty.ng-invalid>.p-inputnumber>.p-inputtext {
+        border: 1px solid #CFCFCF;
+    }
+
+    .p-button {
+        border-radius: 30px;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 500;
+
+        .p-button-icon-right {
+            font-size: 1rem;
+        }
+
+        .p-button-label {
+            font-weight: 500;
+        }
+    }
+
+    .p-button.p-button-raised {
+        box-shadow: none;
+    }
+
+    .p-button.p-button-outlined {
+        color: $bg-primary;
+        border-radius: 30px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .p-button.p-button-outlined:enabled:hover,
+    .p-button.p-button-outlined:enabled:active {
+        color: $bg-primary;
+    }
+
+    //for radio
+    .p-radiobutton .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
+        border-color: #CFCFCF;
+    }
+    .p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+        box-shadow: unset;
+        border-color: #CFCFCF;
+        background: #CFCFCF;
+    }
+    .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
+        border-color: unset;
+        background: #CFCFCF;
+    }
+    .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+        background:#9BFF1C;
+    }
+    .p-radiobutton .p-radiobutton-box.p-highlight {
+        border-color: #CFCFCF;
+        background: white;
     }
 }

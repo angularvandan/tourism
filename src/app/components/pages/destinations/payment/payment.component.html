@@ -1,1 +1,254 @@
-<p>payment works!</p>
+<div class="container-1 w-full h-fit pt-16">
+    <div class="header px-4 sm:px-8 md:px-12 pt-8">
+        <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-2">Home > Islands<span
+                class="text-primary"> > Checkout</span>
+        </div>
+        <div class="flex justify-between items-center pb-4 border-b">
+            <div
+                class="heading flex gap-4  items-center text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium">
+                <span class="text-black text-2xl">
+                    <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M3.34299 9.00001L10.414 16.071L8.99999 17.485L1.22199 9.70701C1.03451 9.51949 0.929199 9.26518 0.929199 9.00001C0.929199 8.73485 1.03451 8.48054 1.22199 8.29301L8.99999 0.515015L10.414 1.92901L3.34299 9.00001Z"
+                            fill="black" />
+                    </svg>
+
+                </span> Select Payment Methods
+            </div>
+        </div>
+    </div>
+
+    <div class="details h-fit px-4 sm:px-8 md:px-12 w-full">
+        <div class="title text-[28px] font-smeibold text-[#0A0D13] py-4">
+            Pay With:
+        </div>
+        <div class="flex flex-col lg:flex-row gap-6 w-full">
+            <div class="left w-full py-4">
+                <div class="bg-[#0E3D4D] rounded-xl w-full h-[150px] mb-6">
+                    <div class="flex h-full flex-row justify-center items-center ">
+                        <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
+                            <div class="rounded-full w-6 h-6 bg-[#9BFF1C] flex pl-[7px]">1</div>
+                            <div class="text-[#9BFF1C] text-base sm:text-lg md:text-xl font-semibold">Plan A Tour</div>
+                            <span class="absolute top-[20%] left-[52%] w-full border border-[#9BFF1C]"></span>
+                        </div>
+
+
+                        <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
+                            <div class="rounded-full w-6 h-6 bg-white pl-[7px]">2</div>
+                            <div class="text-white text-base sm:text-lg md:text-xl font-semibold">Your Details</div>
+                            <span class="absolute top-[20%] left-[52%] w-full border border-white"></span>
+
+                        </div>
+                        <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
+                            <div class="rounded-full w-6 h-6 bg-white pl-[7px]">3</div>
+                            <div class="text-white text-base sm:text-lg md:text-xl font-semibold">Payment</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-xl w-full h-fit mb-6 " style="box-shadow: 0px 7px 22px 0px #00000014;">
+                    <div class="p-4">
+                        <div class="title text-[#333333] text-[24px] leading-8 font-semibold pb-4">
+                            Trip to Boracay
+                        </div>
+                        <div class="border-b pb-4">
+                            <div class="flex justify-between pb-6"
+                                *ngFor="let detail of priceDetails.priceDetail;let i=index;">
+                                <div class="flex gap-2 items-center">
+                                    <div class="bg-[#EFEFEF] w-8 h-8 rounded-full flex justify-center items-center">
+                                        <span class="text-xl leading-6 font-normal">{{i+1}}</span>
+                                    </div>
+                                    <div class="text-[#333333] text-xl leading-6 font-normal">
+                                        {{detail.name}}
+                                    </div>
+                                </div>
+                                <div class="text-[#333333] text-xl font-medium">${{detail.price * detail.count}}</div>
+                            </div>
+                            <!-- this is for charge  -->
+                            <div class="flex justify-between">
+                                <div class="flex gap-2 items-center">
+                                    <div class="bg-[#EFEFEF] w-8 h-8 rounded-full flex justify-center items-center">
+                                        <span class="text-xl leading-6 font-normal">
+                                            <svg width="23" height="12" viewBox="0 0 23 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M15.5 0H10V4H0.5V9H2.5C2.5 9.79565 2.81607 10.5587 3.37868 11.1213C3.94129 11.6839 4.70435 12 5.5 12C6.29565 12 7.05871 11.6839 7.62132 11.1213C8.18393 10.5587 8.5 9.79565 8.5 9H14.5C14.5 9.79565 14.8161 10.5587 15.3787 11.1213C15.9413 11.6839 16.7044 12 17.5 12C18.2956 12 19.0587 11.6839 19.6213 11.1213C20.1839 10.5587 20.5 9.79565 20.5 9H22.5V6C22.5 4.89 21.61 4 20.5 4H18.5L15.5 0ZM11.5 1.5H15L16.96 4H11.5V1.5ZM5.5 7.5C5.89782 7.5 6.27936 7.65804 6.56066 7.93934C6.84196 8.22064 7 8.60218 7 9C7 9.39782 6.84196 9.77936 6.56066 10.0607C6.27936 10.342 5.89782 10.5 5.5 10.5C5.10218 10.5 4.72064 10.342 4.43934 10.0607C4.15804 9.77936 4 9.39782 4 9C4 8.60218 4.15804 8.22064 4.43934 7.93934C4.72064 7.65804 5.10218 7.5 5.5 7.5ZM17.5 7.5C17.8978 7.5 18.2794 7.65804 18.5607 7.93934C18.842 8.22064 19 8.60218 19 9C19 9.39782 18.842 9.77936 18.5607 10.0607C18.2794 10.342 17.8978 10.5 17.5 10.5C17.1022 10.5 16.7206 10.342 16.4393 10.0607C16.158 9.77936 16 9.39782 16 9C16 8.60218 16.158 8.22064 16.4393 7.93934C16.7206 7.65804 17.1022 7.5 17.5 7.5Z"
+                                                    fill="#595959" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="text-xl leading-6 font-normal">
+                                        Pickup Charges
+                                    </div>
+                                </div>
+                                <div class="text-[#333333] text-xl font-normal">$20</div>
+                            </div>
+                        </div>
+
+
+                        <div class="flex justify-between pt-4">
+                            <div class="text-[#333333] text-[24px] leading-8 font-normal">Total Price</div>
+                            <div class="text-primary text-[24px] leading-8 font-semibold">{{priceDetails.totalPrice}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="buttons flex gap-8 w-full p-4">
+                        <p-button label="Cancel" class="w-full"
+                            styleClass="px-10 p-button-outlined w-full p-button-raised text-nowrap font-light"></p-button>
+
+                        <p-button label="Proceed to Pay" class="w-full"
+                            styleClass="px-10 w-full text-nowrap"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="right w-full py-4">
+                <div class="w-full mb-6">
+                    <div class="rounded-xl mb-4 " style='box-shadow: 0px 4px 22px 0px #00000014;'>
+                        <div class="p-4 flex justify-between items-center">
+                            <div class="flex gap-2 items-center">
+                                <div>
+                                    <p-radioButton name="account" value="acc1" [(ngModel)]="selectAccount"
+                                        inputId="ingredient1"></p-radioButton>
+                                </div>
+                                <div class="text-lg font-normal text-[#00182FBD]">**** **** **** 4502</div>
+                            </div>
+                            <div>
+                                <svg width="31" height="24" viewBox="0 0 31 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_362_5178)">
+                                        <path
+                                            d="M5.61331 23.8807V22.2923C5.61331 21.6832 5.24258 21.2862 4.60712 21.2862C4.28945 21.2862 3.94525 21.3921 3.70694 21.7363C3.5217 21.445 3.25697 21.2862 2.85983 21.2862C2.59498 21.2862 2.33038 21.3656 2.11848 21.6568V21.3391H1.5625V23.8807H2.11848V22.4775C2.11848 22.0275 2.35679 21.8156 2.72753 21.8156C3.09802 21.8156 3.2835 22.054 3.2835 22.4775V23.8807H3.83948V22.4775C3.83948 22.0275 4.10409 21.8156 4.44829 21.8156C4.81902 21.8156 5.00427 22.054 5.00427 22.4775V23.8807H5.61331ZM13.847 21.3391H12.9469V20.5714H12.391V21.3391H11.8879V21.8421H12.3908V23.0071C12.3908 23.5896 12.6292 23.9337 13.2646 23.9337C13.5029 23.9337 13.7675 23.8543 13.953 23.7484L13.7941 23.2718C13.6352 23.3777 13.45 23.4042 13.3176 23.4042C13.0528 23.4042 12.9469 23.2454 12.9469 22.9805V21.8421H13.847V21.3391ZM18.5597 21.2861C18.242 21.2861 18.0302 21.445 17.8978 21.6568V21.3391H17.3418V23.8807H17.8978V22.4511C17.8978 22.0275 18.0831 21.7892 18.4273 21.7892C18.5332 21.7892 18.6656 21.8158 18.7715 21.8422L18.9303 21.3127C18.8244 21.2862 18.6656 21.2862 18.5597 21.2862M11.4378 21.551C11.173 21.3657 10.8024 21.2863 10.4052 21.2863C9.7699 21.2863 9.34634 21.604 9.34634 22.107C9.34634 22.5307 9.66401 22.7689 10.22 22.8484L10.4847 22.8749C10.776 22.9277 10.9348 23.0072 10.9348 23.1396C10.9348 23.3249 10.723 23.4573 10.3523 23.4573C9.98155 23.4573 9.69042 23.3249 9.50505 23.1926L9.24033 23.6161C9.53158 23.8279 9.92873 23.9338 10.3258 23.9338C11.0671 23.9338 11.4908 23.5897 11.4908 23.1131C11.4908 22.663 11.1466 22.4247 10.617 22.3453L10.3523 22.3188C10.114 22.2923 9.92873 22.2394 9.92873 22.0806C9.92873 21.8952 10.114 21.7894 10.4052 21.7894C10.723 21.7894 11.0407 21.9217 11.1995 22.0011L11.4378 21.551ZM26.2111 21.2863C25.8933 21.2863 25.6815 21.4452 25.5491 21.6569V21.3393H24.9931V23.8808H25.5491V22.4512C25.5491 22.0277 25.7345 21.7894 26.0786 21.7894C26.1846 21.7894 26.317 21.8159 26.4229 21.8423L26.5817 21.3128C26.4758 21.2863 26.317 21.2863 26.2111 21.2863ZM19.1157 22.6101C19.1157 23.3778 19.6451 23.9338 20.4659 23.9338C20.8365 23.9338 21.1013 23.8544 21.366 23.6427L21.1013 23.1926C20.8895 23.3514 20.6777 23.4308 20.4394 23.4308C19.9893 23.4308 19.6716 23.1131 19.6716 22.6101C19.6716 22.1336 19.9893 21.8158 20.4394 21.7894C20.6777 21.7894 20.8895 21.8687 21.1013 22.0277L21.366 21.5776C21.1013 21.3657 20.8365 21.2863 20.4659 21.2863C19.6451 21.2863 19.1157 21.8423 19.1157 22.6101ZM24.2519 22.6101V21.3393H23.6959V21.6569C23.5106 21.4187 23.2458 21.2863 22.9016 21.2863C22.1868 21.2863 21.6308 21.8423 21.6308 22.6101C21.6308 23.3778 22.1868 23.9338 22.9016 23.9338C23.2722 23.9338 23.5371 23.8015 23.6959 23.5632V23.8808H24.2519V22.6101ZM22.2132 22.6101C22.2132 22.16 22.5045 21.7894 22.981 21.7894C23.4311 21.7894 23.7489 22.1336 23.7489 22.6101C23.7489 23.0601 23.4311 23.4308 22.981 23.4308C22.5045 23.4042 22.2132 23.0601 22.2132 22.6101ZM15.568 21.2863C14.8267 21.2863 14.2971 21.8158 14.2971 22.6101C14.2971 23.4043 14.8265 23.9338 15.5944 23.9338C15.965 23.9338 16.3358 23.8279 16.627 23.5897L16.3622 23.1926C16.1504 23.3514 15.8857 23.4573 15.621 23.4573C15.2768 23.4573 14.9326 23.2985 14.8531 22.8482H16.7329V22.6366C16.7594 21.8158 16.2829 21.2863 15.568 21.2863ZM15.5679 21.7628C15.912 21.7628 16.1504 21.9747 16.2032 22.3719H14.8795C14.9324 22.0277 15.1707 21.7628 15.5679 21.7628ZM29.3615 22.6101V20.3332H28.8055V21.6569C28.6201 21.4187 28.3554 21.2863 28.0112 21.2863C27.2964 21.2863 26.7404 21.8423 26.7404 22.6101C26.7404 23.3778 27.2964 23.9338 28.0112 23.9338C28.382 23.9338 28.6467 23.8015 28.8055 23.5632V23.8808H29.3615V22.6101ZM27.3229 22.6101C27.3229 22.16 27.6141 21.7894 28.0907 21.7894C28.5408 21.7894 28.8585 22.1336 28.8585 22.6101C28.8585 23.0601 28.5408 23.4308 28.0907 23.4308C27.6141 23.4042 27.3229 23.0601 27.3229 22.6101ZM8.73717 22.6101V21.3393H8.18119V21.6569C7.99583 21.4187 7.7311 21.2863 7.3869 21.2863C6.67209 21.2863 6.11611 21.8423 6.11611 22.6101C6.11611 23.3778 6.67209 23.9338 7.3869 23.9338C7.75764 23.9338 8.02236 23.8015 8.18119 23.5632V23.8808H8.73717V22.6101ZM6.67209 22.6101C6.67209 22.16 6.96334 21.7894 7.43985 21.7894C7.88994 21.7894 8.20773 22.1336 8.20773 22.6101C8.20773 23.0601 7.88994 23.4308 7.43985 23.4308C6.96334 23.4042 6.67209 23.0601 6.67209 22.6101Z"
+                                            fill="black" />
+                                        <path d="M11.252 2.03857H19.5917V17.0236H11.252V2.03857Z" fill="#FF5F00" />
+                                        <path
+                                            d="M11.7816 9.53114C11.7816 6.48651 13.2112 3.78597 15.4086 2.03855C13.7937 0.767759 11.7552 0 9.53126 0C4.26247 0 0 4.26247 0 9.53114C0 14.7998 4.26247 19.0623 9.53114 19.0623C11.7551 19.0623 13.7936 18.2945 15.4086 17.0236C13.2112 15.3027 11.7816 12.5758 11.7816 9.53114Z"
+                                            fill="#EB001B" />
+                                        <path
+                                            d="M30.8442 9.53114C30.8442 14.7997 26.5817 19.0623 21.313 19.0623C19.0891 19.0623 17.0505 18.2945 15.4355 17.0236C17.6595 15.2763 19.0627 12.5758 19.0627 9.53114C19.0627 6.48651 17.6329 3.78597 15.4355 2.03855C17.0504 0.767759 19.0891 0 21.313 0C26.5817 0 30.8442 4.28901 30.8442 9.53114Z"
+                                            fill="#F79E1B" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_362_5178">
+                                            <rect width="30.8744" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-xl mb-4" style='box-shadow: 0px 4px 22px 0px #00000014;'>
+                        <div class="p-4 flex justify-between items-center">
+                            <div class="flex gap-2 items-center">
+                                <div>
+                                    <p-radioButton name="account" value="acc2" [(ngModel)]="selectAccount"
+                                        inputId="ingredient2"></p-radioButton>
+                                </div>
+                                <div class="text-lg font-normal text-[#00182FBD]">**** **** **** 7541</div>
+                            </div>
+                            <div>
+                                <svg width="62" height="20" viewBox="0 0 62 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M31.9029 6.36817C31.8677 9.14312 34.3759 10.6915 36.2653 11.6123C38.2065 12.5568 38.8586 13.1626 38.8508 14.0075C38.8364 15.3002 37.3024 15.8708 35.867 15.893C33.3627 15.9318 31.9065 15.2169 30.7489 14.6761L29.8467 18.8976C31.0082 19.4328 33.1588 19.8995 35.3889 19.92C40.6239 19.92 44.0487 17.3359 44.0672 13.3294C44.0877 8.24456 37.034 7.96311 37.0822 5.69034C37.0988 5.00119 37.7564 4.26577 39.1973 4.07878C39.9106 3.98432 41.8795 3.91203 44.1118 4.93998L44.9879 0.855646C43.7875 0.418537 42.2446 -1.71661e-05 40.3236 -1.71661e-05C35.3964 -1.71661e-05 31.9308 2.61926 31.9029 6.36817ZM53.4067 0.351789C52.4508 0.351789 51.6453 0.90938 51.2858 1.76504L43.8079 19.62H49.039L50.08 16.7431H56.4723L57.0761 19.62H61.6867L57.6634 0.351789H53.4067ZM54.1386 5.55685L55.6482 12.7923H51.5137L54.1386 5.55685ZM25.5605 0.35203L21.4371 19.6197H26.4219L30.5434 0.351549L25.5605 0.35203ZM18.1863 0.35203L12.9978 13.4665L10.899 2.3154C10.6528 1.07059 9.68024 0.351789 8.60024 0.351789H0.118795L0 0.911308C1.7412 1.28914 3.71952 1.89854 4.91807 2.55058C5.65157 2.9489 5.86072 3.29709 6.10169 4.2436L10.0769 19.62H15.3446L23.4207 0.351789L18.1863 0.35203Z"
+                                        fill="url(#paint0_linear_362_5190)" />
+                                    <defs>
+                                        <linearGradient id="paint0_linear_362_5190" x1="2835.99" y1="59.8795"
+                                            x2="2893.65" y2="-1985.93" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#222357" />
+                                            <stop offset="1" stop-color="#254AA5" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-xl border ">
+                        <div>
+                            <div class="p-4 flex justify-between items-center">
+                                <div class="flex gap-2 items-center">
+                                    <div>
+                                        <p-radioButton name="account" value="card" [(ngModel)]="selectAccount"
+                                            inputId="ingredient3"></p-radioButton>
+                                    </div>
+                                    <div class="text-[24px] leading-[34px] font-smeibold text-black">Card Details</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="border-b w-full"></div>
+                        <div class="p-4">
+                            <div class="pb-4">
+                                <div class="text-lg font-normal">Card number</div>
+                                <div class="text-xs font-light text-[#5E5E5E]">Enter the 16-digit card number on the
+                                    card</div>
+                                <div class="mt-4">
+
+                                    <p-inputMask mask="9999-9999-9999-9999" placeholder="XXXX-XXXX-XXXX-XXXX"
+                                        class="rounded-lg" styleClass="w-full rounded-lg"></p-inputMask>
+
+                                </div>
+                            </div>
+                            <div class="pb-4">
+                                <div class="text-lg font-normal">Card owner</div>
+                                <div class="text-xs font-light text-[#5E5E5E]">Enter the name on the
+                                    card</div>
+                                <div class="mt-4">
+                                    <input id="firstName" type="text" pInputText placeholder="Enter name"
+                                        class="w-full px-4 py-2 border border-[#D0D5DD] rounded-md placeholder:text-base placeholder:text-[#cacaca] placeholder-light text-gray-700 text-base font-light focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
+                                </div>
+                            </div>
+                            <div class="pb-4">
+                                <div class="text-lg font-normal">Expiry date</div>
+                                <div class="text-xs font-light text-[#5E5E5E]">Enter the expration date of the card
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="mt-4 flex items-center">
+                                        <div class="p-field">
+                                            <p-inputMask id="expiryMonth" mask="99" placeholder="MM"
+                                                styleClass="w-[55px] pl-3 rounded-lg"></p-inputMask>
+                                        </div>
+                                        <div class="mx-3">
+                                            <svg width="11" height="22" viewBox="0 0 11 22" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.826656 21.016C0.698656 21.016 0.586656 20.968 0.490656 20.872C0.394656 20.776 0.346656 20.664 0.346656 20.536C0.346656 20.456 0.370656 20.36 0.418656 20.248L8.62666 0.568C8.67466 0.471999 8.73866 0.375999 8.81866 0.279999C8.91466 0.184 9.05866 0.136 9.25066 0.136H10.1867C10.3147 0.136 10.4267 0.184 10.5227 0.279999C10.6187 0.375999 10.6667 0.487999 10.6667 0.615999C10.6667 0.679999 10.6507 0.776 10.6187 0.904L2.38666 20.584C2.35466 20.664 2.28266 20.752 2.17066 20.848C2.07466 20.96 1.93866 21.016 1.76266 21.016H0.826656Z"
+                                                    fill="black" />
+                                            </svg>
+                                        </div>
+                                        <div class="p-field">
+                                            <p-inputMask id="expiryYear" mask="99" placeholder="YY"
+                                                styleClass="w-[55px] pl-4 rounded-lg"></p-inputMask>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 flex items-center gap-4">
+                                        <div>
+                                            <div class="text-lg font-normal">CVV2</div>
+                                            <div class="text-xs font-light text-[#5E5E5E]">Security code</div>
+                                        </div>
+                                        <div>
+                                            <p-inputMask id="cvv" mask="999" placeholder="CVV"
+                                                styleClass="w-16 pl-4 rounded-lg"></p-inputMask>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="block lg:hidden">
+                        <div class="buttons flex gap-8 w-full p-4 ">
+                            <p-button label="Cancel" class="w-full"
+                                styleClass="px-10 p-button-outlined w-full p-button-raised text-nowrap font-light"></p-button>
+
+                            <p-button label="Proceed to Pay" class="w-full"
+                                styleClass="px-10 w-full text-nowrap"></p-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

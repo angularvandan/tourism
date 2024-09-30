@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DestinationComponent } from './destination/destination.component';
 import { DestinationDetailsComponent } from './destination-details/destination-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   {
     path:'checkout',component:CheckoutComponent
   },
+  {
+    path:'payment',component:PaymentComponent
+  }
 ];
 
 @NgModule({

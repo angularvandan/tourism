@@ -9,7 +9,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [],
@@ -24,7 +25,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     FormsModule,
     InputNumberModule,
     InputTextModule,
-    InputTextareaModule
+    InputTextareaModule,
+    RadioButtonModule,
+    InputMaskModule
   ],
   exports:[
     SidebarModule,
@@ -36,7 +39,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     FormsModule,
     InputNumberModule,
     InputTextModule,
-    InputTextareaModule
+    InputTextareaModule,
+    RadioButtonModule,
+    InputMaskModule
   ]
 })
 export class SharedModule { }
