@@ -88,7 +88,7 @@ app-home {
             display: none;
         }
 
-        #pr_id_2 .p-carousel-item {
+        .p-carousel-item {
             margin-right: 20px;
         }
 
@@ -363,6 +363,17 @@ app-checkout {
             background: white;
             color: black;
         }
+    }
+    .p-dialog .p-dialog-header {
+        // border-top-left-radius: 30px;
+        // border-top-right-radius: 30px;
+        // border-bottom-left-radius: 30px;
+        // border-bottom-right-radius: 30px;
+        border-radius: 30px;
+
+    }
+    .p-dialog .p-dialog-footer {
+        display: none;
     }
 }
 

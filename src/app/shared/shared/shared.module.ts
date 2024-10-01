@@ -27,7 +27,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     InputTextModule,
     InputTextareaModule,
     RadioButtonModule,
-    InputMaskModule
+    InputMaskModule,
   ],
   exports:[
     SidebarModule,
@@ -41,7 +41,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     InputTextModule,
     InputTextareaModule,
     RadioButtonModule,
-    InputMaskModule
+    InputMaskModule,
   ]
 })
 export class SharedModule { }

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+  styleUrls: ['./checkout.component.scss'],
 })
-export class CheckoutComponent implements OnInit{
+export class CheckoutComponent implements OnInit {
 
 
   selectedDate: Date | null = null;
@@ -27,17 +28,18 @@ export class CheckoutComponent implements OnInit{
       date: '',
     },
   ];
-  minDate:Date;
+  minDate: Date;
 
   userForm!: FormGroup;
 
   //this is for shwing checkout specific section
-  checkoutStatus:any={
-    userDetailsStatus:false,
-    paymentStatus:false
+  checkoutStatus: any = {
+    userDetailsStatus: false,
+    paymentStatus: false
   }
+  visible: boolean=false;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder) {
     this.minDate = new Date();
   }
 
@@ -47,9 +49,11 @@ export class CheckoutComponent implements OnInit{
       phone_no: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
-      checked:['',Validators.required]
+      checked: ['', Validators.required]
     });
   }
+
+
   onSubmit() {
     if (this.userForm.valid) {
       console.log(this.userForm.value);
@@ -59,13 +63,13 @@ export class CheckoutComponent implements OnInit{
 
   toggleRotation() {
     this.isRotated = !this.isRotated;
-    
+
   }
   // Method to open the PrimeNG calendar when clicking on the custom icon
   openCalendar(calendar: any) {
     calendar.toggle();
   }
-  selectTime(timePicker:any){
+  selectTime(timePicker: any) {
     timePicker.toggle();
   }
 

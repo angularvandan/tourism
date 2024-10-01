@@ -142,8 +142,8 @@
             </div>
         </div>
         <!-- personal info  -->
-        <div class="personal-info my-6" *ngIf="checkoutStatus.userDetailsStatus">
-            <div class="border rounded-[30px] p-6" style="box-shadow: 0px 7px 20px 0px #0000001A;">
+        <div class="personal-info my-6" *ngIf="checkoutStatus.userDetailsStatus" >
+            <div class="relative border rounded-[30px] p-6" style="box-shadow: 0px 7px 20px 0px #0000001A;">
                 <div class="title text-lg sm:text-xl md:text-[20px] md:leading-[32px] font-medium">
                     Enter your details
                 </div>
@@ -274,21 +274,83 @@
                                 </div>
 
                                 <div class="button flex flex-col justify-center items-center mt-4 gap-4 w-full">
-                                    <p-button label="Pay Now"routerLink="/tours/payment"
+                                    <p-button label="Pay Now" routerLink="/tours/payment"
                                         styleClass="px-10 p-button-outlined  p-button-raised text-nowrap min-w-[300px]"></p-button>
 
-                                    <p-button label="Pay at Pickup"
+                                    <p-button label="Pay at Pickup" (onClick)="visible=true"
                                         styleClass="px-10  text-nowrap min-w-[300px]"></p-button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-        <!-- payment info  -->
-        <div class="payment-info" *ngIf="checkoutStatus.paymentStatus">
+                <!-- Popup Overlay -->
+                <div (click)="visible=false" class="popup-overlay fixed top-0 left-0 w-full h-full" *ngIf="visible">
+                </div>
 
+                <div class="absolute bg-white z-10 top-1/4 left-[38%] message-container w-[400px] h-[400px] rounded-[30px]"
+                    *ngIf="visible">
+                    <div class="p-4">
+                        <div class="flex justify-center py-10">
+                            <svg width="61" height="61" viewBox="0 0 61 61" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_1061_1887)">
+                                    <path
+                                        d="M50.384 32.0373C49.6442 31.2975 49.6442 30.0983 50.384 29.3585L54.4016 25.3409C55.1414 24.6011 56.3406 24.6011 57.08 25.3409C57.8198 26.0807 57.8198 27.2799 57.08 28.0193L53.0624 32.0373C52.3226 32.7771 51.1233 32.7771 50.384 32.0373Z"
+                                        fill="#A89E9F" />
+                                    <path
+                                        d="M52.3924 39.4031C51.6531 38.6637 51.6531 37.4645 52.3924 36.7247L56.4105 32.7071C57.1498 31.9673 58.3495 31.9673 59.0889 32.7071C59.8287 33.4464 59.8287 34.6457 59.0889 35.3855L55.0713 39.4031C54.3315 40.1429 53.1322 40.1429 52.3924 39.4031Z"
+                                        fill="#A89E9F" />
+                                    <path
+                                        d="M28.9552 10.6082C29.6951 11.348 30.8943 11.348 31.6341 10.6082L35.6517 6.59055C36.3915 5.85075 36.3915 4.6515 35.6517 3.91215C34.9119 3.17235 33.7126 3.17235 32.9733 3.91215L28.9552 7.92975C28.2154 8.66956 28.2154 9.86881 28.9552 10.6082Z"
+                                        fill="#A89E9F" />
+                                    <path
+                                        d="M21.589 8.59982C22.3284 9.33917 23.5276 9.33917 24.2674 8.59982L28.285 4.58176C29.0248 3.84242 29.0248 2.64271 28.285 1.90336C27.5457 1.16356 26.3464 1.16356 25.6066 1.90336L21.589 5.92096C20.8492 6.66077 20.8492 7.86002 21.589 8.59982Z"
+                                        fill="#A89E9F" />
+                                    <path
+                                        d="M60.6664 46.4989L51.2915 15.0261C51.1994 14.7172 50.9564 14.4759 50.6465 14.3866C50.3372 14.2973 50.0029 14.3714 49.7603 14.5837L39.0463 23.9585C38.6766 24.2822 38.6154 24.8346 38.9054 25.2305L56.7344 49.5888C57.0723 50.0501 57.7638 50.1035 58.1684 49.6989L60.4283 47.4389C60.6742 47.1931 60.7658 46.8322 60.6664 46.4989Z"
+                                        fill="#A7D9E9" />
+                                    <path
+                                        d="M46.6063 10.3463C46.5166 10.0365 46.2758 9.79341 45.9669 9.70134L14.4941 0.326479C14.1608 0.22704 13.7998 0.318653 13.554 0.564488L11.2941 2.82442C10.8894 3.22908 10.9428 3.92054 11.4041 4.25799L35.7624 22.087C35.93 22.2104 36.1266 22.2697 36.3213 22.2697C36.5856 22.2697 36.848 22.1593 37.0344 21.9466L46.4093 11.2325C46.6215 10.9899 46.6956 10.6557 46.6063 10.3463Z"
+                                        fill="#A7D9E9" />
+                                    <path
+                                        d="M27.8313 47.0985L24.4831 38.393C24.368 38.0938 24.1092 37.8733 23.7957 37.8065C23.4822 37.7402 23.1563 37.8369 22.9293 38.0634L17.5725 43.4207C17.2024 43.7903 17.2024 44.3897 17.5725 44.7599L23.5992 50.7865C23.9638 51.1511 24.5733 51.1511 24.9384 50.7865L27.6168 48.1081C27.8815 47.8434 27.9652 47.4475 27.8313 47.0985Z"
+                                        fill="#A7D9E9" />
+                                    <path
+                                        d="M22.9291 38.0633C23.1556 37.8368 23.2522 37.5108 23.1859 37.1968C23.1192 36.8833 22.8987 36.6246 22.5994 36.51L13.8939 33.1618C13.545 33.0273 13.1495 33.1111 12.8848 33.3758L10.206 36.0542C9.83629 36.4244 9.83629 37.0238 10.206 37.3934L16.2331 43.4205C16.4177 43.6051 16.6603 43.6977 16.9024 43.6977C17.145 43.6977 17.3872 43.6051 17.5723 43.4205L22.9291 38.0633Z"
+                                        fill="#A7D9E9" />
+                                    <path
+                                        d="M59.7595 1.23367C58.7711 0.245273 56.8352 -0.54149 53.2246 1.32345C51.1028 2.42003 48.667 4.29049 46.3666 6.59093C34.4192 18.5383 15.6897 41.2513 15.5019 41.4796C15.1921 41.8558 15.2188 42.4064 15.5636 42.7512L18.242 45.4296C18.4261 45.6137 18.6683 45.7072 18.9118 45.7072C19.1245 45.7072 19.3381 45.6358 19.5135 45.4908C19.7414 45.3034 42.4548 26.574 54.4022 14.6266C56.7027 12.3262 58.5731 9.89036 59.6697 7.76809C61.5346 4.15837 60.7479 2.22208 59.7595 1.23367Z"
+                                        fill="#7BC5DD" />
+                                    <path
+                                        d="M59.759 1.23372C59.4749 0.949678 59.1121 0.683127 58.6545 0.490234C59.1319 1.62549 59.1503 3.34772 57.8213 5.92069C56.7252 8.04251 54.8542 10.4783 52.5538 12.7787C40.6064 24.7261 17.8934 43.4556 17.6651 43.6434C17.4897 43.788 17.2761 43.8593 17.0634 43.8593C16.8203 43.8593 16.5777 43.7659 16.3936 43.5822L18.2415 45.4296C18.4256 45.6138 18.6678 45.7072 18.9113 45.7072C19.124 45.7072 19.3376 45.6359 19.513 45.4913C19.7409 45.3035 42.4543 26.574 54.4017 14.6266C56.7021 12.3262 58.5726 9.89087 59.6692 7.76859C61.5341 4.15842 60.7474 2.22212 59.759 1.23372Z"
+                                        fill="#50B2D2" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_1061_1887">
+                                        <rect width="60.3409" height="60.3409" fill="white"
+                                            transform="translate(0.46582 0.193237)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="title text-center text-lg sm:text-xl md:text-[34px] md:leading-9 font-medium text-primary">
+                            Get Set Fly..!
+                        </div>
+                        <div class="subtitle mb-3 text-center text-lg md:text-[22px] md:leading-8 font-normal text-[#0E3D4D]">
+                            Enjoy the trip to Philippines
+                        </div>
+                        <div class="text-[#525252] font-light text-base md:text-lg text-center">
+                            The order confirmation has been sent to customer@gmail.com
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <p-button label="Back to Home" routerLink="/"
+                                        styleClass="px-10  text-nowrap min-w-[300px]"></p-button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

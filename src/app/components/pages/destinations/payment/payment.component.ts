@@ -36,5 +36,7 @@ export class PaymentComponent {
   }
   selectAccount: any;
   cardNumber:any;
+  visible: boolean=false;
+
 
 }
