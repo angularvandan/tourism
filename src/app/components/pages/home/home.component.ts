@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.responsiveOptions = [
       {
-        breakpoint: '1799px',
+        breakpoint: '2599px',
         numVisible: 5,
         numScroll: 1
       },

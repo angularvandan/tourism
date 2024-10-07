@@ -53,6 +53,22 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  // Method to allow only letters (alphabets) in input fields using RegEx
+  allowLettersOnly(event: KeyboardEvent): boolean {
+    const inputChar = String.fromCharCode(event.charCode); // Get the character from the charCode
+
+    // Regular expression to allow only alphabets and space
+    const regex = /^[a-zA-Z\s]*$/;
+
+    // Test the character input against the regex pattern
+    if (regex.test(inputChar)) {
+      return true; // Allow the input if it matches the pattern
+    } else {
+      event.preventDefault(); // Prevent the input if it doesn't match the pattern
+      return false;
+    }
+  }
+
 
   onSubmit() {
     if (this.userForm.valid) {

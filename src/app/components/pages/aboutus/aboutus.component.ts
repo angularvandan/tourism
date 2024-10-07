@@ -19,7 +19,7 @@ export class AboutusComponent implements OnInit{
     {
       img:'../../../../assets/about/container5/img2.png',
       title:'Innovation',
-      subtitle:"We embrace creativity and strive to push the boundaries of what's possible."
+      subtitle:'“We embrace creativity and strive to push the boundaries of what\'s possible."'
     },
     {
       img:'../../../../assets/about/container5/img3.png',
@@ -29,7 +29,7 @@ export class AboutusComponent implements OnInit{
     {
       img:'../../../../assets/about/container5/img4.png',
       title:'Excellence',
-      subtitle:'"We are committed to the highest standards of quality in every project."'
+      subtitle:'“We are committed to the highest standards of quality in every project."'
     },
   ];
   ngOnInit(): void {

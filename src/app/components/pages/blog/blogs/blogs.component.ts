@@ -12,7 +12,7 @@ export class BlogsComponent implements OnInit{
   blogs:any[]=[
     {
       img:'../../../../assets/blogs/img1.png',
-      title:'Discover the Hidden Gems of the Philippines',
+      title:'Discover the Hidden Gems of the </br> Philippines',
       
     },
     {

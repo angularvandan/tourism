@@ -80,16 +80,16 @@ app-home {
     }
 
     .container-2 {
-        .p-carousel-prev {
-            display: none;
-        }
+        // .p-carousel-prev {
+        //     display: none;
+        // }
 
         .p-carousel-content .p-carousel-indicators {
             display: none;
         }
 
         .p-carousel-item {
-            margin-right: 20px;
+            margin-right: 15px;
         }
 
         .p-button.p-button-secondary.p-button-outlined {
@@ -197,6 +197,12 @@ app-contactus {
     .p-checkbox .p-checkbox-box.p-highlight {
         border-color: $bg-primary;
         background-color: $bg-primary;
+    }
+    .p-input-icon-left > i{
+        top:45%;
+    }
+    .p-input-icon-left.message > i{
+        top:15%;
     }
 }
 
