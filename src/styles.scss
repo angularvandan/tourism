@@ -336,12 +336,12 @@ app-checkout {
         .p-inputtext {
             font-size: 16px;
             line-height: 20px;
-            font-weight: 300;
-            color: #00000080;
+            font-weight: 400;
+            color: #000000;
         }
 
         .p-inputtext::placeholder {
-            color: #cacaca;
+            color: #00000090;
         }
 
         .p-inputtext:enabled:focus {
@@ -380,6 +380,12 @@ app-checkout {
     }
     .p-dialog .p-dialog-footer {
         display: none;
+    }
+    .p-input-icon-left > i{
+        top:45%;
+    }
+    .p-input-icon-left.message > i{
+        top:15%;
     }
 }
 
