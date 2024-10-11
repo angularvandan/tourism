@@ -131,8 +131,9 @@
         </div>
     </div>
     <!-- first details  -->
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
-        <div class="bg-[#FFFFFF] p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
+    <div *ngFor="let tours of allTours let i = index" class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+        <div [ngClass]=" i % 2 === 1 ? 'lg:flex-row-reverse' :'lg:flex-row'"
+            class="bg-[#FFFFFF] p-4 rounded-[20px] h-full flex flex-col  gap-8">
             <div class="left w-full lg:w-[50%]">
                 <div class="image">
                     <img src="../../../../assets/home/container3/image.png" class="rounded-[30px] w-full object-cover"
@@ -141,56 +142,62 @@
             </div>
             <div class="right w-full lg:w-[55%] flex flex-col justify-center">
                 <div class="">
-                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">Boracay
+                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">
+                        {{tours.name}}
                     </div>
                     <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
                     </div>
-                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">Here are you must-know Boracay tips for every
-                        month!</div>
+                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">{{tours.title}}</div>
                     <div class="flex flex-col sm:flex-row mb-6">
                         <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
                             <div class="mb-4">
-                                <div class="text-base leading-5 font-medium text-primary mb-3">Visiting Tips</div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌞 Best from Nov-May
+                                <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[0].title}}
                                 </div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌧️ Avoid heavy June
-                                    rains</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0].icon1}}
+                                    {{tours.tips[0].desc1}}
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0].icon2}}
+                                    {{tours.tips[0].desc2}}</div>
                             </div>
                             <div>
-                                <div class="text-base leading-5 font-medium text-primary mb-3">Travel Tpis</div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">✈️ Fly via Caticlan i
-                                    Dec-Feb</div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🌴 Fewer tourists in
-                                    January</div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[1].title}}
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1].icon1}}
+                                    {{tours.tips[1].desc1}}</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1].icon2}}
+                                    {{tours.tips[1].desc2}}</div>
                             </div>
                         </div>
                         <div class="w-full sm:w-1/2">
                             <div class="mb-4">
-                                <div class="text-base leading-5 font-medium text-primary mb-3">Packing Tips</div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🧴 Sunscreen is key in
-                                    March</div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">👕 Bring light clothes
-                                    for April heat</div>
+                                <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[2].title}}
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2].icon1}}
+                                    {{tours.tips[2].desc1}}</div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2].icon2}}
+                                    {{tours.tips[2].desc2}}</div>
                             </div>
                             <div>
-                                <div class="text-base leading-5 font-medium text-primary mb-3">Adventure Tips</div>
-                                <div class="text-base leading-5 font-light text-[#606060]  mb-2">🪁 Kite surfing in Feb
+                                <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[3].title}}
                                 </div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">🐠 Snorkeling is ideal
-                                    in April</div>
+                                <div class="text-base leading-5 font-light text-[#606060]  mb-2">{{tours.tips[3].icon1}}
+                                    {{tours.tips[3].desc1}}
+                                </div>
+                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[3].icon2}}
+                                    {{tours.tips[3].desc2}}</div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"
-                            (onClick)="toursDetails()"></p-button>
+                            (onClick)="toursDetails(tours._id)"></p-button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- second details  -->
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
             <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
                 <div>
@@ -247,9 +254,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- third details  -->
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
             <div class="left w-full lg:w-[50%]">
                 <div class="image">
@@ -307,9 +314,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- four details  -->
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
             <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
                 <div>
@@ -366,9 +373,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- five details  -->
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
             <div class="left w-full lg:w-[50%]">
                 <div class="image">
@@ -425,9 +432,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- six details  -->
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12">
+    <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">
             <div class="left w-full lg:w-[55%] order-2 lg:order-1 flex flex-col justify-center">
                 <div>
@@ -435,7 +442,8 @@
                         Island Palawan</div>
                     <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
                     </div>
-                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">Uncover your must-know Pamalican Island tips for
+                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">Uncover your must-know Pamalican Island
+                        tips for
                         every month!</div>
                     <div class="flex flex-col sm:flex-row mb-6">
                         <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
@@ -484,7 +492,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
 <!-- container-4  -->
@@ -824,7 +832,7 @@
                                     <div *ngIf="contactForm.get('firstName')?.invalid && contactForm.get('firstName')?.touched"
                                         class="text-red-500 text-sm mt-1">First Name is required</div>
                                 </div>
-    
+
                                 <!-- Last Name -->
                                 <div class="mb-4 w-full">
                                     <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last
@@ -836,16 +844,17 @@
                                         class="text-red-500 text-sm mt-1">Last Name is required</div>
                                 </div>
                             </div>
-    
+
                             <!-- Email -->
                             <div class="mb-4">
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                <input id="email" type="email" pInputText formControlName="email" placeholder="Enter email"
+                                <input id="email" type="email" pInputText formControlName="email"
+                                    placeholder="Enter email"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none  focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent" />
                                 <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
                                     class="text-red-500 text-sm mt-1">A valid email is required</div>
                             </div>
-    
+
                             <!-- Phone Number -->
                             <div class="mb-4">
                                 <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone
@@ -856,24 +865,25 @@
                                 <div *ngIf="contactForm.get('phoneNumber')?.invalid && contactForm.get('phoneNumber')?.touched"
                                     class="text-red-500 text-sm mt-1">Phone number is required</div>
                             </div>
-    
+
                             <!-- Message -->
                             <div class="mb-6">
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <label for="message"
+                                    class="block text-sm font-medium text-gray-700 mb-1">Message</label>
                                 <textarea id="message" pInputTextarea rows="4" formControlName="message"
                                     placeholder="Enter message"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:shadow-none focus:border-[#D0D5DD] focus:placeholder-transparent"></textarea>
                                 <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
                                     class="text-red-500 text-sm mt-1">Message is required</div>
                             </div>
-    
+
                             <!-- Submit Button -->
                             <div class="flex justify-center items-center w-full">
                                 <p-button label="Get in Touch" styleClass=" py-3 px-6 min-w-[250px] "></p-button>
 
                             </div>
                         </form>
-    
+
                     </div>
                 </div>
             </div>

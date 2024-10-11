@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   responsiveOptions: any;
+  allTours: any[] = []
 
   bannerImage: any[] = [
     { img: '../../../../assets/home/home_banner.jpg' },
@@ -62,7 +64,7 @@ export class HomeComponent implements OnInit {
 
   contactForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router:Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private api: ApiService) { }
 
   ngOnInit(): void {
     this.responsiveOptions = [
@@ -102,15 +104,24 @@ export class HomeComponent implements OnInit {
       message: ['', Validators.required]
     });
 
+    this.getAllTours()
+
   }
-  toursDetails() {
-    this.router.navigate(['/tours']);
+  toursDetails(id: any) {
+    this.router.navigate([`/tours/${id}`]);
   }
 
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
     }
+  }
+
+  getAllTours() {
+    this.api.getTours().subscribe((res: any) => {
+      // console.log("Tours", res)
+      this.allTours = res.tours
+    })
   }
 
 }

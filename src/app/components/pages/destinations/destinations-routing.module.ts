@@ -7,16 +7,16 @@ import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
-    path:'',component:DestinationComponent
+    path: ':id', component: DestinationComponent
   },
   {
-    path:'tour-details',component:DestinationDetailsComponent
+    path: 'tour-details', component: DestinationDetailsComponent
   },
   {
-    path:'checkout',component:CheckoutComponent
+    path: 'checkout', component: CheckoutComponent
   },
   {
-    path:'payment',component:PaymentComponent
+    path: 'payment', component: PaymentComponent
   }
 ];
 
