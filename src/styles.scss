@@ -17,6 +17,11 @@ body {
 
 $bg-primary: #869F44;
 
+.p-progress-spinner {
+    width: 40px!important;
+    height: 40px!important;
+}
+
 .p-button {
     background-color: $bg-primary;
     border: none;

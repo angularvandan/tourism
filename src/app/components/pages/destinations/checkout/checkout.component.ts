@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 
 @Component({
@@ -39,9 +40,10 @@ export class CheckoutComponent implements OnInit {
   }
   visible: boolean=false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private api :ApiService) {
     this.minDate = new Date();
   }
+
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -50,6 +52,10 @@ export class CheckoutComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
       checked: ['', Validators.required]
+    });
+    // Subscribe to the data observable
+    this.api.toursData$.subscribe((data:any) => {
+      console.log(data);
     });
   }
 

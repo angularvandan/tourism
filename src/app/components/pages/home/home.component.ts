@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
 
   }
   toursDetails(id: any) {
-    this.router.navigate([`/tours/${id}`]);
+    this.router.navigate([`/tours/tour/${id}`]);
   }
 
   onSubmit() {
@@ -119,7 +119,7 @@ export class HomeComponent implements OnInit {
 
   getAllTours() {
     this.api.getTours().subscribe((res: any) => {
-      // console.log("Tours", res)
+      console.log("Tours", res)
       this.allTours = res.tours
     })
   }

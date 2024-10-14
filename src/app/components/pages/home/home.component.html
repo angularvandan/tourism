@@ -131,71 +131,78 @@
         </div>
     </div>
     <!-- first details  -->
-    <div *ngFor="let tours of allTours let i = index" class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
-        <div [ngClass]=" i % 2 === 1 ? 'lg:flex-row-reverse' :'lg:flex-row'"
-            class="bg-[#FFFFFF] p-4 rounded-[20px] h-full flex flex-col  gap-8">
-            <div class="left w-full lg:w-[50%]">
-                <div class="image">
-                    <img src="../../../../assets/home/container3/image.png" class="rounded-[30px] w-full object-cover"
-                        alt="image">
+    <div class="card flex w-full justify-center items-top"*ngIf="!allTours.length">
+        <p-progressSpinner styleClass="text-primary"  strokeWidth="4" fill="white"
+            animationDuration="1s"></p-progressSpinner>
+    </div>
+    <ng-container *ngIf="allTours.length">
+        <div *ngFor="let tours of allTours let i = index" class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
+            <div [ngClass]=" i % 2 === 1 ? 'lg:flex-row-reverse' :'lg:flex-row'"
+                class="bg-[#FFFFFF] p-4 rounded-[20px] h-full flex flex-col  gap-8">
+                <div class="left w-full lg:w-[50%]">
+                    <div class="image">
+                        <img src="../../../../assets/home/container3/image.png" class="rounded-[30px] w-full object-cover"
+                            alt="image">
+                    </div>
                 </div>
-            </div>
-            <div class="right w-full lg:w-[55%] flex flex-col justify-center">
-                <div class="">
-                    <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">
-                        {{tours.name}}
-                    </div>
-                    <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
-                    </div>
-                    <div class="text-lg md:text-xl font-semibold leading-5 mb-3">{{tours.title}}</div>
-                    <div class="flex flex-col sm:flex-row mb-6">
-                        <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
-                            <div class="mb-4">
-                                <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[0].title}}
+                <div class="right w-full lg:w-[55%] flex flex-col justify-center">
+                    <div class="">
+                        <div class="text-lg sm:text-xl md:text-[28px] leading-8 font-semibold text-[#0E3D4D] mb-4">
+                            {{tours.name}}
+                        </div>
+                        <div class="w-[100%] sm:w-[90%] mb-3" style="border: 1px solid #30A5BE;">
+                        </div>
+                        <div class="text-lg md:text-xl font-semibold leading-5 mb-3">{{tours.title}}</div>
+                        <div class="flex flex-col sm:flex-row mb-6">
+                            <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
+                                <div class="mb-4">
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[0].title}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0].icon1}}
+                                        {{tours.tips[0].desc1}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0].icon2}}
+                                        {{tours.tips[0].desc2}}</div>
                                 </div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0].icon1}}
-                                    {{tours.tips[0].desc1}}
+                                <div>
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[1].title}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1].icon1}}
+                                        {{tours.tips[1].desc1}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1].icon2}}
+                                        {{tours.tips[1].desc2}}</div>
                                 </div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0].icon2}}
-                                    {{tours.tips[0].desc2}}</div>
                             </div>
-                            <div>
-                                <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[1].title}}
+                            <div class="w-full sm:w-1/2">
+                                <div class="mb-4">
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[2].title}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2].icon1}}
+                                        {{tours.tips[2].desc1}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2].icon2}}
+                                        {{tours.tips[2].desc2}}</div>
                                 </div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1].icon1}}
-                                    {{tours.tips[1].desc1}}</div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1].icon2}}
-                                    {{tours.tips[1].desc2}}</div>
+                                <div>
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[3].title}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060]  mb-2">{{tours.tips[3].icon1}}
+                                        {{tours.tips[3].desc1}}
+                                    </div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[3].icon2}}
+                                        {{tours.tips[3].desc2}}</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="w-full sm:w-1/2">
-                            <div class="mb-4">
-                                <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[2].title}}
-                                </div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2].icon1}}
-                                    {{tours.tips[2].desc1}}</div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2].icon2}}
-                                    {{tours.tips[2].desc2}}</div>
-                            </div>
-                            <div>
-                                <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[3].title}}
-                                </div>
-                                <div class="text-base leading-5 font-light text-[#606060]  mb-2">{{tours.tips[3].icon1}}
-                                    {{tours.tips[3].desc1}}
-                                </div>
-                                <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[3].icon2}}
-                                    {{tours.tips[3].desc2}}</div>
-                            </div>
+                        <div>
+                            <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"
+                                (onClick)="toursDetails(tours._id)"></p-button>
                         </div>
-                    </div>
-                    <div>
-                        <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"
-                            (onClick)="toursDetails(tours._id)"></p-button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </ng-container>
+    
     <!-- second details  -->
     <!-- <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 ">
         <div class="bg-white p-4 rounded-[20px] h-full flex flex-col lg:flex-row gap-8">

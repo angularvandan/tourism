@@ -1,10 +1,14 @@
 <div class="container-1 w-full h-screen pt-10 relative">
-    <div class="absolute bottom-[10%] w-full flex justify-center">
+    <div class="card flex w-full h-screen justify-center items-center"*ngIf="!tourDetails">
+        <p-progressSpinner styleClass="text-primary"  strokeWidth="4" 
+            animationDuration="1s"></p-progressSpinner>
+    </div>
+    <div class="absolute bottom-[10%] w-full flex justify-center" *ngIf="tourDetails">
         <div class="bg-white rounded-3xl p-6 w-[90%]">
             <div class="flex justify-between mb-6">
                 <div
                     class="text-xl text-primary sm:text-[28px] md:text-[44px] leading-[30px] sm:leading-[40px] md:leading-[55px] font-semibold">
-                    {{tourdetails.name}}</div>
+                    {{tourDetails?.name}}</div>
                 <div class="flex justify-center items-center gap-2">
                     <div class="w-10 h-10 rounded-full bg-white flex justify-center items-center cursor-pointer"
                         style="box-shadow: 0px 4px 24px 0px #4F4B4B40;backdrop-filter: blur(12px)">
@@ -38,10 +42,10 @@
                 </div>
                 <div
                     class="text-[#606060] text-lg sm:text-xl md:text-[28px] leading-5 leading-7 leading-[35px] font-normal">
-                    {{tourdetails.address}}</div>
+                    {{tourDetails?.address}}</div>
             </div>
             <div class="text-base md:text-lg font-light">
-                {{tourdetails.description}}
+                {{tourDetails?.description}}
             </div>
         </div>
     </div>
@@ -50,7 +54,7 @@
     <div class="header my-10 px-4 sm:px-8 md:px-12">
         <div class="flex justify-between mb-2">
             <div class="text-black md:text-[40px] sm:text-[28px] text-lg leading-6 sm:leading-8 md:leading-[55px]">Must
-                See Spots that you can explore in <br> {{tourdetails.name}} .</div>
+                See Spots that you can explore in <br> {{tourDetails?.name}} .</div>
             <div class="flex items-center">
                 <div class="flex p-4 justify-center items-center w-[180px] h-[80px] border rounded-tr-2xl" style="border: 0.5px solid gray;           
                 ">
@@ -62,7 +66,7 @@
                         </svg>
 
                     </div>
-                    <div routerLink="/tours/tour-details"
+                    <div [routerLink]="['/tours/tour-details', tourId]"
                         class="cursor-pointer text-primary font-normal text-base sm:text-lg underline underline-offset-4 text-nowrap">
                         know about<br>this location ?
                     </div>
@@ -76,17 +80,17 @@
         <div class="flex h-full flex-col md:flex-row border rounded-3xl"
             style="box-shadow: 0px 4px 24px 0px #0000000A;">
             <div class="left w-full h-full md:w-[40%]">
-                <div class="grid grid-cols-2 gap-4 md:gap-2 p-4">
+                <div class="grid grid-cols-2 gap-4 md:gap-4 p-4">
                     <div class="p-2 rounded-2xl flex flex-col items-center justify-between"
                         *ngFor="let spot of allSpots;let i=index" style="box-shadow: 0px 7px 20px 0px #00000026;">
-                        <div class="image mb-2">
-                            <img src="{{spot.images[0]}}" alt="">
+                        <div class="image mb-2 p-1 sm:p-3">
+                            <img src="{{spot.images[0]}}" alt="image"class=rounded-xl>
                         </div>
                         <div class="title text-sm text-center sm:text-base md:text-lg font-medium mb-2">{{spot.name}}
                         </div>
                         <div class="button mb-3">
                             <p-button label="Add spot" iconPos="right" *ngIf="!spot.added" (onClick)="addSpot(i,'add')"
-                                styleClass="px-2 sm:px-4 py-2 p-button-outlined p-button-raised text-nowrap text-xs sm:text-sm md:text-base">
+                                styleClass="px-2 sm:px-3 py-2 p-button-outlined p-button-raised text-nowrap text-xs sm:text-sm md:text-base">
                                 <ng-template pTemplate="icon">
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +102,7 @@
                                 </ng-template>
                             </p-button>
                             <p-button label="Added" iconPos="right" *ngIf="spot.added" (onClick)="addSpot(i,'remove')"
-                                styleClass=" px-3 sm:px-6 py-2 text-xs sm:text-sm md:text-base">
+                                styleClass=" px-3 sm:px-4 py-2 text-xs sm:text-sm md:text-base">
                                 <ng-template pTemplate="icon">
                                     <svg width="17" height="18" viewBox="0 0 17 18" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -118,48 +122,56 @@
                     class="heading pb-4 border-b text-lg sm:text-xl md:text-[28px] leading-5 sm:leading-6 md:leading-9 font-normal">
                     Select activities from your desired tourism spots
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-2 mt-10">
-                    <div class="p-2 rounded-2xl flex flex-col items-center justify-between"
-                        *ngFor="let spot of activity;let i=index" style="box-shadow: 0px 7px 20px 0px #00000026;">
-                        <div class="image mb-2">
-                            <img src="{{spot.img}}" alt="">
-                        </div>
-                        <div class="title text-primary text-center text-sm sm:text-base md:text-lg font-medium ">
-                            {{spot.title}}</div>
-                        <div class="sub-title text-[#918F8F] text-center text-xs md:text-sm font-medium mb-2">
-                            {{spot.subTitle}}</div>
-                        <div class="button mb-3">
-                            <p-button label="" iconPos="right" *ngIf="!spot.added" (onClick)="addActivity(i,'add')"
-                                styleClass="px-4 min-w-[100px] py-2 p-button-outlined p-button-raised text-nowrap flex justify-center">
-                                <ng-template pTemplate="icon">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M17.3333 9.00008C17.3333 13.6025 13.6023 17.3334 8.99996 17.3334C4.39759 17.3334 0.666626 13.6025 0.666626 9.00008C0.666626 4.39771 4.39759 0.666748 8.99996 0.666748C13.6023 0.666748 17.3333 4.39771 17.3333 9.00008ZM5.04167 9C5.04167 8.65482 5.32149 8.375 5.66667 8.375H8.375V5.66667C8.375 5.32149 8.65482 5.04167 9 5.04167C9.34518 5.04167 9.625 5.32149 9.625 5.66667V8.375H12.3333C12.6785 8.375 12.9583 8.65482 12.9583 9C12.9583 9.34518 12.6785 9.625 12.3333 9.625H9.625V12.3333C9.625 12.6785 9.34518 12.9583 9 12.9583C8.65482 12.9583 8.375 12.6785 8.375 12.3333V9.625H5.66667C5.32149 9.625 5.04167 9.34518 5.04167 9Z"
-                                            fill="#869F44" />
-                                    </svg>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-4 mt-10">
+                    <ng-container *ngFor="let activities of allActivities;let i=index">
+                        <ng-container *ngFor="let activity of activities;let j=index;">
+                            <div class="p-2 rounded-2xl flex flex-col items-center justify-between"
+                                style="box-shadow: 0px 7px 20px 0px #00000026;">
+                                <div class="image mb-2 p-1 sm:p-3">
+                                    <img src="{{activity.image}}" alt="image" class="rounded-xl">
+                                </div>
+                                <div
+                                    class="title text-primary text-center text-sm sm:text-base md:text-lg font-medium ">
+                                    {{activity.name}}</div>
+                                <div class="sub-title text-[#918F8F] text-center text-xs md:text-sm font-medium mb-2">
+                                    {{activity.spot_id.name}}</div>
+                                <div class="button mb-3">
+                                    <p-button label="" iconPos="right" *ngIf="!activity.added"
+                                        (onClick)="addActivity(i,j,'add')"
+                                        styleClass="px-4 min-w-[100px] py-2 p-button-outlined p-button-raised text-nowrap flex justify-center">
+                                        <ng-template pTemplate="icon">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M17.3333 9.00008C17.3333 13.6025 13.6023 17.3334 8.99996 17.3334C4.39759 17.3334 0.666626 13.6025 0.666626 9.00008C0.666626 4.39771 4.39759 0.666748 8.99996 0.666748C13.6023 0.666748 17.3333 4.39771 17.3333 9.00008ZM5.04167 9C5.04167 8.65482 5.32149 8.375 5.66667 8.375H8.375V5.66667C8.375 5.32149 8.65482 5.04167 9 5.04167C9.34518 5.04167 9.625 5.32149 9.625 5.66667V8.375H12.3333C12.6785 8.375 12.9583 8.65482 12.9583 9C12.9583 9.34518 12.6785 9.625 12.3333 9.625H9.625V12.3333C9.625 12.6785 9.34518 12.9583 9 12.9583C8.65482 12.9583 8.375 12.6785 8.375 12.3333V9.625H5.66667C5.32149 9.625 5.04167 9.34518 5.04167 9Z"
+                                                    fill="#869F44" />
+                                            </svg>
 
-                                </ng-template>
-                            </p-button>
-                            <p-button label="" iconPos="right" *ngIf="spot.added" (onClick)="addActivity(i,'remove')"
-                                styleClass="px-6 py-2 min-w-[100px] flex justify-center">
-                                <ng-template pTemplate="icon">
-                                    <svg width="17" height="18" viewBox="0 0 17 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.49996 17.3334C13.1023 17.3334 16.8333 13.6025 16.8333 9.00008C16.8333 4.39771 13.1023 0.666748 8.49996 0.666748C3.89759 0.666748 0.166626 4.39771 0.166626 9.00008C0.166626 13.6025 3.89759 17.3334 8.49996 17.3334ZM12.3266 6.88382C12.5386 6.61136 12.4895 6.21868 12.217 6.00676C11.9445 5.79485 11.5519 5.84393 11.34 6.1164L8.00078 10.4096C7.92653 10.5051 7.78687 10.5175 7.69697 10.4366L5.58473 8.53555C5.32817 8.30464 4.93298 8.32544 4.70207 8.58201C4.47116 8.83858 4.49196 9.23376 4.74853 9.46467L6.86076 11.3657C7.49004 11.932 8.46771 11.8453 8.98748 11.177L12.3266 6.88382Z"
-                                            fill="white" />
-                                    </svg>
+                                        </ng-template>
+                                    </p-button>
+                                    <p-button label="" iconPos="right" *ngIf="activity.added"
+                                        (onClick)="addActivity(i,j,'remove')"
+                                        styleClass="px-6 py-2 min-w-[100px] flex justify-center">
+                                        <ng-template pTemplate="icon">
+                                            <svg width="17" height="18" viewBox="0 0 17 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M8.49996 17.3334C13.1023 17.3334 16.8333 13.6025 16.8333 9.00008C16.8333 4.39771 13.1023 0.666748 8.49996 0.666748C3.89759 0.666748 0.166626 4.39771 0.166626 9.00008C0.166626 13.6025 3.89759 17.3334 8.49996 17.3334ZM12.3266 6.88382C12.5386 6.61136 12.4895 6.21868 12.217 6.00676C11.9445 5.79485 11.5519 5.84393 11.34 6.1164L8.00078 10.4096C7.92653 10.5051 7.78687 10.5175 7.69697 10.4366L5.58473 8.53555C5.32817 8.30464 4.93298 8.32544 4.70207 8.58201C4.47116 8.83858 4.49196 9.23376 4.74853 9.46467L6.86076 11.3657C7.49004 11.932 8.46771 11.8453 8.98748 11.177L12.3266 6.88382Z"
+                                                    fill="white" />
+                                            </svg>
 
-                                </ng-template>
-                            </p-button>
-                        </div>
-                    </div>
+                                        </ng-template>
+                                    </p-button>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+
                 </div>
             </div>
         </div>
         <div class="checkout flex justify-center pt-6">
-            <p-button routerLink="/tours/checkout" label="Proceed To Checkout" styleClass="px-8 sm:px-12"></p-button>
+            <p-button routerLink="/tours/checkout" label="Proceed To Checkout" styleClass="px-8 py-4  sm:px-12"></p-button>
         </div>
     </div>
 </div>

@@ -1,10 +1,14 @@
 <div class="container-1 w-full h-screen pt-10 relative">
-    <div class="absolute bottom-[10%] w-full flex justify-center">
+    <div class="card flex w-full h-screen justify-center items-top mt-16"*ngIf="!tourDetails">
+        <p-progressSpinner styleClass="text-primary"  strokeWidth="4" 
+            animationDuration="1s"></p-progressSpinner>
+    </div>
+    <div class="absolute bottom-[10%] w-full flex justify-center"*ngIf="tourDetails">
         <div class="bg-white rounded-3xl p-6 w-[90%]">
             <div class="flex justify-between mb-6">
                 <div
                     class="text-xl text-primary sm:text-[28px] md:text-[44px] leading-[30px] sm:leading-[40px] md:leading-[55px] font-semibold">
-                    Boracay</div>
+                    {{tourDetails?.name}}</div>
                 <div class="flex justify-center items-center gap-2">
                     <div class="w-10 h-10 rounded-full bg-white flex justify-center items-center cursor-pointer"
                         style="box-shadow: 0px 4px 24px 0px #4F4B4B40;backdrop-filter: blur(12px)">
@@ -38,13 +42,10 @@
                 </div>
                 <div
                     class="text-[#606060] text-lg sm:text-xl md:text-[28px] leading-5 leading-7 leading-[35px] font-normal">
-                    Island in
-                    Malay, Aklan, Philippines</div>
+                    {{tourDetails?.address}}</div>
             </div>
             <div class="text-base md:text-lg font-light">
-                Boracay, one of the top Islands in the Philippines, is popular for its beaches and blessed with a long
-                stretch of powdery white sand, crystal clear and azure waters, and a stunning sunset. Boracay is the
-                most iconic island in the Philipines and has won multiple awards in previous years.
+                {{tourDetails?.description}}
             </div>
         </div>
     </div>
@@ -55,15 +56,17 @@
             Want to explore ?
         </div>
         <div>
-            <p-button label="Check out now" routerLink="/tours/checkout" icon="pi pi-arrow-right" iconPos="right" styleClass="px-10"></p-button>
+            <p-button label="Check out now" routerLink="/tours/checkout" icon="pi pi-arrow-right" iconPos="right" styleClass="px-10 py-4"></p-button>
         </div>
     </div>
     <div class="tours-list px-4 sm:px-8 md:px-10 py-8">
         <div class="buttons flex gap-8 flex-nowrap overflow-auto scrollable-content">
-            <p-button label="Puka Shell Beach"
-                styleClass="px-10 p-button-outlined  p-button-raised text-nowrap font-light"></p-button>
+            <ng-container *ngFor="let spot of allSpots;let i=index">
+                <p-button [label]="spot.name"(onClick)="showSpot(i)"
+                styleClass="px-10  text-nowrap uppercase font-light"[styleClass]="spot.show?'':'p-button-outlined  p-button-raised'"></p-button>
+            </ng-container>
 
-            <p-button label="White Beach" styleClass="px-10 text-nowrap"></p-button>
+            <!-- <p-button label="White Beach" styleClass="px-10 text-nowrap"></p-button>
 
             <p-button label="Diniwid Beach"
                 styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button>
@@ -72,15 +75,15 @@
                 styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button>
 
             <p-button label="Bulabog Beach"
-                styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button>
+                styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button> -->
         </div>
         <div class="tours-details">
             <div class="px-4 sm:px-6 md:px-8 py-8">
                 <!-- details of tours  -->
-                <div class="mb-8">
+                <div class="mb-8"*ngFor="let tip of spot.tips;">
                     <div class="flex gap-2 mb-4">
-                        <div class="icon">
-                            <svg width="30" height="31" viewBox="0 0 30 31" fill="none"
+                        <div class="icon ">
+                            <!-- <svg width="30" height="31" viewBox="0 0 30 31" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M14.9999 30.53C18.4095 30.532 21.7037 29.2951 24.2695 27.0496C26.8352 24.804 28.4977 21.7028 28.9476 18.323C29.3975 14.9431 28.6041 11.515 26.7151 8.67649C24.826 5.83799 21.9701 3.78248 18.6786 2.8925C18.7588 2.61323 18.773 2.31914 18.7201 2.03344C18.6672 1.74775 18.5486 1.47826 18.3737 1.24625C18.1987 1.01424 17.9723 0.826056 17.7122 0.696549C17.4521 0.567042 17.1655 0.499756 16.8749 0.500001H13.1249C12.8343 0.499756 12.5477 0.567042 12.2876 0.696549C12.0275 0.826056 11.8011 1.01424 11.6261 1.24625C11.4512 1.47826 11.3326 1.74775 11.2797 2.03344C11.2268 2.31914 11.241 2.61323 11.3211 2.8925C8.02972 3.78248 5.17375 5.83799 3.28473 8.67649C1.3957 11.515 0.602301 14.9431 1.05218 18.323C1.50206 21.7028 3.16457 24.804 5.73031 27.0496C8.29606 29.2951 11.5903 30.532 14.9999 30.53ZM27.1874 16.4675C27.1874 19.6998 25.9034 22.7998 23.6178 25.0854C21.3322 27.371 18.2322 28.655 14.9999 28.655C11.7676 28.655 8.66763 27.371 6.38203 25.0854C4.09643 22.7998 2.8124 19.6998 2.8124 16.4675C2.8124 13.2352 4.09643 10.1352 6.38203 7.84964C8.66763 5.56404 11.7676 4.28 14.9999 4.28C18.2322 4.28 21.3322 5.56404 23.6178 7.84964C25.9034 10.1352 27.1874 13.2352 27.1874 16.4675Z"
@@ -88,117 +91,16 @@
                                 <path
                                     d="M13.0124 14.4498L22.2936 9.14355L16.9874 18.4248L7.70801 23.7311L13.0124 14.4498Z"
                                     fill="#869F44" />
-                            </svg>
+                            </svg> -->
+                            {{tip.icon}}
                         </div>
                         <div
                             class="heading text-primary text-lg sm:text-xl md:text-[28px] leading-[25px] sm:leading-[30px] md:leading-[35px]">
-                            Visiting Tips
+                            {{tip.title}}
                         </div>
                     </div>
                     <div class="heading-details sm:text-lg font-normal text-[#606060]">
-                        For a unique Boracay experience, head to White Beach at dawn for a peaceful, crowd-free
-                        sunrise—perfect for photos without the usual hustle. Most visitors don’t realize you can book a
-                        local outrigger boat to explore hidden snorkeling spots beyond the tourist areas, where vibrant
-                        marine life flourishes. For a quieter evening, venture to the farthest end of Station 3, where
-                        the beachfront is more serene, and you can often find locals offering fresh, off-the-menu
-                        seafood dinners. Lastly, visit during the Amihan season (November to March) to catch impromptu
-                        beach yoga sessions or join locals in paddleboarding during calm afternoons.
-                    </div>
-                </div>
-                <div class="mb-8">
-                    <div class="flex gap-2 mb-4">
-                        <div class="icon">
-                            <svg width="28" height="27" viewBox="0 0 28 27" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19 6C19 3.6425 19 2.465 18.2675 1.7325C17.535 1 16.3575 1 14 1C11.6425 1 10.465 1 9.7325 1.7325C9 2.465 9 3.6425 9 6M1.5 16C1.5 11.2863 1.5 8.92875 2.965 7.465C4.43 6.00125 6.78625 6 11.5 6H16.5C21.2137 6 23.5712 6 25.035 7.465C26.4987 8.93 26.5 11.2863 26.5 16C26.5 20.7137 26.5 23.0712 25.035 24.535C23.57 25.9987 21.2137 26 16.5 26H11.5C6.78625 26 4.42875 26 2.965 24.535C1.50125 23.07 1.5 20.7137 1.5 16Z"
-                                    stroke="#869F44" stroke-width="2" />
-                                <path
-                                    d="M20.25 9.75C20.25 10.0815 20.1183 10.3995 19.8839 10.6339C19.6495 10.8683 19.3315 11 19 11C18.6685 11 18.3505 10.8683 18.1161 10.6339C17.8817 10.3995 17.75 10.0815 17.75 9.75C17.75 9.41848 17.8817 9.10054 18.1161 8.86612C18.3505 8.6317 18.6685 8.5 19 8.5C19.3315 8.5 19.6495 8.6317 19.8839 8.86612C20.1183 9.10054 20.25 9.41848 20.25 9.75ZM10.25 9.75C10.25 10.0815 10.1183 10.3995 9.88388 10.6339C9.64946 10.8683 9.33152 11 9 11C8.66848 11 8.35054 10.8683 8.11612 10.6339C7.8817 10.3995 7.75 10.0815 7.75 9.75C7.75 9.41848 7.8817 9.10054 8.11612 8.86612C8.35054 8.6317 8.66848 8.5 9 8.5C9.33152 8.5 9.64946 8.6317 9.88388 8.86612C10.1183 9.10054 10.25 9.41848 10.25 9.75Z"
-                                    fill="#869F44" />
-                            </svg>
-
-                        </div>
-                        <div
-                            class="heading text-primary text-lg sm:text-xl md:text-[28px] leading-[25px] sm:leading-[30px] md:leading-[35px]">
-                            Packing Tips
-                        </div>
-                    </div>
-                    <div class="heading-details sm:text-lg font-normal text-[#606060]">
-                        For a unique Boracay experience, head to White Beach at dawn for a peaceful, crowd-free
-                        sunrise—perfect for photos without the usual hustle. Most visitors don’t realize you can book a
-                        local outrigger boat to explore hidden snorkeling spots beyond the tourist areas, where vibrant
-                        marine life flourishes. For a quieter evening, venture to the farthest end of Station 3, where
-                        the beachfront is more serene, and you can often find locals offering fresh, off-the-menu
-                        seafood dinners. Lastly, visit during the Amihan season (November to March) to catch impromptu
-                        beach yoga sessions or join locals in paddleboarding during calm afternoons.For Boracay, pack a
-                        portable UV sterilizer—it’s handy for sanitizing cutlery at local food stalls or small gear
-                        after beach outings. Bring eco-friendly shampoo and soap bars, as many accommodations are
-                        plastic-free and don't provide single-use toiletries. Consider a packable beach tent with UV
-                        protection, perfect for finding shade in less crowded areas. A sarong with hidden pockets can
-                        secure small valuables while you enjoy the water. Lastly, invest in a high-quality microfiber
-                        towel—it dries quickly and keeps sand from sticking, unlike traditional towels.
-                    </div>
-                </div>
-                <div class="mb-8">
-                    <div class="flex gap-2 mb-4">
-                        <div class="icon">
-                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M2.57578 7.02621L10.9623 11.4396L7.11156 15.2903L4.35985 14.8831L3.9822 14.8272L3.71479 15.0996L2.38979 16.4496L1.69966 17.1528L2.56117 17.6308L6.36053 19.7389L8.45635 23.5257L8.93628 24.3928L9.64038 23.6953L10.9779 22.3703L11.2468 22.1039L11.1922 21.7293L10.7965 19.0142L14.6831 15.1276L19.0602 23.5097L19.5348 24.4185L20.2572 23.691L22.0197 21.916L22.3114 21.6222L22.2184 21.2189L19.6618 10.1364L24.2258 5.57234C24.2267 5.57152 24.2275 5.57071 24.2283 5.56989C25.2633 4.54982 25.2574 2.8892 24.235 1.86179C23.241 0.837873 21.5097 0.837737 20.5155 1.86138L15.9511 6.42576L4.86864 3.86919L4.46531 3.77615L4.1716 4.0678L2.3966 5.8303L1.67147 6.55032L2.57578 7.02621Z"
-                                    stroke="#869F44" stroke-width="1.5" />
-                            </svg>
-
-                        </div>
-                        <div
-                            class="heading text-primary text-lg sm:text-xl md:text-[28px] leading-[25px] sm:leading-[30px] md:leading-[35px]">
-                            Travel Tips
-                        </div>
-                    </div>
-                    <div class="heading-details sm:text-lg font-normal text-[#606060]">
-                        For a unique White Beach experience, avoid the midday rush by exploring nearby quieter spots
-                        like Diniwid Beach, just a short walk away. Instead of the typical sunset cruises, rent a paraw
-                        sailboat for a more intimate and traditional sunset view. Many tourists don't know that early
-                        mornings offer not just peaceful sunrises but also beach clean-ups with locals, a great way to
-                        give back. Also, explore the beach’s hidden eateries located behind beachfront resorts—they
-                        offer local dishes at lower prices. Lastly, pack a foldable beach mat, as loungers can get
-                        booked up quickly during peak hours.
-                    </div>
-                </div>
-                <div class="mb-8">
-                    <div class="flex gap-2 mb-4">
-                        <div class="icon">
-                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_362_5485)">
-                                    <path
-                                        d="M24.3285 2.91423C25.308 3.68223 25.983 4.92273 26.259 6.22173L26.3565 6.26073L29.424 7.67973C29.5953 7.75861 29.7406 7.88481 29.8426 8.04345C29.9447 8.2021 29.9993 8.3866 30 8.57523V27.1257C29.9989 27.2798 29.9621 27.4316 29.8925 27.5691C29.8229 27.7066 29.7224 27.8261 29.5989 27.9182C29.4754 28.0103 29.3322 28.0726 29.1806 28.1001C29.029 28.1276 28.873 28.1196 28.725 28.0767L20.2215 25.6767L10.1115 28.4637C9.92913 28.5142 9.73624 28.5121 9.555 28.4577L0.711 25.8252C0.506581 25.7652 0.326985 25.6408 0.198893 25.4706C0.0708015 25.3003 0.00104949 25.0933 0 24.8802L0 5.99673C0 5.33673 0.642 4.86273 1.2825 5.04873L9.8355 7.54023L14.1825 6.20973C14.2425 6.19173 14.3035 6.17923 14.3655 6.17223C14.5335 5.18823 15.003 4.24323 15.7905 3.32223C16.725 2.22723 18.3645 1.58523 19.962 1.50873C21.6195 1.42923 22.8855 1.78323 24.327 2.91273M1.9995 7.32123V24.1437L9.3045 26.3172V9.44673L1.9995 7.32123ZM14.313 8.24223L11.304 9.16173V26.0802L18.9015 23.9892V19.0467C18.9015 18.5007 19.35 18.0582 19.902 18.0582C20.454 18.0582 20.901 18.5007 20.901 19.0482V23.8137L28.0005 25.8162V9.20373L26.3205 8.42373C26.2925 8.58873 26.256 8.75023 26.211 8.90823C25.886 10.0588 25.3387 11.1346 24.6 12.0747L20.8845 16.7142C20.7867 16.8362 20.6617 16.9337 20.5196 16.9989C20.3775 17.0641 20.2221 17.0953 20.0658 17.0899C19.9096 17.0845 19.7567 17.0427 19.6194 16.9679C19.4821 16.893 19.3642 16.7872 19.275 16.6587L15.8025 11.6292C15.2285 10.8302 14.828 10.1122 14.601 9.47523C14.4583 9.07656 14.3616 8.66287 14.313 8.24223ZM20.058 3.48573C18.969 3.53823 17.85 3.97623 17.3175 4.59873C16.677 5.34873 16.362 6.05073 16.299 6.76173C16.224 7.61823 16.275 8.22273 16.488 8.82123C16.6455 9.26373 16.959 9.82473 17.4435 10.5012L20.16 14.4342L23.025 10.8567C23.6034 10.1183 24.0319 9.27399 24.2865 8.37123C24.6465 7.11123 24.1035 5.26023 23.0865 4.46523C22.044 3.64773 21.2565 3.42723 20.0595 3.48573M20.2665 4.53123C21.9225 4.53123 23.2665 5.85873 23.2665 7.49673C23.2613 8.28762 22.9425 9.04414 22.38 9.60015C21.8176 10.1562 21.0574 10.4662 20.2665 10.4622C18.6105 10.4622 17.2665 9.13473 17.2665 7.49673C17.2665 5.85873 18.6105 4.53123 20.2665 4.53123ZM20.2665 6.50823C20.1359 6.50744 20.0064 6.53238 19.8855 6.58163C19.7645 6.63088 19.6544 6.70347 19.5615 6.79527C19.4686 6.88706 19.3947 6.99625 19.344 7.11661C19.2933 7.23696 19.2668 7.36613 19.266 7.49673C19.266 8.04273 19.7145 8.48523 20.2665 8.48523C20.3971 8.48582 20.5265 8.46069 20.6474 8.41125C20.7683 8.36182 20.8783 8.28906 20.971 8.19713C21.0638 8.1052 21.1376 7.9959 21.1881 7.87547C21.2386 7.75504 21.2649 7.62583 21.2655 7.49523C21.2635 7.23199 21.1572 6.98028 20.97 6.79527C20.7827 6.61025 20.5297 6.50703 20.2665 6.50823Z"
-                                        fill="#869F44" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_362_5485">
-                                        <rect width="30" height="30" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-
-                        </div>
-                        <div
-                            class="heading text-primary text-lg sm:text-xl md:text-[28px] leading-[25px] sm:leading-[30px] md:leading-[35px]">
-                            Adventure Tips
-                        </div>
-                    </div>
-                    <div class="heading-details sm:text-lg font-normal text-[#606060]">
-                        For a truly unique adventure at White Beach, experience the thrill of a night snorkeling tour to
-                        see bioluminescent organisms light up the water, a rare sight that most tourists miss. Discover
-                        hidden, untouched coves accessible only by kayak, where you can find secret spots for snorkeling
-                        and relaxation away from the main crowds. For an adrenaline rush, try cliff diving from
-                        lesser-known rock formations along the northern coast, offering stunning views and a private
-                        jump experience. Engage with local surf instructors who offer off-the-beaten-path surf lessons
-                        at secluded breaks, ensuring a more personalized and exciting ride. Finally, explore an
-                        exclusive underwater photography tour led by local experts to capture rare marine species and
-                        unique underwater scenery not commonly documented.
+                        {{tip.desc}}
                     </div>
                 </div>
             </div>

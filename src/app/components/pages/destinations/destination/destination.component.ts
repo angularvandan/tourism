@@ -11,126 +11,81 @@ export class DestinationComponent implements OnInit {
 
   constructor(private api: ApiService, private activatedRoute: ActivatedRoute) { }
 
-  spots: any[] = [
-    {
-      img: '../../../../../assets/tours/spots/img1.png',
-      title: 'White Beach',
-      activity: [
-        {
-          img: '',
-          title: '',
-          subTitle: '',
-          added: false
-        }
-      ],
-      added: true
-    },
-    {
-      img: '../../../../../assets/tours/spots/img2.png',
-      title: 'Bulabog Beach',
-      added: false
-    }, {
-      img: '../../../../../assets/tours/spots/img3.png',
-      title: 'Puka Shell Beach',
-      added: false
-    }, {
-      img: '../../../../../assets/tours/spots/img4.png',
-      title: 'Rivera Beach',
-      added: false
-    }, {
-      img: '../../../../../assets/tours/spots/img5.png',
-      title: 'Station One',
-      added: false
-    }, {
-      img: '../../../../../assets/tours/spots/img6.png',
-      title: 'Mount Iuho',
-      added: false
-    }
-  ]
 
-  activity: any[] = [
-    {
-      img: '../../../../../assets/tours/activity/img1.png',
-      title: 'Deep Dive',
-      subTitle: 'White Beach',
-      added: false
-    },
-    {
-      img: '../../../../../assets/tours/activity/img2.png',
-      title: 'Fire Shows',
-      subTitle: 'White Beach',
-      added: false
-    },
-    {
-      img: '../../../../../assets/tours/activity/img3.png',
-      title: 'Dolphin Watch',
-      subTitle: 'Rivera Beach',
-      added: false
-    },
-    {
-      img: '../../../../../assets/tours/activity/img4.png',
-      title: 'Sports Package',
-      subTitle: 'Rivera Beach',
-      added: false
-    },
-    {
-      img: '../../../../../assets/tours/activity/img5.png',
-      title: 'Dolphin Watch',
-      subTitle: 'Mount Luho',
-      added: false
-    },
-    {
-      img: '../../../../../assets/tours/activity/img6.png',
-      title: 'Paragliding',
-      subTitle: 'Station One',
-      added: false
-    },
-  ];
-
-  tourId: any
-  allSpots: any
-  tourdetails: any
+  tourId: any;
+  spotId:any;
+  allSpots: any;
+  tourDetails: any;
+  allActivities:any[]=[];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((id: any) => {
       // console.log(id.id)
-      this.tourId = id.id
-    })
-
-    this.getAllSpots()
-    this.getTourDetails()
+      this.tourId = id.id;
+      this.getAllSpots();
+      this.getTourDetails();
+    });
   }
 
   getAllSpots() {
     this.api.getSpots(this.tourId).subscribe((res: any) => {
-      // console.log("spots", res)
-      this.allSpots = res
+      console.log("spots", res)
+      this.allSpots = res;
+
+      this.allSpots = this.allSpots.map((spot:any) => {
+        return { ...spot, added: false };
+      });
+      this.allSpots[0].added=true;
+      this.spotId=this.allSpots[0]._id;
+      this.getAllActivities();
+
+    }, (err: any) => {
+      console.log(err);
+    })
+  }
+
+  getAllActivities(){
+    this.api.getActivities(this.spotId).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        res=res.map((item:any)=>{
+          return {...item,added:false}
+        })
+        if(res.length){
+          this.allActivities.push([...res]);
+        }
+        console.log(this.allActivities);
+      },error:(err)=>{
+        console.log(err);
+      }
     })
   }
 
   getTourDetails() {
     this.api.getSingleTourDetails(this.tourId).subscribe((res: any) => {
-      // console.log("tour details", res)
-      this.tourdetails = res
+      console.log("tour details", res)
+      this.tourDetails = res
     })
   }
 
   addSpot(index: number, action: string) {
     if (action == 'add') {
-      this.spots[index].added = true;
+      this.allSpots[index].added = true;
+      this.spotId=this.allSpots[index]._id;
+      this.getAllActivities();
     }
     else {
-      this.spots[index].added = false;
-
+      this.allSpots[index].added = false;
+      this.allActivities.pop();
     }
   }
-  addActivity(index: number, action: string) {
+  addActivity(index1:number,index2: number, action: string) {
     if (action == 'add') {
-      this.activity[index].added = true;
+      this.allActivities[index1][index2].added = true;
+      console.log(this.allActivities);
     }
     else {
-      this.activity[index].added = false;
-
+      this.allActivities[index1][index2].added = false;
     }
   }
 }

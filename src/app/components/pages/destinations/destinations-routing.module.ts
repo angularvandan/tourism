@@ -7,10 +7,10 @@ import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
-    path: ':id', component: DestinationComponent
+    path: 'tour/:id', component: DestinationComponent
   },
   {
-    path: 'tour-details', component: DestinationDetailsComponent
+    path: 'tour-details/:id', component: DestinationDetailsComponent
   },
   {
     path: 'checkout', component: CheckoutComponent

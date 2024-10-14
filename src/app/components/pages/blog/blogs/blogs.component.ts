@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-blogs',
@@ -7,63 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogsComponent implements OnInit{
 
-  innerBlogStatus:boolean=false;
+  blogs:any[]=[];
+  constructor(private api:ApiService){
 
-  blogs:any[]=[
-    {
-      img:'../../../../assets/blogs/img1.png',
-      title:'Discover the Hidden Gems of the </br> Philippines',
-      
-    },
-    {
-      img:'../../../../assets/blogs/img2.png',
-      title:'Wanderlust Unleashed: Your Ultimate Travel Guide',
-      
-    },
-    {
-      img:'../../../../assets/blogs/img3.png',
-      title:'Journeys Beyond Borders: Travel Stories & Tips',
-      
-    },
-    {
-      img:'../../../../assets/blogs/img4.png',
-      title:'Paradise Found: Your Guide to Exploring the Philippines',
-      
-    },
-    {
-      img:'../../../../assets/blogs/img5.png',
-      title:'Philippine Escapades: Where Every Journey is a Story',
-      
-    },
-    {
-      img:'../../../../assets/blogs/img6.png',
-      title:'Unwind in Paradise: Discover Boracay’s Beauty'
-    },
-    {
-      img:'../../../../assets/blogs/img7.png',
-      title:'Boracay Vibes: White Sands and Crystal Waters Await',
-      
-    },
-    {
-      img:'../../../../assets/blogs/img8.png',
-      title:'Island Dreaming: Explore Boracay’s Hidden Treasures',
-      
-    },
-    {
-      img:'../../../../assets/blogs/img9.png',
-      title:'Island Hopping Through the Wonders of the Philippines',
-      
-    }
-  ];
-  innerBlogData:any;
+  }
   ngOnInit(): void {
-      
+      this.getBlogs();
   }
 
-  innerBlog(blog:any){
-    this.innerBlogStatus=true;
-    this.innerBlogData=blog;
+  getBlogs(){
+    this.api.getBlogs().subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.blogs=[...res];
+      },error:(err:any)=>{
+        console.log(err);
+      }
+    })
   }
+
 
   shareLink() {
     if (navigator.share) {

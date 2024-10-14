@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputMaskModule } from 'primeng/inputmask';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [],
@@ -28,6 +29,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     InputTextareaModule,
     RadioButtonModule,
     InputMaskModule,
+    ProgressSpinnerModule
   ],
   exports:[
     SidebarModule,
@@ -42,6 +44,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     InputTextareaModule,
     RadioButtonModule,
     InputMaskModule,
+    ProgressSpinnerModule
   ]
 })
 export class SharedModule { }
