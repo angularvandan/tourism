@@ -171,7 +171,7 @@
             </div>
         </div>
         <div class="checkout flex justify-center pt-6">
-            <p-button routerLink="/tours/checkout" label="Proceed To Checkout" styleClass="px-8 py-4  sm:px-12"></p-button>
+            <p-button (onClick)="onCheckout()"[disabled]="allDetailsForCheckout.length<2" label="Proceed To Checkout" styleClass="px-8 py-4 sm:px-12"></p-button>
         </div>
     </div>
 </div>

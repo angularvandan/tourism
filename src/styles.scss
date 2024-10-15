@@ -241,7 +241,13 @@ app-destination {
         .p-button.p-button-outlined:enabled:active {
             color: $bg-primary;
         }
+        .checkout{
+            .p-button{
+                font-size: 18px;
+            }
+        }
     }
+    
 }
 
 app-destination-details {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class DestinationComponent implements OnInit {
 
-  constructor(private api: ApiService, private activatedRoute: ActivatedRoute) { }
+  constructor(private api: ApiService, private activatedRoute: ActivatedRoute,private router:Router) { }
 
 
   tourId: any;
@@ -17,6 +17,8 @@ export class DestinationComponent implements OnInit {
   allSpots: any;
   tourDetails: any;
   allActivities:any[]=[];
+
+  allDetailsForCheckout:any[]=[];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((id: any) => {
@@ -64,7 +66,8 @@ export class DestinationComponent implements OnInit {
   getTourDetails() {
     this.api.getSingleTourDetails(this.tourId).subscribe((res: any) => {
       console.log("tour details", res)
-      this.tourDetails = res
+      this.tourDetails = res;
+      this.allDetailsForCheckout.push(this.tourDetails);
     })
   }
 
@@ -82,10 +85,17 @@ export class DestinationComponent implements OnInit {
   addActivity(index1:number,index2: number, action: string) {
     if (action == 'add') {
       this.allActivities[index1][index2].added = true;
+      this.allDetailsForCheckout.push(this.allActivities[index1][index2])
       console.log(this.allActivities);
     }
     else {
       this.allActivities[index1][index2].added = false;
+      this.allDetailsForCheckout.pop();
+
     }
+  }
+  onCheckout(){
+    this.api.setData(this.allDetailsForCheckout);
+    this.router.navigate(['tours/checkout']);
   }
 }
