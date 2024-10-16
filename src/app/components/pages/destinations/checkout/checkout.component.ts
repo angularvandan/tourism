@@ -43,10 +43,10 @@ export class CheckoutComponent implements OnInit {
   timeStatus: boolean = false;
 
   allToursDetails: any[] = [];
-  bookingId:any;
+  bookingId: any;
 
-   // Object to store count and price for each category
-   priceDetails = {
+  // Object to store count and price for each category
+  priceDetails = {
     adult: { count: 1, price: 0, totalPrice: 0 },  // Adult has 2 by default
     child: { count: 1, price: 0, totalPrice: 0 },  // Child has 2 by default
     infant: { count: 1, price: 0, totalPrice: 0 }    // Infant has 1 by default
@@ -77,11 +77,7 @@ export class CheckoutComponent implements OnInit {
       //call for starting price
       this.calculateTotalPrices();
     });
-    //for booking
-    this.api.bookingIdSubject$.subscribe((id:any)=>{
-      this.bookingId=id;
-      console.log(this.bookingId);
-    })
+
   }
 
 
@@ -135,9 +131,9 @@ export class CheckoutComponent implements OnInit {
         }
       }
     });
-    this.priceDetails.adult.totalPrice=this.priceDetails.adult.price;
-    this.priceDetails.child.totalPrice=this.priceDetails.child.price;
-    this.priceDetails.infant.totalPrice=this.priceDetails.infant.price;
+    this.priceDetails.adult.totalPrice = this.priceDetails.adult.price;
+    this.priceDetails.child.totalPrice = this.priceDetails.child.price;
+    this.priceDetails.infant.totalPrice = this.priceDetails.infant.price;
   }
 
   // Function to increment the count
@@ -178,23 +174,25 @@ export class CheckoutComponent implements OnInit {
       this.userForm.markAllAsTouched();
     }
   }
-  createBooking(payNow:boolean){
-    let payload={
+  createBooking(payNow: boolean) {
+    let payload = {
       ...this.userForm.value,
-      tours_details:this.allToursDetails,
-      adult_price:this.priceDetails.adult.totalPrice,
-      children_price:this.priceDetails.child.totalPrice,
-      infant_price:this.priceDetails.infant.totalPrice,
-      totalPrice:this.priceDetails.adult.totalPrice+this.priceDetails.child.totalPrice+this.priceDetails.infant.totalPrice,
-      payNow:payNow,
-      paymentStatus:false,
+      tours_details: this.allToursDetails,
+      priceDetails:this.priceDetails,
+      totalPrice: this.priceDetails.adult.totalPrice + this.priceDetails.child.totalPrice + this.priceDetails.infant.totalPrice,
+      payNow: payNow,
+      paymentStatus: false,
     };
     this.api.createBooking(payload).subscribe({
-      next:(res:any)=>{
+      next: (res: any) => {
         console.log(res);
-        this.router.navigate(['tours/payment']);
+        if(res.payNow){
+          this.router.navigate(['tours/payment']);
+        }
+        //set to local storage
+        this.api.setBookingId(res);
       },
-      error:(err:any)=>{
+      error: (err: any) => {
         console.log(err);
       }
     })

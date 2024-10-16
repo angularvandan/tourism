@@ -4,8 +4,8 @@
                 class="text-primary"> > Checkout</span>
         </div>
         <div class="flex justify-between items-center pb-4 border-b">
-            <div
-                class="heading flex gap-4  items-center text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium">
+            <div routerLink="/tours/checkout"
+                class="heading cursor-pointer flex gap-4  items-center text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium">
                 <span class="text-black text-2xl">
                     <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -34,9 +34,9 @@
 
 
                         <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
-                            <div class="rounded-full w-6 h-6 bg-white pl-[7px]">2</div>
-                            <div class="text-white text-base sm:text-lg md:text-xl font-semibold">Your Details</div>
-                            <span class="absolute top-[20%] left-[52%] w-full border border-white"></span>
+                            <div class="rounded-full w-6 h-6 bg-[#9BFF1C] pl-[7px]">2</div>
+                            <div class="text-[#9BFF1C] text-base sm:text-lg md:text-xl font-semibold">Your Details</div>
+                            <span class="absolute top-[20%] left-[52%] w-full border border-[#9BFF1C]"></span>
 
                         </div>
                         <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
@@ -50,18 +50,49 @@
                         <div class="title text-[#333333] text-[24px] leading-8 font-semibold pb-4">
                             Trip to Boracay
                         </div>
-                        <div class="border-b pb-4">
+                        <div class="card flex w-full py-12 justify-center items-top"*ngIf="!priceDetails">
+                            <p-progressSpinner styleClass="text-primary"  strokeWidth="4" fill="white"
+                                animationDuration="1s"></p-progressSpinner>
+                        </div>
+                        <div class="border-b pb-4"*ngIf="priceDetails">
+                            <!-- //for Adult  -->
                             <div class="flex justify-between pb-6"
-                                *ngFor="let detail of priceDetails.priceDetail;let i=index;">
+                                >
                                 <div class="flex gap-2 items-center">
                                     <div class="bg-[#EFEFEF] w-8 h-8 rounded-full flex justify-center items-center">
-                                        <span class="text-xl leading-6 font-normal">{{i+1}}</span>
+                                        <span class="text-xl leading-6 font-normal">{{priceDetails.adult.count}}</span>
                                     </div>
                                     <div class="text-[#333333] text-xl leading-6 font-normal">
-                                        {{detail.name}}
+                                        Adult(18+) (${{priceDetails.adult.price}})
                                     </div>
                                 </div>
-                                <div class="text-[#333333] text-xl font-medium">${{detail.price * detail.count}}</div>
+                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.adult.totalPrice }}</div>
+                            </div>
+                            <!-- //for Adult  -->
+                            <div class="flex justify-between pb-6"
+                                >
+                                <div class="flex gap-2 items-center">
+                                    <div class="bg-[#EFEFEF] w-8 h-8 rounded-full flex justify-center items-center">
+                                        <span class="text-xl leading-6 font-normal">{{priceDetails.child.count}}</span>
+                                    </div>
+                                    <div class="text-[#333333] text-xl leading-6 font-normal">
+                                        Children(8+) (${{priceDetails.child.price}})
+                                    </div>
+                                </div>
+                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.child.totalPrice }}</div>
+                            </div>
+                            <!-- //for Adult  -->
+                            <div class="flex justify-between pb-6"
+                                >
+                                <div class="flex gap-2 items-center">
+                                    <div class="bg-[#EFEFEF] w-8 h-8 rounded-full flex justify-center items-center">
+                                        <span class="text-xl leading-6 font-normal">{{priceDetails.infant.count}}</span>
+                                    </div>
+                                    <div class="text-[#333333] text-xl leading-6 font-normal">
+                                        Infant(0-3yrs) (${{priceDetails.infant.price}})
+                                    </div>
+                                </div>
+                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.infant.totalPrice }}</div>
                             </div>
                             <!-- this is for charge  -->
                             <div class="flex justify-between">
@@ -80,14 +111,14 @@
                                         Pickup Charges
                                     </div>
                                 </div>
-                                <div class="text-[#333333] text-xl font-normal">$20</div>
+                                <div class="text-[#333333] text-xl font-normal">$0</div>
                             </div>
                         </div>
 
 
                         <div class="flex justify-between pt-4">
                             <div class="text-[#333333] text-[24px] leading-8 font-normal">Total Price</div>
-                            <div class="text-primary text-[24px] leading-8 font-semibold">{{priceDetails.totalPrice}}
+                            <div class="text-primary text-[24px] leading-8 font-semibold">${{tourBookingDetails?.totalPrice}}
                             </div>
                         </div>
                     </div>

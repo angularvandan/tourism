@@ -43,7 +43,7 @@ export class ApiService {
     // Update localStorage
     localStorage.setItem(bookingId, JSON.stringify(newData));
 
-    this.dataSubject.next(newData);
+    this.bookingIdSubject.next(newData);
   }
 
   // Clear data from localStorage and reset the BehaviorSubject
@@ -81,7 +81,7 @@ export class ApiService {
   createBooking(data: any) {
     return this.http.post(`${this.apiUrl}/booking`, data);
   }
-  getBooking(id: any) {
+  getBookingById(id: any) {
     return this.http.get(`${this.apiUrl}/booking/${id}`);
   }
 }

@@ -786,15 +786,15 @@
     <div class="details px-4 sm:px-8 md:px-12 mb-12">
         <div class="blogs-details">
             <div class="blogs flex flex-col md:flex-row gap-4 md:gap-8">
-                <div class="blog bg-white flex flex-col justify-between rounded-[30px] p-4 md:p-6"
-                    style="box-shadow: 0px 7px 20px 0px #00000026;" *ngFor="let blog of blogs">
+                <div class="blog bg-white cursor-pointer flex flex-col justify-between rounded-[30px] p-4 md:p-6"
+                    style="box-shadow: 0px 7px 20px 0px #00000026;" *ngFor="let blog of blogs" [routerLink]="['blogs','blog',blog._id]">
                     <div class="image mb-4 ">
-                        <img src="{{blog.img}}" alt="image" class="w-full object-cover">
+                        <img src="{{blog.images[0]}}" alt="image" class="w-full roundex-xl object-cover">
                     </div>
                     <div class="title mb-2 text-lg font-semibold">{{blog.title}}</div>
                     <div class="sbuTitle mb-4 text-base font-normal text-[#475467]">{{blog.subTitle}}</div>
                     <div class="button">
-                        <p-button label="Read More" icon="pi pi-arrow-right" iconPos="right"
+                        <p-button label="Read More" icon="pi pi-arrow-right" iconPos="right" [routerLink]="['blogs','blog',blog._id]"
                             styleClass="px-10 p-button-outlined  p-button-raised text-nowrap"></p-button>
                     </div>
                 </div>

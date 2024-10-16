@@ -44,23 +44,7 @@ export class HomeComponent implements OnInit {
   //     ]
   //   }
   // ];
-  blogs: any[] = [
-    {
-      img: '../../../../assets/home/blogs/img1.png',
-      title: 'Best Hiking places in the Boracay',
-      subTitle: "Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
-    },
-    {
-      img: '../../../../assets/home/blogs/img2.png',
-      title: 'Solo Travel: The Best Thing You Can Do for Yourself',
-      subTitle: "Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
-    },
-    {
-      img: '../../../../assets/home/blogs/img3.png',
-      title: 'Solo Travel: The Best Thing You Can Do for Yourself',
-      subTitle: "Boracay is a small island in the central Philippines. It's known for its resorts and Boracay is a small island in the central Philippines. island in the central Philippines...."
-    }
-  ];
+  blogs: any[] = [];
 
   contactForm!: FormGroup;
 
@@ -104,8 +88,22 @@ export class HomeComponent implements OnInit {
       message: ['', Validators.required]
     });
 
-    this.getAllTours()
+    this.getAllTours();
+    this.getBlogs();
 
+
+  }
+
+
+  getBlogs() {
+    this.api.getBlogs().subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.blogs = [...res];
+      }, error: (err: any) => {
+        console.log(err);
+      }
+    })
   }
   toursDetails(id: any) {
     this.router.navigate([`/tours/tour/${id}`]);
