@@ -84,5 +84,13 @@ export class ApiService {
   getBookingById(id: any) {
     return this.http.get(`${this.apiUrl}/booking/${id}`);
   }
+  createFeedback(data:any){
+    return this.http.post(`${this.apiUrl}/feedback`, data);
+
+  }
+  createContactForm(data:any){
+    return this.http.post(`${this.apiUrl}/contact`, data);
+
+  }
 }
 

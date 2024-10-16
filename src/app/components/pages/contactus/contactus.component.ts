@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { ApiService } from 'src/app/shared/services/api.service';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 @Component({
@@ -14,12 +15,12 @@ export class ContactusComponent implements OnInit {
 
   contactForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private api:ApiService) { }
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      firstName: ['', [Validators.required, this.noNumbersValidator()]],
-      lastName: ['', [Validators.required, this.noNumbersValidator()]],
+      first_name: ['', [Validators.required, this.noNumbersValidator()]],
+      last_name: ['', [Validators.required, this.noNumbersValidator()]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
       checked:['',Validators.required]
@@ -36,6 +37,17 @@ export class ContactusComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
+      this.api.createContactForm(this.contactForm.value).subscribe({
+        next:(res:any)=>{
+          console.log(res);
+          this.contactForm.reset();
+        },error:(err:any)=>{
+          console.log(err)
+        }
+      })
+    }
+    else{
+      this.contactForm.markAllAsTouched();
     }
   }
 

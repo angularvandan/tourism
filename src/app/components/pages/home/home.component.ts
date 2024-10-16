@@ -28,22 +28,7 @@ export class HomeComponent implements OnInit {
     { img: '../../../../assets/home/container2/img1.png', title: 'Jump off limestones', subTitle: 'Renting a kayak and paddling along the coast is one of the top things to do in Phi Phi Island tour. ..., ' }
   ];
 
-  // tours_package: any[] = [
-  //   {
-  //     heading: 'Boracay',
-  //     subHeading: 'Here are you must-know Boracay tips for every month!',
-  //     details: [
-  //       {
-  //         title: 'Visiting Tips',
-  //         detail: [
-  //           {
-  //             subTitle: 'Best from Nov-May', icon: '🌞'
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   }
-  // ];
+
   blogs: any[] = [];
 
   contactForm!: FormGroup;
@@ -81,11 +66,11 @@ export class HomeComponent implements OnInit {
     ];
 
     this.contactForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      first_name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[A-Za-z]+$/)]],
+      last_name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[A-Za-z]+$/)]],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: [null, Validators.required],
-      message: ['', Validators.required]
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
+      message: ['', [Validators.required, Validators.minLength(2)]]
     });
 
     this.getAllTours();
@@ -112,6 +97,17 @@ export class HomeComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
+      this.api.createFeedback(this.contactForm.value).subscribe({
+        next:(res:any)=>{
+          console.log(res);
+          this.contactForm.reset();
+        },error:(err:any)=>{
+          console.log(err);
+        }
+      })
+    }
+    else{
+      this.contactForm.markAllAsTouched();
     }
   }
 
