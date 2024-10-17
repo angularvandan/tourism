@@ -69,7 +69,7 @@ export class ApiService {
   }
 
   getActivities(id: any) {
-    return this.http.get(`${this.apiUrl}/activities/${id}`);
+    return this.http.get(`${this.apiUrl}/activities/spot/${id}`);
   }
 
   getBlogs() {

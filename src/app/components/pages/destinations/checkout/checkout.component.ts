@@ -68,7 +68,9 @@ export class CheckoutComponent implements OnInit {
     this.api.toursData$.subscribe((data: any) => {
       this.allToursDetails = [...data];
 
-      this.allToursDetails[0].date = null;
+      this.allToursDetails[0].startDate = null;
+      this.allToursDetails[0].endDate = null;
+      
       for (let i = 1; i < this.allToursDetails.length; i++) {
         this.allToursDetails[i].time = null; // Add time to the remaining objects
       }
@@ -204,6 +206,7 @@ export class CheckoutComponent implements OnInit {
   // Method to open the PrimeNG calendar when clicking on the custom icon
   openCalendar(calendar: any) {
     calendar.toggle();
+    console.log(this.allToursDetails);
   }
   selectTime(timePicker: any) {
     timePicker.toggle();

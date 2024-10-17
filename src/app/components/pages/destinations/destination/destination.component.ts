@@ -39,14 +39,14 @@ export class DestinationComponent implements OnInit {
       });
       this.allSpots[0].added=true;
       this.spotId=this.allSpots[0]._id;
-      this.getAllActivities();
+      this.getAllActivities(0);
 
     }, (err: any) => {
       console.log(err);
     })
   }
-
-  getAllActivities(){
+//in this method need index for set status false when return empty array
+  getAllActivities(index:any){
     this.api.getActivities(this.spotId).subscribe({
       next:(res:any)=>{
         console.log(res);
@@ -55,6 +55,9 @@ export class DestinationComponent implements OnInit {
         })
         if(res.length){
           this.allActivities.push([...res]);
+        }
+        else{
+          this.allSpots[index].added = false;
         }
         console.log(this.allActivities);
       },error:(err)=>{
@@ -65,7 +68,7 @@ export class DestinationComponent implements OnInit {
 
   getTourDetails() {
     this.api.getSingleTourDetails(this.tourId).subscribe((res: any) => {
-      console.log("tour details", res)
+      console.log("tour details", res);
       this.tourDetails = res;
       this.allDetailsForCheckout.push(this.tourDetails);
     })
@@ -75,10 +78,11 @@ export class DestinationComponent implements OnInit {
     if (action == 'add') {
       this.allSpots[index].added = true;
       this.spotId=this.allSpots[index]._id;
-      this.getAllActivities();
+      this.getAllActivities(index);
     }
     else {
       this.allSpots[index].added = false;
+      console.log(this.allSpots);
       this.allActivities.pop();
     }
   }
@@ -89,6 +93,8 @@ export class DestinationComponent implements OnInit {
       console.log(this.allActivities);
     }
     else {
+      console.log(this.allActivities);
+
       this.allActivities[index1][index2].added = false;
       this.allDetailsForCheckout.pop();
 

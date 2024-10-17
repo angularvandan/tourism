@@ -52,14 +52,28 @@
                                 <div
                                     class="mr-4 text-primary text-[25px] sm:text-[35px] md:text-[44px] leading-[30px] sm:leading-[40px] md:leading-[55px] font-semibold">
                                     {{allToursDetails[0].name}}</div>
-                                <div>
+                                <div class="flex justify-start gap-6">
                                     <div
                                         class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
                                         <!-- Left Calendar Icon -->
                                         <i class="pi pi-calendar text-lg mr-2 text-white"></i>
 
                                         <!-- PrimeNG Calendar with Placeholder -->
-                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].date" placeholder="Select Date"
+                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].startDate" placeholder="Select Date"
+                                            class="cursor-pointer" appendTo="body" [readonlyInput]="true"
+                                            [minDate]="minDate" [showIcon]="true"></p-calendar>
+
+                                        <!-- Right Arrow Icon -->
+                                        <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                            (click)="openCalendar(calendar)"></i>
+                                    </div>
+                                    <div
+                                        class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                        <!-- Left Calendar Icon -->
+                                        <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                        <!-- PrimeNG Calendar with Placeholder -->
+                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].endDate" placeholder="Select Date"
                                             class="cursor-pointer" appendTo="body" [readonlyInput]="true"
                                             [minDate]="minDate" [showIcon]="true"></p-calendar>
 
@@ -141,7 +155,7 @@
 
             </div>
             <div class="checkout flex justify-center py-6">
-                <p-button (onClick)="checkoutStatus.userDetailsStatus = true"[disabled]="!allToursDetails[0].date || !timeStatus" label="Continue"
+                <p-button (onClick)="checkoutStatus.userDetailsStatus = true"[disabled]="!allToursDetails[0].startDate " label="Continue"
                     styleClass="min-w-[300px] flex justify-center"></p-button>
             </div>
         </div>
