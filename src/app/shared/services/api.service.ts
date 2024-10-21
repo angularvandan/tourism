@@ -84,6 +84,12 @@ export class ApiService {
   getBookingById(id: any) {
     return this.http.get(`${this.apiUrl}/booking/${id}`);
   }
+
+  createPaypalOrder(amount:number){
+    return this.http.post(`${this.apiUrl}/payment/create`,{amount});
+
+  }
+
   createFeedback(data:any){
     return this.http.post(`${this.apiUrl}/feedback`, data);
 
