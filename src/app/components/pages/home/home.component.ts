@@ -19,17 +19,9 @@ export class HomeComponent implements OnInit {
     { img: '../../../../assets/home/home_banner.jpg' },
     { img: '../../../../assets/home/home_banner.jpg' }
   ];
-  cards: any[] = [
-    { img: '../../../../assets/home/container2/img1.png', title: 'Deep Diving', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
-    { img: '../../../../assets/home/container2/img2.png', title: 'Fire shows at beaches', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
-    { img: '../../../../assets/home/container2/img3.png', title: 'Jump off limestones', subTitle: 'Renting a kayak and paddling along the coast is one of the top things to do in Phi Phi Island tour. ..., ' },
-    { img: '../../../../assets/home/container2/img4.png', title: 'Deep Diving', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
-    { img: '../../../../assets/home/container2/img1.png', title: 'Fire shows at beaches', subTitle: 'The Philippines boasts numerous scuba diving spots that should not be missed...' },
-    { img: '../../../../assets/home/container2/img1.png', title: 'Jump off limestones', subTitle: 'Renting a kayak and paddling along the coast is one of the top things to do in Phi Phi Island tour. ..., ' }
-  ];
-
 
   blogs: any[] = [];
+  allActivities:any[]=[];
 
   contactForm!: FormGroup;
 
@@ -75,7 +67,7 @@ export class HomeComponent implements OnInit {
 
     this.getAllTours();
     this.getBlogs();
-
+    this.getActivities();
 
   }
 
@@ -116,6 +108,17 @@ export class HomeComponent implements OnInit {
       console.log("Tours", res)
       this.allTours = res.tours
     })
+  }
+  getActivities(){
+    this.api.getAllActivities().subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.allActivities=res;
+      },
+      error:(err:any)=>{
+        console.log(err);
+      }
+    });
   }
 
 }

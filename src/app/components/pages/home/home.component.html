@@ -90,26 +90,26 @@
         </div>
     </div>
     <div class="card-details ">
-        <p-carousel [value]="cards" [numVisible]="4" [numScroll]="1" [circular]="false"
+        <p-carousel [value]="allActivities" [numVisible]="4" [numScroll]="1" [circular]="false"
             [responsiveOptions]="responsiveOptions">
             <ng-template let-card pTemplate="item">
                 <div class="relative">
                     <div class=" overflow-hidden">
-                        <img src="{{card.img}}" alt="banner" class="rounded-[30px] object-cover" />
+                        <img src="{{card.image}}" alt="banner" class="rounded-[30px] object-cover" />
                     </div>
                     <div class="flex flex-col absolute bottom-[10%] px-6">
                         <div class="  flex flex-col mb-6">
                             <div class="text-[20px] leading-8 font-semibold tracking-[2%] text-white">
-                                {{card.title}}
+                                {{card.name}}
                             </div>
                             <div></div>
                             <div class="text-base leading-5 font-normal tracking-[2%] text-white">
-                                {{card.subTitle}}
+                                {{card.description}}
                             </div>
                         </div>
                         <div class="button mx-auto">
 
-                            <p-button label="Read More" icon="pi pi-arrow-right" iconPos="right"
+                            <p-button [routerLink]="['/tours/tour',card.spot_id.tour_id]" label="Read More" icon="pi pi-arrow-right" iconPos="right"
                                 styleClass="p-button-outlined p-button-secondary text-secondary"></p-button>
 
                         </div>
@@ -156,40 +156,40 @@
                         <div class="flex flex-col sm:flex-row mb-6">
                             <div class="border-r-1 w-full sm:w-1/2 mb-4 sm:mb-0 ">
                                 <div class="mb-4">
-                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[0].title}}
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[0]?.title}}
                                     </div>
-                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0].icon1}}
-                                        {{tours.tips[0].desc1}}
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0]?.icon1}}
+                                        {{tours.tips[0]?.desc1}}
                                     </div>
-                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0].icon2}}
-                                        {{tours.tips[0].desc2}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[0]?.icon2}}
+                                        {{tours.tips[0]?.desc2}}</div>
                                 </div>
                                 <div>
-                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[1].title}}
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[1]?.title}}
                                     </div>
-                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1].icon1}}
-                                        {{tours.tips[1].desc1}}</div>
-                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1].icon2}}
-                                        {{tours.tips[1].desc2}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1]?.icon1}}
+                                        {{tours.tips[1]?.desc1}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[1]?.icon2}}
+                                        {{tours.tips[1]?.desc2}}</div>
                                 </div>
                             </div>
                             <div class="w-full sm:w-1/2">
                                 <div class="mb-4">
-                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[2].title}}
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[2]?.title}}
                                     </div>
-                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2].icon1}}
-                                        {{tours.tips[2].desc1}}</div>
-                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2].icon2}}
-                                        {{tours.tips[2].desc2}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2]?.icon1}}
+                                        {{tours.tips[2]?.desc1}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[2]?.icon2}}
+                                        {{tours.tips[2]?.desc2}}</div>
                                 </div>
                                 <div>
-                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[3].title}}
+                                    <div class="text-base leading-5 font-medium text-primary mb-3">{{tours.tips[3]?.title}}
                                     </div>
-                                    <div class="text-base leading-5 font-light text-[#606060]  mb-2">{{tours.tips[3].icon1}}
-                                        {{tours.tips[3].desc1}}
+                                    <div class="text-base leading-5 font-light text-[#606060]  mb-2">{{tours.tips[3]?.icon1}}
+                                        {{tours.tips[3]?.desc1}}
                                     </div>
-                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[3].icon2}}
-                                        {{tours.tips[3].desc2}}</div>
+                                    <div class="text-base leading-5 font-light text-[#606060] mb-2">{{tours.tips[3]?.icon2}}
+                                        {{tours.tips[3]?.desc2}}</div>
                                 </div>
                             </div>
                         </div>
@@ -503,7 +503,7 @@
 
 </div>
 <!-- container-4  -->
-<div class="container-4 w-full h-fit bg-white pb-4">
+<div class="container-4 w-full h-fit bg-white pb-4"id="container-4">
     <div class="header px-4 sm:px-8 md:px-12">
         <div class="title text-base sm:text-lg sm:leading-6 font-normal text-black">Gallery of our trips</div>
         <div class="flex justify-between items-center">
@@ -540,8 +540,8 @@
         </div>
     </div>
 
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12">
-        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 cursor-pointer"[routerLink]="['/tours/tour',allTours[0]._id]">
+        <div class="flex flex-col sm:flex-row gap-4 mb-8 ">
             <div class="w-full sm:w-[40%] md:w-[35%] relative">
                 <!-- this is for shadow  -->
 

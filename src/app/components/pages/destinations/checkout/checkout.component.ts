@@ -40,7 +40,6 @@ export class CheckoutComponent implements OnInit {
     paymentStatus: false
   }
   visible: boolean = false;
-  timeStatus: boolean = false;
 
   allToursDetails: any[] = [];
   bookingId: any;
@@ -51,6 +50,9 @@ export class CheckoutComponent implements OnInit {
     child: { count: 1, price: 0, totalPrice: 0 },  // Child has 2 by default
     infant: { count: 1, price: 0, totalPrice: 0 }    // Infant has 1 by default
   };
+
+  selectedTimes: Date[] = []; // To track selected times
+
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
     this.minDate = new Date();
@@ -70,9 +72,10 @@ export class CheckoutComponent implements OnInit {
 
       this.allToursDetails[0].startDate = null;
       this.allToursDetails[0].endDate = null;
-      
+
       for (let i = 1; i < this.allToursDetails.length; i++) {
         this.allToursDetails[i].time = null; // Add time to the remaining objects
+        this.selectedTimes.push(new Date());
       }
       console.log(this.allToursDetails);
 
@@ -81,7 +84,11 @@ export class CheckoutComponent implements OnInit {
     });
 
   }
-
+  onStartDateSelect() {
+    if (this.allToursDetails[0].startDate) {
+      this.allToursDetails[0].endDate = null; // Clear the end date if necessary
+    }
+  }
 
   // Method to allow only letters (alphabets) in input fields using RegEx
   allowLettersOnly(event: KeyboardEvent): boolean {
@@ -95,16 +102,28 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  addTime(event: Date) {
-    console.log(event);
-    this.timeStatus = true;
-    for (let i = 1; i < this.allToursDetails.length; i++) {
-      if (!this.allToursDetails[i].time) {
-        this.timeStatus = false;
-        console.log(this.timeStatus);
-      }
+  addTime(event: Date, activityIndex: number) {
 
+    const selectedTime = new Date(event);
+    selectedTime.setSeconds(0, 0);
+    // Check if the time is already selected
+    if (this.isTimeSelected(selectedTime, activityIndex)) {
+      alert('This time is already selected for another activity.');
+      // //this is for set placeholder after model work
+      // setTimeout(() => {
+      //   this.allToursDetails[activityIndex].time = null; // Or you can restore the previous value
+      // }, 0);
+    } else {
+      // Store selected time
+      this.allToursDetails[activityIndex].time = selectedTime;
+      this.selectedTimes[activityIndex - 1] = selectedTime;
     }
+  }
+  isTimeSelected(time: Date, currentIndex: number): boolean {
+    return this.selectedTimes.some((selectedTime, index) => {
+      // Check if the selected time belongs to a different activity
+      return index !== currentIndex - 1 && selectedTime.getTime() === time.getTime();
+    });
   }
 
   calculateTotalPrices() {
@@ -180,7 +199,7 @@ export class CheckoutComponent implements OnInit {
     let payload = {
       ...this.userForm.value,
       tours_details: this.allToursDetails,
-      priceDetails:this.priceDetails,
+      priceDetails: this.priceDetails,
       totalPrice: this.priceDetails.adult.totalPrice + this.priceDetails.child.totalPrice + this.priceDetails.infant.totalPrice,
       payNow: payNow,
       paymentStatus: false,
@@ -188,7 +207,7 @@ export class CheckoutComponent implements OnInit {
     this.api.createBooking(payload).subscribe({
       next: (res: any) => {
         console.log(res);
-        if(res.payNow){
+        if (res.payNow) {
           this.router.navigate(['tours/payment']);
         }
         //set to local storage

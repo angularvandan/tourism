@@ -28,8 +28,10 @@
 
 
                 <div class="flex flex-col justify-center items-center gap-2 relative w-full max-w-[300px]">
-                    <div class="rounded-full w-6 h-6 pl-[7px]"[ngClass]="checkoutStatus.userDetailsStatus?'bg-[#9BFF1C]':'bg-white'">2</div>
-                    <div class=" text-base sm:text-lg md:text-xl font-semibold"[ngClass]="checkoutStatus.userDetailsStatus?'text-[#9BFF1C]':'text-white'">Your Details</div>
+                    <div class="rounded-full w-6 h-6 pl-[7px]"
+                        [ngClass]="checkoutStatus.userDetailsStatus?'bg-[#9BFF1C]':'bg-white'">2</div>
+                    <div class=" text-base sm:text-lg md:text-xl font-semibold"
+                        [ngClass]="checkoutStatus.userDetailsStatus?'text-[#9BFF1C]':'text-white'">Your Details</div>
                     <span class="absolute top-[20%] left-[52%] w-full border border-white"></span>
 
                 </div>
@@ -59,9 +61,10 @@
                                         <i class="pi pi-calendar text-lg mr-2 text-white"></i>
 
                                         <!-- PrimeNG Calendar with Placeholder -->
-                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].startDate" placeholder="Select Date"
-                                            class="cursor-pointer" appendTo="body" [readonlyInput]="true"
-                                            [minDate]="minDate" [showIcon]="true"></p-calendar>
+                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].startDate"
+                                            placeholder="Start Date" class="cursor-pointer" appendTo="body"
+                                            [readonlyInput]="true" (onSelect)="onStartDateSelect()" [minDate]="minDate"
+                                            [showIcon]="true"></p-calendar>
 
                                         <!-- Right Arrow Icon -->
                                         <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
@@ -73,9 +76,10 @@
                                         <i class="pi pi-calendar text-lg mr-2 text-white"></i>
 
                                         <!-- PrimeNG Calendar with Placeholder -->
-                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].endDate" placeholder="Select Date"
-                                            class="cursor-pointer" appendTo="body" [readonlyInput]="true"
-                                            [minDate]="minDate" [showIcon]="true"></p-calendar>
+                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].endDate"
+                                            placeholder="End Date" class="cursor-pointer" appendTo="body"
+                                            [readonlyInput]="true" [minDate]="allToursDetails[0].startDate"
+                                            [showIcon]="true"></p-calendar>
 
                                         <!-- Right Arrow Icon -->
                                         <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
@@ -134,9 +138,10 @@
                                             <i class="pi pi-calendar text-lg mr-2 text-white"></i>
 
                                             <!-- PrimeNG Calendar with Placeholder -->
-                                            <p-calendar #timePicker [(ngModel)]="activity.time" (onSelect)="addTime($event)" [showTime]="true" hourFormat="12" [timeOnly]="true"
-                                                placeholder="Select Time" appendTo="body" [readonlyInput]="true"
-                                                class=""></p-calendar>
+                                            <p-calendar #timePicker [(ngModel)]="activity.time"
+                                                (onSelect)="addTime($event,i)" [showTime]="true" hourFormat="12"
+                                                [timeOnly]="true" placeholder="Select Time" appendTo="body"
+                                                [readonlyInput]="true" class=""></p-calendar>
 
                                             <!-- Right Arrow Icon -->
                                             <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
@@ -155,7 +160,8 @@
 
             </div>
             <div class="checkout flex justify-center py-6">
-                <p-button (onClick)="checkoutStatus.userDetailsStatus = true"[disabled]="!allToursDetails[0].startDate " label="Continue"
+                <p-button (onClick)="checkoutStatus.userDetailsStatus = true"
+                    [disabled]="!allToursDetails[0].startDate " label="Continue"
                     styleClass="min-w-[300px] flex justify-center"></p-button>
             </div>
         </div>
@@ -247,8 +253,8 @@
                                         class="text-red-500 text-sm mt-1">A valid number is required</div>
                                 </div>
                                 <div class="block md:hidden">
-                                    <label for="message"
-                                        class="block text-base font-medium text-gray-700 mb-1">Enter address of your pickup location</label>
+                                    <label for="message" class="block text-base font-medium text-gray-700 mb-1">Enter
+                                        address of your pickup location</label>
                                     <span class="p-input-icon-left message w-full">
                                         <i>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -283,11 +289,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="count-btn flex items-center gap-2 ">
-                                                    <div class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
-                                                        <p-button icon="pi pi-minus"(onClick)="decrement('adult')"
+                                                    <div
+                                                        class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus" (onClick)="decrement('adult')"
                                                             class="active:scale-90 transition-all duration-200 ease-out"></p-button>
                                                         <span>{{ priceDetails.adult.count }}</span>
-                                                        <p-button icon="pi pi-plus"(onClick)="increment('adult')"
+                                                        <p-button icon="pi pi-plus" (onClick)="increment('adult')"
                                                             class="active:scale-90 transition-all duration-200 ease-out"></p-button>
                                                     </div>
                                                 </div>
@@ -303,11 +310,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="count-btn flex items-center gap-2 ">
-                                                    <div class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
-                                                        <p-button icon="pi pi-minus"(click)="decrement('child')"
+                                                    <div
+                                                        class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus" (click)="decrement('child')"
                                                             class="active:scale-90 transition-all duration-200 ease-out"></p-button>
                                                         <span>{{ priceDetails.child.count }}</span>
-                                                        <p-button icon="pi pi-plus"(click)="increment('child')"
+                                                        <p-button icon="pi pi-plus" (click)="increment('child')"
                                                             class="active:scale-90 transition-all duration-200 ease-out"></p-button>
                                                     </div>
                                                 </div>
@@ -323,11 +331,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="count-btn flex items-center gap-2 ">
-                                                    <div class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
-                                                        <p-button icon="pi pi-minus"(click)="decrement('infant')"
+                                                    <div
+                                                        class="bg-[#F5F5F5] rounded-[20px] flex items-center gap-2 px-1 py-1">
+                                                        <p-button icon="pi pi-minus" (click)="decrement('infant')"
                                                             class="active:scale-90 transition-all duration-200 ease-out"></p-button>
                                                         <span>{{ priceDetails.infant.count }}</span>
-                                                        <p-button icon="pi pi-plus"(click)="increment('infant')"
+                                                        <p-button icon="pi pi-plus" (click)="increment('infant')"
                                                             class="active:scale-90 transition-all duration-200 ease-out"></p-button>
                                                     </div>
                                                 </div>
@@ -339,8 +348,8 @@
 
                             <div class="mb-4 w-full">
                                 <div class="hidden md:block">
-                                    <label for="message"
-                                        class="block text-base font-medium text-gray-700 mb-1">Enter address of your pickup location</label>
+                                    <label for="message" class="block text-base font-medium text-gray-700 mb-1">Enter
+                                        address of your pickup location</label>
                                     <span class="p-input-icon-left message w-full">
                                         <i>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -362,10 +371,11 @@
                                 </div>
 
                                 <div class="button flex flex-col justify-center items-center mt-4 gap-4 w-full">
-                                    <p-button label="Pay Now"[disabled]="userForm.invalid" (onClick)="onPayment()"
+                                    <p-button label="Pay Now" [disabled]="userForm.invalid" (onClick)="onPayment()"
                                         styleClass="px-10 p-button-outlined  p-button-raised text-nowrap min-w-[300px]"></p-button>
 
-                                    <p-button label="Pay at Pickup"[disabled]="userForm.invalid" (onClick)="onLaterPayment()"
+                                    <p-button label="Pay at Pickup" [disabled]="userForm.invalid"
+                                        (onClick)="onLaterPayment()"
                                         styleClass="px-10  text-nowrap min-w-[300px]"></p-button>
                                 </div>
                             </div>

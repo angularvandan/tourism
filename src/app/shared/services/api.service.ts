@@ -71,7 +71,9 @@ export class ApiService {
   getActivities(id: any) {
     return this.http.get(`${this.apiUrl}/activities/spot/${id}`);
   }
-
+  getAllActivities(){
+    return this.http.get(`${this.apiUrl}/activities`);
+  }
   getBlogs() {
     return this.http.get(`${this.apiUrl}/blogs`);
   }
