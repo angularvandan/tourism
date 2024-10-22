@@ -50,14 +50,13 @@
                         <div class="title text-[#333333] text-[24px] leading-8 font-semibold pb-4">
                             Trip to Boracay
                         </div>
-                        <div class="card flex w-full py-12 justify-center items-top"*ngIf="!priceDetails">
-                            <p-progressSpinner styleClass="text-primary"  strokeWidth="4" fill="white"
+                        <div class="card flex w-full py-12 justify-center items-top" *ngIf="!priceDetails">
+                            <p-progressSpinner styleClass="text-primary" strokeWidth="4" fill="white"
                                 animationDuration="1s"></p-progressSpinner>
                         </div>
-                        <div class="border-b pb-4"*ngIf="priceDetails">
+                        <div class="border-b pb-4" *ngIf="priceDetails">
                             <!-- //for Adult  -->
-                            <div class="flex justify-between pb-6"
-                                >
+                            <div class="flex justify-between pb-6">
                                 <div class="flex gap-2 items-center">
                                     <div class="bg-[#EFEFEF] w-8 h-8 rounded-full flex justify-center items-center">
                                         <span class="text-xl leading-6 font-normal">{{priceDetails.adult.count}}</span>
@@ -66,11 +65,11 @@
                                         Adult(18+) (${{priceDetails.adult.price}})
                                     </div>
                                 </div>
-                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.adult.totalPrice }}</div>
+                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.adult.totalPrice }}
+                                </div>
                             </div>
                             <!-- //for Adult  -->
-                            <div class="flex justify-between pb-6"
-                                >
+                            <div class="flex justify-between pb-6">
                                 <div class="flex gap-2 items-center">
                                     <div class="bg-[#EFEFEF] w-8 h-8 rounded-full flex justify-center items-center">
                                         <span class="text-xl leading-6 font-normal">{{priceDetails.child.count}}</span>
@@ -79,11 +78,11 @@
                                         Children(8+) (${{priceDetails.child.price}})
                                     </div>
                                 </div>
-                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.child.totalPrice }}</div>
+                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.child.totalPrice }}
+                                </div>
                             </div>
                             <!-- //for Adult  -->
-                            <div class="flex justify-between pb-6"
-                                >
+                            <div class="flex justify-between pb-6">
                                 <div class="flex gap-2 items-center">
                                     <div class="bg-[#EFEFEF] w-8 h-8 rounded-full flex justify-center items-center">
                                         <span class="text-xl leading-6 font-normal">{{priceDetails.infant.count}}</span>
@@ -92,7 +91,8 @@
                                         Infant(0-3yrs) (${{priceDetails.infant.price}})
                                     </div>
                                 </div>
-                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.infant.totalPrice }}</div>
+                                <div class="text-[#333333] text-xl font-medium">${{priceDetails.infant.totalPrice }}
+                                </div>
                             </div>
                             <!-- this is for charge  -->
                             <div class="flex justify-between">
@@ -118,7 +118,8 @@
 
                         <div class="flex justify-between pt-4">
                             <div class="text-[#333333] text-[24px] leading-8 font-normal">Total Price</div>
-                            <div class="text-primary text-[24px] leading-8 font-semibold">${{tourBookingDetails?.totalPrice}}
+                            <div class="text-primary text-[24px] leading-8 font-semibold">
+                                ${{tourBookingDetails?.totalPrice}}
                             </div>
                         </div>
                     </div>
@@ -128,14 +129,15 @@
                         <p-button label="Cancel" class="w-full"
                             styleClass="px-10 p-button-outlined w-full p-button-raised text-nowrap font-light"></p-button>
 
-                        <p-button label="Proceed to Pay" class="w-full" (onClick)="visible=true"
+                        <p-button label="Proceed to Pay" class="w-full" (onClick)="onPayButtonClick()"
                             styleClass="px-10 w-full text-nowrap"></p-button>
+                        <!-- <div #paymentRef></div> -->
                     </div>
                 </div>
             </div>
             <div class="right w-full py-4">
                 <div class="w-full mb-6">
-                    <div #paymentRef></div>
+                    <div id="paypal-button-container"></div>
                     <div class="rounded-xl mb-4 " style='box-shadow: 0px 4px 22px 0px #00000014;'>
                         <div class="p-4 flex justify-between items-center">
                             <div class="flex gap-2 items-center">

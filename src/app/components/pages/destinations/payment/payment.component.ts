@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 
@@ -11,12 +12,55 @@ export class PaymentComponent implements OnInit {
   selectAccount: any;
   cardNumber: any;
   visible: boolean = false;
-
+  orderID: any
   bookingId: any;
   tourBookingDetails: any;
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
   constructor(private api: ApiService) { }
+
+  async createOrder() {
+    try {
+      const amount = this.tourBookingDetails?.totalPrice;
+      this.api.createPaypalOrder(amount).subscribe((response: any) => {
+        console.log("response: ", response)
+        this.orderID = response.orderID;
+        console.log('Order ID:', this.orderID);
+        this.initiatePayPalPayment();
+      });
+    } catch (error) {
+      console.error('Error creating order:', error);
+    }
+  }
+
+  initiatePayPalPayment() {
+    paypal.Buttons({
+      createOrder: () => {
+        // Use the order ID created by the backend
+        return this.orderID;
+      },
+      onApprove: async (data: any, actions: any) => {
+        // Capture the payment on approval
+        const captureResponse = await actions.order.capture();
+        console.log('Payment completed successfully:', captureResponse);
+        this.visible = true
+      },
+      onError: (err: any) => {
+        console.error('Payment error:', err);
+        alert('Payment failed!');
+      }
+    }).render('#paypal-button-container');
+  }
+
+  onPayButtonClick() {
+    // Send card details to backend
+    // if (this.cardNumber && this.expiryMonth && this.expiryYear && this.cvv) {
+    this.createOrder();
+    // } else {
+    //   alert('Please fill all card details.');
+    // }
+  }
+
 
   ngOnInit(): void {
     this.api.bookingIdSubject$.subscribe((res: any) => {
@@ -34,34 +78,6 @@ export class PaymentComponent implements OnInit {
       });
     });
     console.log(window.paypal);
-    window.paypal.Buttons({
-      style: {
-        layout: 'horizontal',
-        color: 'blue', // options: 'gold', 'blue', 'silver', 'white', 'black'
-        shape: 'pill', // options: 'rect', 'pill'
-        label: 'paypal', // options: 'paypal', 'checkout', 'buynow', 'pay', 'installment'
-        height: 45
-      },
-      createOrder: (data: any, action: any) => {
-        // Use the price from booking details dynamically
-        const amount = this.tourBookingDetails?.totalPrice; // Adjust this based on your actual structure
-        return this.api.createPaypalOrder(amount).subscribe((orderID: any) => {
-          console.log(orderID);
-          return orderID; // Return order ID for approval
-        }, (error: any) => {
-          console.log('Error creating PayPal order', error);
-        });
-      },
-      onApprove: (data: any, actions: any) => {
-        return actions.order.capture().then((details: any) => {
-          alert('Payment successful!');
-        }).catch((error: any) => {
-          console.error("Error capturing payment", error);
-        });
-      },
-      // fundingSource: window.paypal.FUNDING.CARD // Enable card payments
-    }).render(this.paymentRef.nativeElement);
-
   }
 
 }
