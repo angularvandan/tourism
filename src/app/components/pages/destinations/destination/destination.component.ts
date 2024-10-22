@@ -89,6 +89,8 @@ export class DestinationComponent implements OnInit {
 
     }, (err: any) => {
       console.log(err);
+      this.allSpots=[];
+      this.allActivities=[];
     })
   }
 //in this method need index for set status false when return empty array
@@ -109,6 +111,7 @@ export class DestinationComponent implements OnInit {
         console.log(this.allActivities);
       },error:(err)=>{
         console.log(err);
+        
       }
     })
   }
