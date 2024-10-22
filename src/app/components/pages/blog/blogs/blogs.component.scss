@@ -1,0 +1,12 @@
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: rgb(255, 255, 255);
+    color: green;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .pagination-next {
+    display: none;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .pagination-previous {
+    display: none;
+}

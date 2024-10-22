@@ -9,6 +9,9 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class BlogsComponent implements OnInit{
 
   blogs:any[]=[];
+  itemsPerpage:number=6;
+  currentPage:number=1;
+  totalItems:number=0;
   constructor(private api:ApiService){
 
   }
@@ -21,10 +24,16 @@ export class BlogsComponent implements OnInit{
       next:(res:any)=>{
         console.log(res);
         this.blogs=[...res];
+        this.totalItems=this.blogs.length;
       },error:(err:any)=>{
         console.log(err);
       }
     })
+  }
+
+  pageChanged(data:number){
+    console.log(data);
+    this.currentPage=data;
   }
 
 

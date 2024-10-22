@@ -5,6 +5,8 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { BlogsComponent } from './blogs/blogs.component';
 import { InnerblogComponent } from './innerblog/innerblog.component';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
   imports: [
     CommonModule,
     BlogRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
   ]
 })
 export class BlogModule { }

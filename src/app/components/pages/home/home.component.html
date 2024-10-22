@@ -1,19 +1,18 @@
-<div class="w-full h-fit container-1">
-    <p-carousel [value]="bannerImage" [numVisible]="1" [numScroll]="1" [circular]="true">
-        <ng-template pTemplate="item" *ngFor="let banner of bannerImage">
+<div class="w-full h-fit container-1"*ngIf="bannerDetails.length">
+    <p-carousel [value]="bannerDetails" [numVisible]="1" [numScroll]="1" [circular]="true"autoplay="true" [autoplayInterval]="3000">
+        <ng-template pTemplate="item" let-banner let-i="index" >
             <div class="relative">
                 <div class="max-h-screen overflow-hidden">
-                    <img src="../../../../assets/home/home_banner.jpg" alt="banner"
+                    <img [src]="banner.image" alt="banner"
                         class="w-full max-h-screen object-cover" />
                 </div>
                 <div class="absolute top-[30%] md:top-[25%] lg:top-[20%] px-4 sm:px-8 md:px-12">
                     <div class="text-sm sm:text-[20px] leading-8 font-normal tracking-[2%] text-white">
-                        Explore Top Destinations of Philippines
+                        {{banner.subtitle}}
                     </div>
                     <div
-                        class="text-lg sm:text-[30px] md:text-[40px] lg:text-[58px] leading-normal font-normal text-white">
-                        Explore & Travel <br> Philippines along with <br> exciting people
-
+                        class="w-1/2 text-lg sm:text-[30px] md:text-[40px] lg:text-[58px] leading-normal font-normal text-white">
+                        {{banner.title}}
                     </div>
                 </div>
                 <div
@@ -37,15 +36,15 @@
 
                         </div>
                         <div class="absolute text-[20px] -right-36 font-normal text-white leanding-8">
-                            Phuket
+                            {{banner.name}}
                         </div>
                         <div class="absolute w-[180px] sm:w-[200px] bg-white border -bottom-12 sm:-bottom-16">
 
                         </div>
                         <div class="absolute text-white text-xl -bottom-20 sm:-bottom-24 -right-24">
-                            <span>4</span>
+                            <span>{{ banner.index }} </span>
                             <span>/</span>
-                            <span>14</span>
+                            <span>{{bannerDetails.length}}</span>
                         </div>
                     </div>
                 </div>
@@ -540,7 +539,7 @@
         </div>
     </div>
 
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 cursor-pointer"[routerLink]="['/tours/tour',allTours[0]._id]">
+    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 cursor-pointer"[routerLink]="['/tours/tour',allTours[0]?._id]">
         <div class="flex flex-col sm:flex-row gap-4 mb-8 ">
             <div class="w-full sm:w-[40%] md:w-[35%] relative">
                 <!-- this is for shadow  -->

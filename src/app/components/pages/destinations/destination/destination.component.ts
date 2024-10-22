@@ -17,16 +17,62 @@ export class DestinationComponent implements OnInit {
   allSpots: any;
   tourDetails: any;
   allActivities:any[]=[];
+  allToursDetails:any[]=[];
+  currentTourIndex: number = 0;
+
 
   allDetailsForCheckout:any[]=[];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((id: any) => {
-      // console.log(id.id)
       this.tourId = id.id;
+      console.log(id.id);
+      
       this.getAllSpots();
       this.getTourDetails();
+      this.getAllTours();
+
     });
+  }
+
+  getAllTours(){
+    this.api.getTours().subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.allToursDetails=res.tours;
+
+        this.currentTourIndex= this.allToursDetails.findIndex(tour => tour._id === this.tourId);
+
+      },
+      error:(err:any)=>{
+        console.log(err);
+      }
+    })
+  }
+  getCurrentTourId(): number {
+    console.log(this.currentTourIndex);
+    return this.allToursDetails[this.currentTourIndex]._id;
+  }
+  
+
+  onNext(): void {
+    if (this.currentTourIndex < this.allToursDetails.length - 1) {
+      this.currentTourIndex++;
+      this.navigateToTour(this.getCurrentTourId());
+    }
+  }
+
+  onPrev(): void {
+    if (this.currentTourIndex > 0) {
+      this.currentTourIndex--;
+      this.navigateToTour(this.getCurrentTourId());
+    }
+  }
+
+  navigateToTour(id: number): void {
+    // Navigate to the tour detail page based on the ID
+    console.log(id);
+    this.router.navigate(['/tours/tour', id]);
   }
 
   getAllSpots() {
@@ -54,7 +100,8 @@ export class DestinationComponent implements OnInit {
           return {...item,added:false}
         })
         if(res.length){
-          this.allActivities.push([...res]);
+          this.allActivities.splice(index,0,res);
+          // this.allActivities.push([...res]);
         }
         else{
           this.allSpots[index].added = false;
@@ -83,7 +130,7 @@ export class DestinationComponent implements OnInit {
     else {
       this.allSpots[index].added = false;
       console.log(this.allSpots);
-      this.allActivities.pop();
+      this.allActivities.splice(index,1);
     }
   }
   addActivity(index1:number,index2: number, action: string) {
