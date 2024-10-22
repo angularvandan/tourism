@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
     this.api.getBlogs().subscribe({
       next: (res: any) => {
         console.log(res);
-        this.blogs = [...res];
+        this.blogs = res.slice(0, 3);
       }, error: (err: any) => {
         console.log(err);
       }
