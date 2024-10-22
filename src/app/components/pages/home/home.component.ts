@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     { img: '../../../../assets/home/home_banner.jpg' },
     { img: '../../../../assets/home/home_banner.jpg' }
   ];
+  bannerDetails:any[]=[];
 
   blogs: any[] = [];
   allActivities:any[]=[];
@@ -64,19 +65,33 @@ export class HomeComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
       message: ['', [Validators.required, Validators.minLength(2)]]
     });
-
+    this.getHomeBanner();
     this.getAllTours();
     this.getBlogs();
     this.getActivities();
 
   }
 
+  getHomeBanner(){
+    this.api.getHomeBanners().subscribe({
+      next:(res:any)=>{
+        this.bannerDetails=res;
+        this.bannerDetails = this.bannerDetails.map((banner, index) => ({
+          ...banner,     // Spread the existing properties
+          index: index + 1 // Add the index (1-based)
+        }));
+        console.log(this.bannerDetails);
+      },error:(err:any)=>{
+        console.log(err);
+      }
+    })
+  }
 
   getBlogs() {
     this.api.getBlogs().subscribe({
       next: (res: any) => {
         console.log(res);
-        this.blogs = [...res];
+        this.blogs = res.slice(0, 3);
       }, error: (err: any) => {
         console.log(err);
       }

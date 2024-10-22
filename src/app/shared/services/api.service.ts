@@ -52,6 +52,10 @@ export class ApiService {
     this.dataSubject.next(null);
   }
 
+  getHomeBanners(){
+    return this.http.get(`${this.apiUrl}/banner`);
+  }
+
 
   getTours() {
     return this.http.get(`${this.apiUrl}/tours`)

@@ -12,14 +12,17 @@
         </div>
     </div>
 
-    <div class="card flex w-full h-screen justify-center items-top"*ngIf="!blogs.length">
-        <p-progressSpinner styleClass="text-primary"  strokeWidth="4" fill="white"
+    <div class="card flex w-full h-screen justify-center items-top" *ngIf="!blogs.length">
+        <p-progressSpinner styleClass="text-primary" strokeWidth="4" fill="white"
             animationDuration="1s"></p-progressSpinner>
     </div>
-    <div class="details px-4 sm:px-8 md:px-12 mb-12"*ngIf="blogs.length">
+    <div class="details px-4 sm:px-8 md:px-12 mb-12" *ngIf="blogs.length">
         <div class="blogs-details">
             <div class="blogs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 ">
-                <ng-container *ngFor="let blog of blogs">
+                <ng-container *ngFor="let blog of blogs | paginate: { id: 'foo',
+                itemsPerPage: itemsPerpage,
+                currentPage: currentPage,
+                totalItems: totalItems }">
                     <div class="blog border bg-white flex flex-col justify-between rounded-lg p-2 md:p-4 cursor-pointer"
                         [routerLink]="['/blogs/blog',blog._id]">
                         <div class="image mb-4 relative">
@@ -53,12 +56,17 @@
 
             </div>
             <div class="pegination flex justify-center pt-6">
-                <div class="flex gap-4">
+                <!-- <div class="flex gap-4">
                     <span class="text-primary text-lg md:text-xl font-medium">1</span>
                     <span class="text-[#606060] text-lg md:text-xl font-medium">2</span>
                     <span class="text-[#606060] text-lg md:text-xl font-medium">3</span>
                     <span class="text-[#606060] text-lg md:text-xl font-medium">></span>
-                </div>
+                </div> -->
+                <pagination-controls class="my-pagination" id="foo" (pageChange)="pageChanged($event)"
+                    (pageBoundsCorrection)="pageChanged($event)" [maxSize]="3" [directionLinks]="true"
+                    [responsive]="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination"
+                    screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+                </pagination-controls>
             </div>
         </div>
     </div>
