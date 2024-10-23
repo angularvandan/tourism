@@ -18,8 +18,8 @@ body {
 $bg-primary: #869F44;
 
 .p-progress-spinner {
-    width: 40px!important;
-    height: 40px!important;
+    width: 40px !important;
+    height: 40px !important;
 }
 
 .p-button {
@@ -48,7 +48,20 @@ $bg-primary: #869F44;
 app-home {
 
     .p-carousel-content {
+        height: 100%;
         position: relative;
+
+        .p-carousel-container {
+            height: 100%;
+
+            .p-carousel-items-content {
+                height: 100%;
+
+                .p-carousel-items-container {
+                    height: 100%;
+                }
+            }
+        }
 
         .p-carousel-indicators {
             position: absolute;
@@ -95,6 +108,10 @@ app-home {
 
         .p-carousel-item {
             margin-right: 15px;
+
+            @media(max-width:595px) {
+                margin-right: 0px;
+            }
         }
 
         .p-button.p-button-secondary.p-button-outlined {
@@ -118,6 +135,18 @@ app-home {
         .p-button.p-button-secondary:enabled:focus {
             box-shadow: none;
         }
+
+        .p-carousel .p-carousel-content .p-carousel-prev {
+            @media(max-width:768px) {
+                width: 1rem;
+            }
+        }
+
+        .p-carousel .p-carousel-content .p-carousel-next {
+            @media(max-width:768px) {
+                width: 1rem;
+            }
+        }
     }
 
     .container-3,
@@ -129,9 +158,24 @@ app-home {
             line-height: 20px;
             font-weight: 500;
 
+            @media(max-width:500px) {
+                font-size: 12px;
+                line-height: 12px;
+            }
+
             .p-button-icon-right {
                 font-size: 1rem;
             }
+        }
+    }
+
+    .container-3 {
+        .p-button {
+            @media(max-width:500px) {
+                font-size: 12px;
+                line-height: 12px;
+            }
+
         }
     }
 
@@ -146,6 +190,11 @@ app-home {
             font-size: 16px;
             line-height: 20px;
             font-weight: 500;
+
+            @media(max-width:500px) {
+                font-size: 12px;
+                line-height: 12px;
+            }
         }
 
         .p-button.p-button-outlined:enabled:hover,
@@ -203,11 +252,13 @@ app-contactus {
         border-color: $bg-primary;
         background-color: $bg-primary;
     }
-    .p-input-icon-left > i{
-        top:45%;
+
+    .p-input-icon-left>i {
+        top: 45%;
     }
-    .p-input-icon-left.message > i{
-        top:15%;
+
+    .p-input-icon-left.message>i {
+        top: 15%;
     }
 }
 
@@ -241,13 +292,14 @@ app-destination {
         .p-button.p-button-outlined:enabled:active {
             color: $bg-primary;
         }
-        .checkout{
-            .p-button{
+
+        .checkout {
+            .p-button {
                 font-size: 18px;
             }
         }
     }
-    
+
 }
 
 app-destination-details {
@@ -381,6 +433,7 @@ app-checkout {
             color: black;
         }
     }
+
     .p-dialog .p-dialog-header {
         // border-top-left-radius: 30px;
         // border-top-right-radius: 30px;
@@ -389,14 +442,17 @@ app-checkout {
         border-radius: 30px;
 
     }
+
     .p-dialog .p-dialog-footer {
         display: none;
     }
-    .p-input-icon-left > i{
-        top:45%;
+
+    .p-input-icon-left>i {
+        top: 45%;
     }
-    .p-input-icon-left.message > i{
-        top:15%;
+
+    .p-input-icon-left.message>i {
+        top: 15%;
     }
 }
 
@@ -407,7 +463,8 @@ app-payment {
         font-weight: 300;
         color: #00000080;
     }
-    .p-inputmask{
+
+    .p-inputmask {
         border-color: #CFCFCF;
     }
 
@@ -467,18 +524,22 @@ app-payment {
     .p-radiobutton .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
         border-color: #CFCFCF;
     }
+
     .p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
         box-shadow: unset;
         border-color: #CFCFCF;
         background: #CFCFCF;
     }
+
     .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
         border-color: unset;
         background: #CFCFCF;
     }
+
     .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
-        background:#9BFF1C;
+        background: #9BFF1C;
     }
+
     .p-radiobutton .p-radiobutton-box.p-highlight {
         border-color: #CFCFCF;
         background: white;

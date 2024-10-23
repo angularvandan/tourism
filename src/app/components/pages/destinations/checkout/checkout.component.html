@@ -43,7 +43,7 @@
         </div>
         <!-- for select tours details  -->
         <div class="tours-details" *ngIf="!(checkoutStatus.userDetailsStatus || checkoutStatus.paymentStatus)">
-            <div class=" rounded-xl w-full h-[150px] my-6 overflow-hidden rounded-xl relative">
+            <div class=" rounded-xl w-full h-[200px] sm:h-[150px] my-6 overflow-hidden rounded-xl relative">
                 <div class="h-full w-full overflow-hidden rounded-xl">
                     <img class="rounded-xl h-full w-full object-cover" [src]="allToursDetails[0].images[0]" alt="image">
                 </div>
@@ -54,37 +54,72 @@
                                 <div
                                     class="mr-4 text-primary text-[25px] sm:text-[35px] md:text-[44px] leading-[30px] sm:leading-[40px] md:leading-[55px] font-semibold">
                                     {{allToursDetails[0].name}}</div>
-                                <div class="flex justify-start gap-6">
-                                    <div
-                                        class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
-                                        <!-- Left Calendar Icon -->
-                                        <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+                                <div class="hidden sm:block">
+                                    <div class="flex justify-start gap-6 ">
+                                        <div
+                                            class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                            <!-- Left Calendar Icon -->
+                                            <i class="pi pi-calendar text-lg mr-2 text-white"></i>
 
-                                        <!-- PrimeNG Calendar with Placeholder -->
-                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].startDate"
-                                            placeholder="Start Date" class="cursor-pointer" appendTo="body"
-                                            [readonlyInput]="true" (onSelect)="onStartDateSelect()" [minDate]="minDate"
-                                            [showIcon]="true"></p-calendar>
+                                            <!-- PrimeNG Calendar with Placeholder -->
+                                            <p-calendar #calendar [(ngModel)]="allToursDetails[0].startDate"
+                                                placeholder="Start Date" class="cursor-pointer" appendTo="body"
+                                                [readonlyInput]="true" (onSelect)="onStartDateSelect()"
+                                                [minDate]="minDate" [showIcon]="true"></p-calendar>
 
-                                        <!-- Right Arrow Icon -->
-                                        <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
-                                            (click)="openCalendar(calendar)"></i>
+                                            <!-- Right Arrow Icon -->
+                                            <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                                (click)="openCalendar(calendar)"></i>
+                                        </div>
+                                        <div
+                                            class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                            <!-- Left Calendar Icon -->
+                                            <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                            <!-- PrimeNG Calendar with Placeholder -->
+                                            <p-calendar #calendar [(ngModel)]="allToursDetails[0].endDate"
+                                                placeholder="End Date" class="cursor-pointer" appendTo="body"
+                                                [readonlyInput]="true" [minDate]="allToursDetails[0].startDate"
+                                                [showIcon]="true"></p-calendar>
+
+                                            <!-- Right Arrow Icon -->
+                                            <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                                (click)="openCalendar(calendar)"></i>
+                                        </div>
                                     </div>
-                                    <div
-                                        class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
-                                        <!-- Left Calendar Icon -->
-                                        <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+                                </div>
+                            </div>
+                            <!-- for mobile view -->
+                            <div class="flex justify-start gap-6 block sm:hidden">
+                                <div
+                                    class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                    <!-- Left Calendar Icon -->
+                                    <i class="pi pi-calendar text-lg mr-2 text-white"></i>
 
-                                        <!-- PrimeNG Calendar with Placeholder -->
-                                        <p-calendar #calendar [(ngModel)]="allToursDetails[0].endDate"
-                                            placeholder="End Date" class="cursor-pointer" appendTo="body"
-                                            [readonlyInput]="true" [minDate]="allToursDetails[0].startDate"
-                                            [showIcon]="true"></p-calendar>
+                                    <!-- PrimeNG Calendar with Placeholder -->
+                                    <p-calendar #calendar [(ngModel)]="allToursDetails[0].startDate"
+                                        placeholder="Start Date" class="cursor-pointer" appendTo="body"
+                                        [readonlyInput]="true" (onSelect)="onStartDateSelect()" [minDate]="minDate"
+                                        [showIcon]="true"></p-calendar>
 
-                                        <!-- Right Arrow Icon -->
-                                        <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
-                                            (click)="openCalendar(calendar)"></i>
-                                    </div>
+                                    <!-- Right Arrow Icon -->
+                                    <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                        (click)="openCalendar(calendar)"></i>
+                                </div>
+                                <div
+                                    class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                    <!-- Left Calendar Icon -->
+                                    <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                    <!-- PrimeNG Calendar with Placeholder -->
+                                    <p-calendar #calendar [(ngModel)]="allToursDetails[0].endDate"
+                                        placeholder="End Date" class="cursor-pointer" appendTo="body"
+                                        [readonlyInput]="true" [minDate]="allToursDetails[0].startDate"
+                                        [showIcon]="true"></p-calendar>
+
+                                    <!-- Right Arrow Icon -->
+                                    <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                        (click)="openCalendar(calendar)"></i>
                                 </div>
                             </div>
                             <div class="flex gap-2 justify-center items-center">
@@ -98,12 +133,26 @@
                                 </div>
                                 <div
                                     class="text-[#606060] text-lg sm:text-xl md:text-[28px] md:leading-[35px] font-normal">
-                                    {{allToursDetails[0].address}}</div>
+                                    {{allToursDetails[0].address}}
+                                </div>
+                                <div class="pr-4 sm:pr-8 md:pr-10 selected-spot block sm:hidden">
+                                    <svg [ngClass]="{ 'rotate': isRotated }" class="w-8 h-8 sm:w-12 sm:h-12"
+                                        (click)="toggleRotation()" width="54" height="54" viewBox="0 0 54 54"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M26.9998 52.8333C41.2676 52.8333 52.8332 41.2677 52.8332 27C52.8332 12.7322 41.2676 1.16666 26.9998 1.16666C12.7321 1.16666 1.1665 12.7322 1.1665 27C1.1665 41.2677 12.7321 52.8333 26.9998 52.8333Z"
+                                            fill="#869F44" stroke="white" stroke-width="2" stroke-linejoin="round" />
+                                        <path d="M38.625 23.125L27 34.75L15.375 23.125" stroke="white" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </div>
                             </div>
                         </div>
-                        <div class="pr-4 sm:pr-8 md:pr-10 selected-spot">
-                            <svg [ngClass]="{ 'rotate': isRotated }" (click)="toggleRotation()" width="54" height="54"
-                                viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div class="pr-4 sm:pr-8 md:pr-10 selected-spot hidden sm:block">
+                            <svg [ngClass]="{ 'rotate': isRotated }" class="w-8 h-8 sm:w-12 sm:h-12"
+                                (click)="toggleRotation()" width="54" height="54" viewBox="0 0 54 54" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M26.9998 52.8333C41.2676 52.8333 52.8332 41.2677 52.8332 27C52.8332 12.7322 41.2676 1.16666 26.9998 1.16666C12.7321 1.16666 1.1665 12.7322 1.1665 27C1.1665 41.2677 12.7321 52.8333 26.9998 52.8333Z"
                                     fill="#869F44" stroke="white" stroke-width="2" stroke-linejoin="round" />
@@ -253,7 +302,7 @@
                                         class="text-red-500 text-sm mt-1">A valid number is required</div>
                                 </div>
                                 <div class="block md:hidden">
-                                    <label for="message" class="block text-base font-medium text-gray-700 mb-1">Enter
+                                    <label for="message" class="block text-base font-medium text-gray-700 mb-1 mt-4">Enter
                                         address of your pickup location</label>
                                     <span class="p-input-icon-left message w-full">
                                         <i>

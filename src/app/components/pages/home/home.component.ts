@@ -97,6 +97,7 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+  
   toursDetails(id: any) {
     this.router.navigate([`/tours/tour/${id}`]);
   }
