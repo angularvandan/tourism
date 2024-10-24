@@ -95,6 +95,9 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/payment/create`,{amount});
 
   }
+  storePaymentDetails(paymentDetails: any) {
+    return this.http.post(`${this.apiUrl}/payments`, paymentDetails);
+  }
 
   createFeedback(data:any){
     return this.http.post(`${this.apiUrl}/feedback`, data);

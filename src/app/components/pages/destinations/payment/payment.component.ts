@@ -43,7 +43,24 @@ export class PaymentComponent implements OnInit {
         // Capture the payment on approval
         const captureResponse = await actions.order.capture();
         console.log('Payment completed successfully:', captureResponse);
-        this.visible = true
+
+        const payerID = captureResponse.payer.payer_id;
+        const amount = this.tourBookingDetails?.totalPrice;
+        const paymentStatus = captureResponse.status;
+
+        // Call the API to store payment details
+        this.api.storePaymentDetails({
+          orderID: this.orderID,
+          bookingId: this.bookingId,
+          amount,
+          paymentStatus,
+          payerID,
+        }).subscribe((res: any) => {
+          this.visible = true; // Show success message or confirmation
+        }, (err: any) => {
+          console.error('Error storing payment details:', err);
+        });
+
       },
       onError: (err: any) => {
         console.error('Payment error:', err);
