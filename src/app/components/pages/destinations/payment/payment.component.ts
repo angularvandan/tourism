@@ -47,6 +47,7 @@ export class PaymentComponent implements OnInit {
         const payerID = captureResponse.payer.payer_id;
         const amount = this.tourBookingDetails?.totalPrice;
         const paymentStatus = captureResponse.status;
+        console.log(paymentStatus);
 
         // Call the API to store payment details
         this.api.storePaymentDetails({

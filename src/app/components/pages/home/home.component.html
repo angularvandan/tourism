@@ -1,4 +1,4 @@
-<div class="w-full h-[400px] sm:h-fit container-1"*ngIf="bannerDetails.length">
+<div class="w-full h-[450px] sm:h-fit container-1"*ngIf="bannerDetails.length">
     <p-carousel [value]="bannerDetails" [numVisible]="1" [numScroll]="1" [circular]="true"class="h-full"styleClass="h-full">
         <ng-template pTemplate="item" let-banner let-i="index" class="h-full"styleClass="h-full" >
             <div class="relative h-full">
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div
-                    class="absolute bottom-[30%] md:bottom-[20%] right-[50%] sm:right-[30%] md:right-[25%] lg:right-[20%]">
+                    class="absolute bottom-[20%] md:bottom-[20%] right-[45%] sm:right-[30%] md:right-[25%] lg:right-[20%]">
                     <div class="location-point relative ">
                         <div class="point w-6 h-6 border-4 rounded-full border-white] ">
                             <div class="w-4 h-4 border-4 rounded-full border-[#869F44] ">
@@ -35,13 +35,13 @@
                             </svg>
 
                         </div>
-                        <div class="absolute text-[20px] -right-36 font-normal text-white leanding-8">
+                        <div class="absolute text-lg sm:text-[20px] -right-36 font-normal text-white leanding-8">
                             {{banner.name}}
                         </div>
-                        <div class="absolute w-[180px] sm:w-[200px] bg-white border -bottom-12 sm:-bottom-16">
+                        <div class="absolute w-[160px] sm:w-[170px] bg-white border left-4 -bottom-12 sm:-bottom-10">
 
                         </div>
-                        <div class="absolute text-white text-xl -bottom-20 sm:-bottom-24 -right-24">
+                        <div class="absolute text-white text-xl -bottom-20 sm:-bottom-20 -right-24">
                             <span>{{ banner.index }} </span>
                             <span>/</span>
                             <span>{{bannerDetails.length}}</span>
@@ -58,7 +58,7 @@
         <div class="flex justify-between items-center">
             <div class="heading text-lg sm:text-[30px] leading-6 sm:leading-12 font-semibold">Activities are <span
                     class="text-primary">NOT</span> less than Adventures !</div>
-            <div class="view-all flex items-center text-sm sm:text-lg leading-8 font-normal cursor-pointer whitespace-nowrap">View
+            <!-- <div class="view-all flex items-center text-sm sm:text-lg leading-8 font-normal cursor-pointer whitespace-nowrap">View
                 All
                 <svg class="ml-1 w-10 h-12 sm:h-16 sm:w-16 "   viewBox="0 0 64 64" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@
                         </filter>
                     </defs>
                 </svg>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="card-details h-[250px] sm:h-auto">
@@ -96,7 +96,7 @@
                     <div class=" overflow-hidden h-full">
                         <img src="{{card.image}}" alt="banner" class="rounded-[30px] object-cover h-full w-full " />
                     </div>
-                    <div class="flex flex-col absolute bottom-[10%] px-6">
+                    <div class="flex flex-col  w-full absolute bottom-[10%] px-6 overflow-hidden">
                         <div class="  flex flex-col mb-6">
                             <div class="text-[20px] leading-8 font-semibold tracking-[2%] text-white">
                                 {{card.name}}
@@ -106,7 +106,7 @@
                                 {{card.description}}
                             </div>
                         </div>
-                        <div class="button mx-auto">
+                        <div class="button w-full mx-auto flex items-center justify-center">
 
                             <p-button [routerLink]="['/tours/tour',card.spot_id.tour_id]" label="Read More" icon="pi pi-arrow-right" iconPos="right"
                                 styleClass="p-button-outlined p-button-secondary text-secondary"></p-button>
@@ -193,7 +193,7 @@
                             </div>
                         </div>
                         <div>
-                            <p-button label="Check out now" icon="pi pi-arrow-right" iconPos="right"
+                            <p-button label="Check out now" icon="pi pi-arrow-right" styleClass="py-3 sm:py-4 px-6" iconPos="right"
                                 (onClick)="toursDetails(tours._id)"></p-button>
                         </div>
                     </div>
@@ -508,7 +508,7 @@
         <div class="flex justify-between items-center">
             <div class="heading text-lg sm:text-[30px] leading-6 sm:leading-10 font-semibold">Completed journeys <span
                     class="text-primary">NOT</span> less than memories</div>
-            <div class="view-all flex items-center text-lg leading-8 font-normal cursor-pointer whitespace-nowrap">View
+            <!-- <div class="view-all flex items-center text-lg leading-8 font-normal cursor-pointer whitespace-nowrap">View
                 All
                 <svg class="ml-1" width="64" height="64" viewBox="0 0 64 64" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -535,7 +535,7 @@
                         </filter>
                     </defs>
                 </svg>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -765,8 +765,8 @@
         </div>
 
         <div class="button my-6 flex justify-center">
-            <p-button label="Book Your Travel Now" icon="pi pi-arrow-right" iconPos="right"
-                styleClass="px-10"></p-button>
+            <p-button label="Book Your Travel Now" icon="pi pi-arrow-right"iconPos="right"
+                styleClass="px-10 py-3 sm:py-4"></p-button>
         </div>
     </div>
 
@@ -885,7 +885,7 @@
 
                             <!-- Submit Button -->
                             <div class="flex justify-center items-center w-full">
-                                <p-button label="Get in Touch"(onClick)="onSubmit()" [disabled]="!contactForm.valid" styleClass=" py-3 px-6 min-w-[250px] "></p-button>
+                                <p-button label="Get in Touch"(onClick)="onSubmit()" [disabled]="!contactForm.valid" styleClass="  px-6 min-w-[250px] "></p-button>
 
                             </div>
                         </form>
@@ -951,14 +951,14 @@
                         </div>
 
                         <!-- Submit Button -->
-                        <p-button label="Get in Touch"(onClick)="onSubmit()" [disabled]="!contactForm.valid" styleClass=" py-3 px-6 w-full"></p-button>
+                        <p-button label="Get in Touch"(onClick)="onSubmit()" [disabled]="!contactForm.valid" styleClass=" py-4 px-6 w-full"></p-button>
 
                     </form>
 
                 </div>
             </div>
             <div class="arrow absolute bottom-2 left-0 hidden lg:block">
-                <svg width="600" height="130" viewBox="0 0 614 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class=" w-[600px] 2xl:w-[800px] "height="130" viewBox="0 0 614 130" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M573.344 29.1224C574.625 26.7428 574.151 27.1369 579.011 26.7492C583.305 26.496 581.616 27.5565 584.384 24.411C586.863 21.5173 591.307 17.9026 593.183 15.6723C591.61 14.1179 581.759 10.753 579.002 8.89962C579.562 8.327 580.009 7.86836 580.635 7.27089C581.599 6.33026 581.327 6.42982 582.968 6.7089C586.546 7.23366 598.009 8.90499 600.193 8.98643C602.32 7.02996 607.779 1.35276 610.131 0.637466C611.24 0.303207 613.099 -0.0849195 613.232 1.33619C613.517 4.83162 608.191 8.77064 604.919 11.8078C603.599 13.026 603.981 12.8119 604.236 14.5566C604.469 16.4546 606.549 30.092 606.176 30.9625C605.976 31.2562 604.183 32.8689 603.849 33.2126C603.217 32.1212 602.607 30.8761 602.087 29.6712L598.773 22.7321C598.345 21.5666 597.642 20.2817 597.035 19.256C595.581 20.7442 594.079 22.1035 592.556 23.6169C584.992 31.0951 585.595 27.7138 585.206 33.1464C584.933 36.1853 585.504 37.7399 582.717 38.3202C581.292 32.966 578.614 30.2742 573.344 29.1224ZM577.663 34.8111C578.559 34.1144 577.607 32.7754 576.55 33.4564L575.179 34.5465C574.326 35.154 575.166 36.6089 576.268 35.8377L577.663 34.8111ZM388.21 64.7213C387.092 64.3969 386.549 66.066 387.646 66.3252L388.536 66.6584C389.746 67.0235 390.198 65.3152 389.169 65.03L388.21 64.7213ZM394.196 66.5669C393.075 66.2427 392.535 67.9108 393.584 68.2597L395.298 68.7331C396.417 69.0579 396.983 67.4545 395.863 67.1303L394.196 66.5669ZM400.934 68.5756C399.884 68.2263 399.249 69.8546 400.369 70.1788L402.081 70.653C403.199 70.9763 403.834 69.3473 402.623 68.9843L400.934 68.5756ZM407.714 70.2764C406.551 70.0405 406.166 71.7247 407.264 71.9834L408.951 72.394C410.184 72.6016 410.564 70.9191 409.402 70.6839L407.714 70.2764ZM414.604 71.8625C413.441 71.6273 413.059 73.3097 414.154 73.5702L415.885 73.8901C417.049 74.1237 417.431 72.4407 416.337 72.1823L414.604 71.8625ZM421.493 73.2286C420.396 72.9701 419.923 74.6128 421.109 74.9122L422.91 75.2061C423.914 75.4259 424.455 73.7584 423.201 73.483L421.493 73.2286ZM428.444 74.3518C427.235 74.2082 427.081 75.881 428.128 76.0105L429.93 76.3048C431.112 76.3846 431.337 74.6864 430.22 74.582L428.444 74.3518ZM435.459 75.232C434.276 75.1507 434.028 76.7861 435.236 76.9301L436.988 77.0956C438.197 77.2392 438.327 75.5021 437.212 75.3952L435.459 75.232ZM442.542 75.8652C441.357 75.7858 441.134 77.4842 442.316 77.5637L444.071 77.7288C445.186 77.834 445.476 76.111 444.295 76.0312L442.542 75.8652ZM449.549 76.3063C448.32 76.3165 448.325 78.0049 449.485 78.0204L451.213 78.121C452.442 78.1097 452.482 76.3321 451.345 76.3823L449.549 76.3063ZM456.665 76.4138C455.507 76.3982 455.376 78.1356 456.626 78.1919L458.377 78.1367C459.534 78.1526 459.599 76.4396 458.44 76.4243L456.665 76.4138ZM463.714 76.3261C462.441 76.4255 462.696 78.1685 463.742 78.078L465.558 78.0002C466.831 77.9001 466.599 76.223 465.53 76.2476L463.714 76.3261ZM470.823 75.9957C469.62 76.0703 469.784 77.7723 470.896 77.6585L472.691 77.5141C473.893 77.4413 473.797 75.7128 472.617 75.8517L470.823 75.9957ZM477.883 75.314C476.838 75.4045 476.775 77.1169 478.048 77.0182L479.815 76.8096C481.133 76.6193 480.742 74.9269 479.652 75.1056L477.883 75.314ZM484.914 74.3501C483.759 74.5544 484.084 76.2729 485.171 76.0944L486.986 75.7951C488.141 75.5916 487.844 73.9377 486.687 74.1428L484.914 74.3501ZM491.945 73.1668C490.858 73.3453 491.019 75.0509 492.244 74.8206C492.834 74.7517 493.399 74.6171 494.059 74.5224C495.055 74.3036 494.958 72.5761 493.736 72.8043C493.1 72.9647 492.51 73.0329 491.945 73.1668ZM498.948 71.7004C497.745 71.9952 498.18 73.5984 499.313 73.3283L501.011 72.9275C502.212 72.6332 501.755 70.9635 500.644 71.2973L498.948 71.7004ZM505.83 69.9107C504.698 70.1784 505.088 71.8711 506.287 71.5787L508.031 71.0856C509.07 70.7779 508.772 69.1242 507.505 69.4426L505.83 69.9107ZM512.617 67.86C511.463 68.2834 512.125 69.8773 513.143 69.5037L514.864 68.9469C516.015 68.5245 515.445 66.97 514.337 67.3019L512.617 67.86ZM519.403 65.5906C518.317 65.989 518.819 67.5689 519.997 67.2101C520.539 67.0113 521.149 66.7875 521.691 66.5887C522.71 66.2149 522.25 64.546 521.097 64.9691C520.487 65.1929 519.945 65.3917 519.403 65.5906ZM526.067 62.999C524.87 63.5117 525.669 65.0564 526.729 64.5945L528.333 63.9313C529.462 63.4434 528.732 61.8755 527.671 62.3374L526.067 62.999ZM532.595 60.237C531.532 60.7 532.194 62.2939 533.3 61.7413L534.95 60.9893C536.01 60.5267 535.304 59.0227 534.244 59.4863L532.595 60.237ZM539.001 57.1512C538.033 57.6531 538.694 59.2482 539.799 58.6959C540.319 58.4315 540.904 58.1431 541.422 57.8786C542.417 57.4405 541.755 55.8467 540.648 56.4003C540.131 56.6631 539.613 56.9269 539.001 57.1512ZM545.362 53.9363C544.281 54.5531 545.258 55.9577 546.203 55.3909L547.804 54.5103C548.816 53.9185 547.908 52.4871 546.963 53.0542L545.362 53.9363ZM551.605 50.3969C550.59 50.9898 551.432 52.4438 552.446 51.8507L554.044 50.9712C554.992 50.403 554.127 48.883 553.112 49.4771L551.605 50.3969ZM557.638 46.7136C556.693 47.2807 557.557 48.8002 558.615 48.1182L560.124 47.1976C561.156 46.4505 560.068 45.1601 559.147 45.7915L557.638 46.7136ZM563.603 42.8364C562.635 43.5578 563.658 44.8717 564.58 44.2404L566.132 43.2294C567.098 42.5081 566.078 41.1931 565.086 41.8502L563.603 42.8364ZM569.426 38.7888C568.504 39.4201 569.481 40.8263 570.472 40.1672L571.932 39.118C572.855 38.4853 571.92 36.9916 570.888 37.738L569.426 38.7888Z"
                         fill="#869F44" />

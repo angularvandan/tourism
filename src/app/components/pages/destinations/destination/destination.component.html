@@ -56,7 +56,7 @@
             <div class="text-black md:text-[40px] sm:text-[28px] text-lg leading-6 sm:leading-8 md:leading-[55px]">Must
                 See Spots that you can explore in <br> {{tourDetails?.name}} .</div>
             <div class="flex items-center">
-                <div class="flex p-4 justify-center items-center w-[180px] h-[80px] border rounded-tr-2xl" style="border: 0.5px solid gray;           
+                <div class="flex p-1 sm:p-4 justify-center items-center  sm:w-[180px] sm:h-[80px] border rounded-tr-3xl sm:rounded-tr-2xl" style="border: 0.5px solid gray;           
                 ">
                     <div class="mr-2">
                         <svg width="30" height="30" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,10 +122,10 @@
                     class="heading pb-4 border-b text-lg sm:text-xl md:text-[28px] leading-5 sm:leading-6 md:leading-9 font-normal">
                     Select activities from your desired tourism spots
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-4 mt-10">
+                <div class="flex overflow-auto sm:grid  sm:grid-cols-3 gap-4 md:gap-4 p-6">
                     <ng-container *ngFor="let activities of allActivities;let i=index">
                         <ng-container *ngFor="let activity of activities;let j=index;">
-                            <div class="p-2 rounded-2xl flex flex-col items-center justify-between"
+                            <div class="p-2 min-w-[170px] rounded-2xl flex flex-col items-center justify-between"
                                 style="box-shadow: 0px 7px 20px 0px #00000026;">
                                 <div class="image mb-2 p-1 sm:p-3">
                                     <img src="{{activity.image}}" alt="image" class="object-cover rounded-xl w-[230px] max-h-[120px]">
@@ -171,7 +171,7 @@
             </div>
         </div>
         <div class="checkout flex justify-center pt-6">
-            <p-button (onClick)="onCheckout()" label="Proceed To Checkout" styleClass="px-8 py-4 sm:px-12"></p-button>
+            <p-button (onClick)="onCheckout()" label="Proceed To Checkout" styleClass="px-8 py-3 sm:py-4 sm:px-12"></p-button>
         </div>
     </div>
 </div>

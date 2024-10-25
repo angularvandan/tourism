@@ -202,7 +202,7 @@ export class CheckoutComponent implements OnInit {
       priceDetails: this.priceDetails,
       totalPrice: this.priceDetails.adult.totalPrice + this.priceDetails.child.totalPrice + this.priceDetails.infant.totalPrice,
       payNow: payNow,
-      paymentStatus: false,
+      paymentStatus: 'Pending',
     };
     this.api.createBooking(payload).subscribe({
       next: (res: any) => {

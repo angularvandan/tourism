@@ -165,7 +165,7 @@
 
                 </div>
             </div>
-            <div class=" px-4 sm:px-8 md:px-12" *ngIf="isRotated">
+            <div class=" sm:px-8 md:px-12" *ngIf="isRotated">
                 <ng-container *ngFor="let activity of allToursDetails;let i=index;">
 
                     <div class="h-full border rounded-3xl mb-6" *ngIf="i>0">
@@ -211,7 +211,7 @@
             <div class="checkout flex justify-center py-6">
                 <p-button (onClick)="checkoutStatus.userDetailsStatus = true"
                     [disabled]="!allToursDetails[0].startDate " label="Continue"
-                    styleClass="min-w-[300px] flex justify-center"></p-button>
+                    styleClass="min-w-[300px] py-2 sm:py-4 px-10 flex justify-center"></p-button>
             </div>
         </div>
         <!-- personal info  -->
@@ -421,11 +421,11 @@
 
                                 <div class="button flex flex-col justify-center items-center mt-4 gap-4 w-full">
                                     <p-button label="Pay Now" [disabled]="userForm.invalid" (onClick)="onPayment()"
-                                        styleClass="px-10 p-button-outlined  p-button-raised text-nowrap min-w-[300px]"></p-button>
+                                        styleClass="px-10 py-2 sm:py-4 p-button-outlined  p-button-raised text-nowrap min-w-[300px]"></p-button>
 
                                     <p-button label="Pay at Pickup" [disabled]="userForm.invalid"
                                         (onClick)="onLaterPayment()"
-                                        styleClass="px-10  text-nowrap min-w-[300px]"></p-button>
+                                        styleClass="px-10 py-2 sm:py-4 text-nowrap min-w-[300px]"></p-button>
                                 </div>
                             </div>
                         </div>
