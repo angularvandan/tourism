@@ -43,7 +43,11 @@ $bg-primary: #869F44;
     border-color: unset;
     opacity: 1;
 }
-
+app-header{
+    .p-sidebar-right{
+        width:17rem;
+    }
+}
 
 app-home {
 

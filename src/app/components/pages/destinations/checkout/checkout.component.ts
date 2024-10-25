@@ -62,7 +62,7 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.userForm = this.fb.group({
       user_name: ['', Validators.required],
-      user_mobile: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
+      user_mobile: [null, [Validators.required, Validators.pattern('^\\d{10}$')]],
       user_email: ['', [Validators.required, Validators.email]],
       user_address: ['', Validators.required],
     });

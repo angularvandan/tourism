@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers:[MessageService]
 })
 export class HomeComponent implements OnInit {
 
@@ -26,7 +29,7 @@ export class HomeComponent implements OnInit {
 
   contactForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private api: ApiService) { }
+  constructor(private fb: FormBuilder, private router: Router, private api: ApiService,private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.responsiveOptions = [
@@ -62,7 +65,7 @@ export class HomeComponent implements OnInit {
       first_name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[A-Za-z]+$/)]],
       last_name: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[A-Za-z]+$/)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       message: ['', [Validators.required, Validators.minLength(2)]]
     });
     this.getHomeBanner();
@@ -108,6 +111,7 @@ export class HomeComponent implements OnInit {
       this.api.createFeedback(this.contactForm.value).subscribe({
         next:(res:any)=>{
           console.log(res);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Feedback sent successfully' });
           this.contactForm.reset();
         },error:(err:any)=>{
           console.log(err);

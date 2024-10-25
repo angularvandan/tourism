@@ -8,7 +8,8 @@ import { HeaderComponent } from './components/partials/header/header.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { SharedModule } from './shared/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http'
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
