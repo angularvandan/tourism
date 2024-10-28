@@ -107,5 +107,8 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/contact`, data);
 
   }
+  getPrivacyPolicy(){
+    return this.http.get(`${this.apiUrl}/privacy-policy`);
+  }
 }
 

@@ -4,3 +4,9 @@
         transition: transform 0.2s ease-in-out; /* Smooth animation */
     }
 }
+.links-container{
+    flex-direction: row;
+    @media(max-width:470px){
+        flex-direction: column;
+    }
+}

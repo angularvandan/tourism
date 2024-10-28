@@ -103,6 +103,30 @@
                         {{tip.desc}}
                     </div>
                 </div>
+                <div class="flex flex-col justify-center items-start ">
+                    <div class="title text-[#606060] font-bold text-lg sm:text-xl md:text-[28px] mb-2 sm:mb-8">Activities that you’d enjoy</div>
+                    <div class="h-[800px] sm:h-auto w-full sm:px-10">
+                        <p-carousel [value]="allActivities" [numVisible]="1" [numScroll]="1" [circular]="true"class="h-full w-full relative"styleClass="h-full w-full">
+                            <ng-template pTemplate="item" let-spot class="h-full w-full"styleClass="h-full w-full" >
+                                <div class="relative h-full w-full">
+                                    <div class="sm:max-h-screen h-full w-full overflow-hidden rounded-2xl sm:rounded-3xl">
+                                        <img [src]="spot.image" alt="banner"
+                                            class="w-full sm:max-h-96 h-full object-cover rounded-2xl sm:rounded-3xl"/>
+                                    </div>
+                                    <div class="absolute flex flex-col justify-center items-center top-[18%] sm:top-[30%] md:top-[25%] lg:top-[20%] px-4 sm:px-8 md:px-12">
+                                        <div class="text-[20px] sm-text-[30px] md:text-[40px] font-semibold tracking-[2%] text-white text-center">
+                                            {{spot.name}}
+                                        </div>
+                                        <div
+                                            class="mt-2 w-[90%] sm:w-[80%] md:w-[70%] text-center text-sm sm:text-[14px] md:text-[16px]  font-normal text-white">
+                                            {{spot.description}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-carousel>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

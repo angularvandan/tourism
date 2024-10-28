@@ -16,6 +16,8 @@ export class DestinationDetailsComponent implements OnInit{
   allSpots:any;
   tourDetails:any;
   spot:any;
+  spot_id:any;
+  allActivities:any[]=[];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((id: any) => {
@@ -35,9 +37,23 @@ export class DestinationDetailsComponent implements OnInit{
       });
       this.allSpots[0].show=true;
       this.spot=this.allSpots[0];
+      this.spot_id=this.spot._id;
+      console.log(this.spot_id);
+      this.getAllActivities(this.spot_id);
 
     }, (err: any) => {
       console.log(err);
+    })
+  }
+  getAllActivities(id:any){
+    this.api.getActivities(this.spot_id).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.allActivities=res;
+      },
+      error:(err:any)=>{
+        console.log(err);
+      }
     })
   }
   showSpot(index:any){

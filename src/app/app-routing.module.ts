@@ -15,6 +15,9 @@ const routes: Routes = [
   },
   { 
     path: 'contact', loadComponent: () => import('./components/pages/contactus/contactus.component').then(c => c.ContactusComponent)
+  },
+  { 
+    path: 'privacy-policy', loadComponent: () => import('./components/partials/privacy-policy/privacy-policy.component').then(c => c.PrivacyPolicyComponent)
   }
 ];
 

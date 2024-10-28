@@ -88,7 +88,7 @@
             </div> -->
         </div>
     </div>
-    <div class="card-details h-[250px] sm:h-auto">
+    <div class="card-details h-[250px]  sm:h-auto">
         <p-carousel [value]="allActivities" [numVisible]="4" [numScroll]="1" [circular]="false"
             [responsiveOptions]="responsiveOptions"class="h-full"styleClass="h-full">
             <ng-template let-card pTemplate="item">
@@ -103,7 +103,7 @@
                             </div>
                             <div></div>
                             <div class="text-base leading-5 font-normal tracking-[2%] text-white">
-                                {{card.description}}
+                                {{ card.description | slice:0:80 }}{{ card.description.length > 80 ? '...' : '' }}
                             </div>
                         </div>
                         <div class="button w-full mx-auto flex items-center justify-center">
@@ -140,7 +140,7 @@
                 class="bg-[#FFFFFF] p-4 rounded-[20px] h-full flex flex-col  gap-8"style="box-shadow: 4px 15px 30px 0px #00000014;">
                 <div class="left w-full lg:w-[50%]">
                     <div class="image">
-                        <img src="../../../../assets/home/container3/image.png" class="rounded-[30px] w-full object-cover"
+                        <img [src]="tours?.images[1]" class="rounded-[30px] w-full object-cover"
                             alt="image">
                     </div>
                 </div>

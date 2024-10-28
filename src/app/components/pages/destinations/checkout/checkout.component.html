@@ -44,10 +44,12 @@
         <!-- for select tours details  -->
         <div class="tours-details" *ngIf="!(checkoutStatus.userDetailsStatus || checkoutStatus.paymentStatus)">
             <div class=" rounded-xl w-full h-[200px] sm:h-[150px] my-6 overflow-hidden rounded-xl relative">
-                <div class="h-full w-full overflow-hidden rounded-xl">
+                <div class="relative h-full w-full overflow-hidden rounded-xl">
                     <img class="rounded-xl h-full w-full object-cover" [src]="allToursDetails[0].images[0]" alt="image">
+                    <div class="absolute inset-0 bg-gradient-to-r from-white/90 to-transparent rounded-xl"></div>
+
                 </div>
-                <div class="absolute w-full top-[20px] left-[10px]">
+                <div class="absolute w-full top-[20px] left-[10px] date-picker">
                     <div class="w-full flex justify-between items-center">
                         <div class="flex flex-col gap-2 justify-between">
                             <div class="flex items-center">
@@ -90,7 +92,7 @@
                                 </div>
                             </div>
                             <!-- for mobile view -->
-                            <div class="flex justify-start gap-6 block sm:hidden">
+                            <div class="flex justify-start gap-1 block sm:hidden">
                                 <div
                                     class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
                                     <!-- Left Calendar Icon -->
@@ -211,7 +213,7 @@
             <div class="checkout flex justify-center py-6">
                 <p-button (onClick)="checkoutStatus.userDetailsStatus = true"
                     [disabled]="!allToursDetails[0].startDate " label="Continue"
-                    styleClass="min-w-[300px] py-2 sm:py-4 px-10 flex justify-center"></p-button>
+                    styleClass="min-w-[300px] py-1 sm:py-4 px-10 flex justify-center"></p-button>
             </div>
         </div>
         <!-- personal info  -->
@@ -294,7 +296,7 @@
                                         </i>
                                         <p-inputNumber id="phone" [minFractionDigits]="0" [maxFractionDigits]="0"
                                             inputId="integeronly" formControlName="user_mobile"
-                                            [placeholder]="'Enter phone number'"
+                                            [placeholder]="'Enter phone number'" (onKeyDown)="restrictToTenDigits($event)"
                                             class="w-full placeholder:text-[#cacaca]" styleClass="w-full "
                                             [useGrouping]="false" inputStyleClass="pl-10"></p-inputNumber>
                                     </span>

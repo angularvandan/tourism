@@ -84,6 +84,22 @@ export class CheckoutComponent implements OnInit {
     });
 
   }
+   // Enforce max length of 10 digits
+   restrictToTenDigits(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+
+    // Allow only numbers (0-9) and limit to 10 digits
+    const isNumberKey = event.key >= '0' && event.key <= '9';
+    const isControlKey = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key);
+
+    // Prevent input if not a number and the input length is already 10
+    if (!isNumberKey && !isControlKey) {
+      event.preventDefault();
+    } else if (input.value.length >= 10 && isNumberKey) {
+      console.log('hi');
+      event.preventDefault(); // Prevent adding more than 10 digits
+    }
+  }
   onStartDateSelect() {
     if (this.allToursDetails[0].startDate) {
       this.allToursDetails[0].endDate = null; // Clear the end date if necessary

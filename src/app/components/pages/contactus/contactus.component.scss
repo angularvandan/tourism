@@ -33,3 +33,11 @@
             transition: transform 0.2s ease-in-out; /* Smooth animation */
         }
     }
+    .contact-form{
+        @media(max-width:600px){
+            width:80%;
+        }
+        @media(max-width:400px){
+            width: 100%;
+        }
+    }

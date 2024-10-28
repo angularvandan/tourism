@@ -26,3 +26,8 @@
         z-index: 10;
     }
 }
+.date-picker{
+    @media(max-width:400px){
+        left:2px;
+    }
+}

@@ -43,9 +43,10 @@ $bg-primary: #869F44;
     border-color: unset;
     opacity: 1;
 }
-app-header{
-    .p-sidebar-right{
-        width:17rem;
+
+app-header {
+    .p-sidebar-right {
+        width: 17rem;
     }
 }
 
@@ -160,7 +161,7 @@ app-home {
             border-radius: 50px;
             font-size: 16px;
             line-height: 20px;
-        
+
 
             @media(max-width:500px) {
                 font-size: 12px;
@@ -170,7 +171,8 @@ app-home {
             .p-button-icon-right {
                 font-size: 1rem;
             }
-            .p-button-label{
+
+            .p-button-label {
                 font-weight: 500;
             }
         }
@@ -303,10 +305,12 @@ app-destination {
         .checkout {
             .p-button {
                 font-size: 18px;
-                @media(max-width:500px){
+
+                @media(max-width:500px) {
                     font-size: 16px;
                 }
-                .p-button-label{
+
+                .p-button-label {
                     font-weight: 500;
                 }
             }
@@ -316,6 +320,95 @@ app-destination {
 }
 
 app-destination-details {
+    .container-2 {
+
+        .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 100%;
+            background-color: rgb(166, 161, 161);
+        }
+
+        .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+            background-color: white;
+            width: 2rem;
+            border-radius: 10px;
+        }
+
+        .p-link:focus {
+            box-shadow: none;
+        }
+
+        .p-carousel .p-carousel-indicators {
+            position: absolute;
+            // left: 40%;
+            width: 100%;
+            bottom: 5%;
+            @media(max-width:768px){
+                bottom:2%;
+            }
+        }
+
+        .p-carousel .p-carousel-content .p-carousel-prev {
+            width: 3rem;
+            height: 3rem;
+            color: #0a0003;
+            background: #ffffff;
+            transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+            left: 3%;
+            z-index: 1000;
+            box-shadow: 0px 4px 24px 0px #4F4B4B40;
+            
+            @media(max-width:500px){
+                display: none;
+            }
+        }
+        .p-carousel .p-carousel-content .p-carousel-next {
+            width: 3rem;
+            height: 3rem;
+            color: #0a0003;
+            background: #ffffff;
+            transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+            right: 3%;
+            z-index: 1000;
+            box-shadow: 0px 4px 24px 0px #4F4B4B40;
+
+            @media(max-width:500px){
+                display: none;
+            }
+        }
+        .p-carousel-content {
+            height: 100%;
+            position: relative;
+    
+            .p-carousel-container {
+                height: 100%;
+    
+                .p-carousel-items-content {
+                    height: 100%;
+    
+                    .p-carousel-items-container {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        // .p-carousel .p-carousel-content .p-carousel-prev, .p-carousel .p-carousel-content .p-carousel-next {
+        //     width: 2rem;
+        //     height: 2rem;
+        //     color: #0a0003;
+        //     border: 0 none;
+        //     background: #ffffff;
+        //     border-radius: 50%;
+        //     transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+        //     margin: 0.5rem;
+        //     left: 3%;
+        //     z-index: 1000;
+        //     backdrop-filter: blur(12px) box-shadow: 0px 4px 24px 0px #4F4B4B40;
+        //     box-shadow: 0px 4px 24px 0px #4F4B4B40;
+        // }
+    }
+
     .container-2 {
         .p-button {
             border-radius: 30px;
@@ -471,7 +564,7 @@ app-checkout {
 }
 
 app-payment {
-    
+
     .p-inputtext {
         font-size: 16px;
         line-height: 20px;
@@ -517,8 +610,9 @@ app-payment {
         .p-button-label {
             font-weight: 500;
         }
-        @media (max-width:500px){
-            .p-button-label{
+
+        @media (max-width:500px) {
+            .p-button-label {
                 font-size: 16px;
             }
         }

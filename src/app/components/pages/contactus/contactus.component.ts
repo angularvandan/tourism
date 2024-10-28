@@ -24,19 +24,19 @@ export class ContactusComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      first_name: ['', [Validators.required, this.noNumbersValidator()]],
-      last_name: ['', [Validators.required, this.noNumbersValidator()]],
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
       checked:['',Validators.required]
     });
+
   }
-  // Custom validator to ensure no numbers in the input field
-  noNumbersValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const hasNumber = /\d/.test(control.value); // Check if the string contains any digits (numbers)
-      return hasNumber ? { noNumbers: true } : null; // If it has numbers, return an error, otherwise null
-    };
+  restrictNonAlphabeticInput(event: KeyboardEvent) {
+    const inputChar = String.fromCharCode(event.keyCode);
+    if (!/^[a-zA-Z]+$/.test(inputChar)) {
+      event.preventDefault(); // Prevent input if it’s not alphabetic
+    }
   }
   
   onSubmit() {
