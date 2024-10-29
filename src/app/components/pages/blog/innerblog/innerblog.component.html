@@ -4,9 +4,8 @@
         <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-4">Home<span class="text-primary">
                 > Blogs</span>
         </div>
-        <div class="card flex w-full h-screen justify-center items-top"*ngIf="!blog">
-            <p-progressSpinner styleClass="text-primary "class="mt-6"  strokeWidth="4" fill="white"
-                animationDuration="1s"></p-progressSpinner>
+        <div class="flex h-screen justify-center items-center " *ngIf="!blog">
+            <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
         </div>
         <div class="flex justify-between items-center relative"*ngIf="blog">
             <div class="heading  text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium"

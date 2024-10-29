@@ -12,9 +12,8 @@
         </div>
     </div>
 
-    <div class="card flex w-full h-screen justify-center items-top" *ngIf="!blogs.length">
-        <p-progressSpinner styleClass="text-primary" strokeWidth="4" fill="white"
-            animationDuration="1s"></p-progressSpinner>
+    <div class="flex h-screen justify-center items-center " *ngIf="!blogs.length">
+        <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
     </div>
     <div class="details px-4 sm:px-8 md:px-12 mb-12" *ngIf="blogs.length">
         <div class="blogs-details">

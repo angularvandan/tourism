@@ -16,18 +16,27 @@ export class PaymentComponent implements OnInit {
   bookingId: any;
   tourBookingDetails: any;
 
+  paypalLoading:boolean=false;
+
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
   constructor(private api: ApiService) { }
 
   async createOrder() {
+    this.paypalLoading=true;
     try {
       const amount = this.tourBookingDetails?.totalPrice;
       this.api.createPaypalOrder(amount).subscribe((response: any) => {
         console.log("response: ", response)
         this.orderID = response.orderID;
         console.log('Order ID:', this.orderID);
+
+        this.paypalLoading=false;
         this.initiatePayPalPayment();
-      });
+      },(err:any)=>{
+        console.log(err);
+        this.paypalLoading=false;
+      }
+    );
     } catch (error) {
       console.error('Error creating order:', error);
     }

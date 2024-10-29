@@ -1,3 +1,6 @@
+<div class="flex h-screen justify-center items-center " *ngIf="!bannerDetails.length">
+    <i class="pi pi-spin pi-spinner alimate-spin text-[#3A5C41]" style="font-size: 2rem"></i>
+</div>
 <div class="w-full h-[450px] sm:h-fit container-1"*ngIf="bannerDetails.length">
     <p-carousel [value]="bannerDetails" [numVisible]="1" [numScroll]="1" [circular]="true"class="h-full"styleClass="h-full">
         <ng-template pTemplate="item" let-banner let-i="index" class="h-full"styleClass="h-full" >
@@ -88,7 +91,10 @@
             </div> -->
         </div>
     </div>
-    <div class="card-details h-[250px]  sm:h-auto">
+    <div class="flex h-96 justify-center items-center " *ngIf="!allActivities.length">
+        <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+    </div>
+    <div class="card-details h-[250px]  sm:h-auto" *ngIf="allActivities.length">
         <p-carousel [value]="allActivities" [numVisible]="4" [numScroll]="1" [circular]="false"
             [responsiveOptions]="responsiveOptions"class="h-full"styleClass="h-full">
             <ng-template let-card pTemplate="item">
@@ -130,9 +136,8 @@
         </div>
     </div>
     <!-- first details  -->
-    <div class="card flex w-full justify-center items-top"*ngIf="!allTours.length">
-        <p-progressSpinner styleClass="text-primary"  strokeWidth="4" fill="white"
-            animationDuration="1s"></p-progressSpinner>
+    <div class="flex h-96 justify-center items-center " *ngIf="!allTours.length">
+        <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
     </div>
     <ng-container *ngIf="allTours.length">
         <div *ngFor="let tours of allTours let i = index" class="details h-full px-4 sm:px-8 md:px-12 mb-2 sm:mb-12 ">
@@ -781,8 +786,10 @@
             <div class="heading text-lg sm:text-[30px] leading-6 sm:leading-12 font-semibold">Blogs</div>
         </div>
     </div>
-
-    <div class="details px-4 sm:px-8 md:px-12 mb-12">
+    <div class="flex h-screen justify-center items-center " *ngIf="!blogs.length">
+        <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+    </div>
+    <div class="details px-4 sm:px-8 md:px-12 mb-12"*ngIf="blogs.length">
         <div class="blogs-details">
             <div class="blogs flex flex-col md:flex-row gap-4 md:gap-8">
                 <div class="blog w-full bg-white cursor-pointer flex flex-col justify-between rounded-[30px] p-4 md:p-6"

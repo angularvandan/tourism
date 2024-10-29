@@ -52,6 +52,9 @@ export class CheckoutComponent implements OnInit {
   };
 
   selectedTimes: Date[] = []; // To track selected times
+  paymentLoading:boolean=false;
+  payNowStatus:boolean=false;
+  payLaterStatus:boolean=false;
 
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
@@ -195,6 +198,8 @@ export class CheckoutComponent implements OnInit {
   onPayment() {
     if (this.userForm.valid) {
       console.log(this.userForm.value);
+      this.payNowStatus=true;
+      this.payLaterStatus=false;
       this.createBooking(true);
     }
     else {
@@ -205,6 +210,8 @@ export class CheckoutComponent implements OnInit {
     this.visible = true;
     if (this.userForm.valid) {
       console.log(this.userForm.value);
+      this.payNowStatus=false;
+      this.payLaterStatus=true;
       this.createBooking(false);
     }
     else {
@@ -212,6 +219,9 @@ export class CheckoutComponent implements OnInit {
     }
   }
   createBooking(payNow: boolean) {
+
+    this.paymentLoading=true;
+
     let payload = {
       ...this.userForm.value,
       tours_details: this.allToursDetails,
@@ -223,6 +233,7 @@ export class CheckoutComponent implements OnInit {
     this.api.createBooking(payload).subscribe({
       next: (res: any) => {
         console.log(res);
+        this.paymentLoading=false;
         if (res.payNow) {
           this.router.navigate(['tours/payment']);
         }
@@ -231,6 +242,8 @@ export class CheckoutComponent implements OnInit {
       },
       error: (err: any) => {
         console.log(err);
+        this.paymentLoading=false;
+
       }
     })
   }

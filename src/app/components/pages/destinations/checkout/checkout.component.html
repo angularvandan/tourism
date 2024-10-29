@@ -422,12 +422,19 @@
                                 </div>
 
                                 <div class="button flex flex-col justify-center items-center mt-4 gap-4 w-full">
-                                    <p-button label="Pay Now" [disabled]="userForm.invalid" (onClick)="onPayment()"
-                                        styleClass="px-10 py-2 sm:py-4 p-button-outlined  p-button-raised text-nowrap min-w-[300px]"></p-button>
+                                    <p-button label="Pay Now" [disabled]="(userForm.invalid || paymentLoading) && (payNowStatus || userForm.invalid)" (onClick)="onPayment()"
+                                        styleClass="px-10 py-2 sm:py-4 p-button-outlined  p-button-raised text-nowrap min-w-[300px]">
+                                        <div class="flex justify-center items-center " *ngIf="paymentLoading && payNowStatus">
+                                            <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+                                        </div>
+                                    </p-button>
 
-                                    <p-button label="Pay at Pickup" [disabled]="userForm.invalid"
+                                    <p-button label="Pay at Pickup" [disabled]="(userForm.invalid || paymentLoading) && (payLaterStatus || userForm.invalid)"
                                         (onClick)="onLaterPayment()"
-                                        styleClass="px-10 py-2 sm:py-4 text-nowrap min-w-[300px]"></p-button>
+                                        styleClass="px-10 py-2 sm:py-4 text-nowrap min-w-[300px]">
+                                        <div class="flex justify-center items-center " *ngIf="paymentLoading && payLaterStatus">
+                                            <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
+                                        </div></p-button>
                                 </div>
                             </div>
                         </div>
@@ -438,7 +445,7 @@
                 </div>
 
                 <div class="absolute bg-white z-10 top-1/4 left-[38%] message-container w-[400px] h-[400px] rounded-[30px]"
-                    *ngIf="visible">
+                    *ngIf="visible && !paymentLoading">
                     <div class="p-4">
                         <div class="flex justify-center py-10">
                             <svg width="61" height="61" viewBox="0 0 61 61" fill="none"
