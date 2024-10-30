@@ -89,12 +89,20 @@ app-home {
             height: 0.8rem;
             border-radius: 100%;
             background-color: rgb(166, 161, 161);
+
+            @media (max-width:768px) {
+                height: 0.6rem;
+            }
         }
 
         .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
             background-color: white;
             width: 2rem;
             border-radius: 10px;
+
+            @media (max-width:768px) {
+                width: 1.5rem
+            }
         }
 
         .p-link:focus {
@@ -327,12 +335,20 @@ app-destination-details {
             height: 0.8rem;
             border-radius: 100%;
             background-color: rgb(166, 161, 161);
+            @media  (max-width:768px){
+                width:0.5rem;
+                height:0.5rem;
+            }
         }
 
         .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
             background-color: white;
             width: 2rem;
             border-radius: 10px;
+
+            @media  (max-width:768px){
+                width:1.5rem;
+            }
         }
 
         .p-link:focus {
@@ -344,8 +360,9 @@ app-destination-details {
             // left: 40%;
             width: 100%;
             bottom: 5%;
-            @media(max-width:768px){
-                bottom:2%;
+
+            @media(max-width:768px) {
+                bottom: 2%;
             }
         }
 
@@ -358,11 +375,12 @@ app-destination-details {
             left: 3%;
             z-index: 1000;
             box-shadow: 0px 4px 24px 0px #4F4B4B40;
-            
-            @media(max-width:500px){
+
+            @media(max-width:500px) {
                 display: none;
             }
         }
+
         .p-carousel .p-carousel-content .p-carousel-next {
             width: 3rem;
             height: 3rem;
@@ -373,26 +391,28 @@ app-destination-details {
             z-index: 1000;
             box-shadow: 0px 4px 24px 0px #4F4B4B40;
 
-            @media(max-width:500px){
+            @media(max-width:500px) {
                 display: none;
             }
         }
+
         .p-carousel-content {
             height: 100%;
             position: relative;
-    
+
             .p-carousel-container {
                 height: 100%;
-    
+
                 .p-carousel-items-content {
                     height: 100%;
-    
+
                     .p-carousel-items-container {
                         height: 100%;
                     }
                 }
             }
         }
+
         // .p-carousel .p-carousel-content .p-carousel-prev, .p-carousel .p-carousel-content .p-carousel-next {
         //     width: 2rem;
         //     height: 2rem;
