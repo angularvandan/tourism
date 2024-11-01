@@ -301,9 +301,9 @@
             <div (click)="visible=false" class="popup-overlay fixed top-0 left-0 w-full h-full" *ngIf="visible">
             </div>
 
-            <div class="absolute bg-white z-10 top-1/3 left-[38%] message-container w-[400px] h-[400px] rounded-[30px]"
+            <div class="absolute payment-message bg-white z-10 top-1/3  message-container w-[300px] h-[350px] sm:w-[400px] sm:h-[400px] rounded-[30px]"
                 *ngIf="visible">
-                <div class="p-4">
+                <div class="p-4 flex flex-col justify-center items-center w-full h-full">
                     <div class="flex justify-center">
                         <svg width="200" height="200" viewBox="0 0 200 200" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -403,8 +403,33 @@
                         Enjoy the trip to Philippines
                     </div>
                     <div class="flex justify-center mt-4">
-                        <p-button label="Back to Home" routerLink="/"
-                            styleClass="px-10  text-nowrap min-w-[300px]"></p-button>
+                        <p-button label="Back to Home" class="px-4 sm:px-10" routerLink="/"
+                            styleClass="px-4 sm:px-10 py-1 sm:py-3 text-nowrap min-w-[200px] sm:min-w-[300px]"></p-button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- for error payment  -->
+            <div class="absolute payment-message bg-white z-10 top-1/3  message-container w-[300px] h-[350px] sm:w-[400px] sm:h-[400px] rounded-[30px]"
+                *ngIf="errorVisible">
+                <div class="p-4 flex flex-col justify-center items-center w-full h-full">
+                    <div class="flex justify-center mb-4">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M98.01 28L71.6418 1.5C70.6468 0.5 69.6517 0 68.1592 0H31.3433C29.8507 0 28.8557 0.5 27.8607 1.5L1.49254 28C0.497512 29 0 30 0 31.5V69C0 70.5 0.497512 71.5 1.49254 72.5L27.8607 99C28.8557 99.5 29.8507 100 31.3433 100H68.6567C70.1493 100 71.1443 99.5 72.1393 98.5L98.5075 72C99.5025 71 100 70 100 68.5V31.5C99.5025 30 99.005 29 98.01 28ZM49.7512 75C46.7662 75 44.7761 73 44.7761 70C44.7761 67 46.7662 65 49.7512 65C52.7363 65 54.7264 67 54.7264 70C54.7264 73 52.7363 75 49.7512 75ZM54.7264 50C54.7264 53 52.7363 55 49.7512 55C46.7662 55 44.7761 53 44.7761 50V30C44.7761 27 46.7662 25 49.7512 25C52.7363 25 54.7264 27 54.7264 30V50Z" fill="#FB2828"/>
+                            </svg>                      
+
+                    </div>
+                    <div
+                        class="title mb-4 text-center text-lg sm:text-xl md:text-[34px] md:leading-9 font-medium text-[#FB2828]">
+                        Oops! Payment Failed
+                    </div>
+                    <div (click)="errorVisible=false; visible=false"
+                        class="subtitle cursor-pointer underline underline-offset-2 mb-3 text-center text-lg md:text-[22px] md:leading-8 font-normal text-[#606060]">
+                        Try again later!
+                    </div>
+                    <div class="flex justify-center mt-4">
+                        <p-button label="Back to Home" class="px-4 sm:px-10" routerLink="/"
+                            styleClass="px-4 sm:px-10 py-1 sm:py-3 text-nowrap min-w-[200px] sm:min-w-[300px]"></p-button>
                     </div>
 
                 </div>

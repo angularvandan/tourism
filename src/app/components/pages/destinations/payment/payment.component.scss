@@ -9,3 +9,10 @@
      overflow: hidden;
      z-index: 10;
  }
+ .payment-message{
+    left: calc(50% - 200px);
+
+    @media(max-width:768px){
+        left: calc(50% - 150px);
+    }
+ }

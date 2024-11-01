@@ -11,18 +11,20 @@ export class PaymentComponent implements OnInit {
   priceDetails: any;
   selectAccount: any;
   cardNumber: any;
-  visible: boolean = false;
   orderID: any
   bookingId: any;
   tourBookingDetails: any;
 
-  paypalLoading:boolean=false;
+  paypalLoading: boolean = false;
+
+  visible: boolean = false;
+  errorVisible: boolean = false;
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
   constructor(private api: ApiService) { }
 
   async createOrder() {
-    this.paypalLoading=true;
+    this.paypalLoading = true;
     try {
       const amount = this.tourBookingDetails?.totalPrice;
       this.api.createPaypalOrder(amount).subscribe((response: any) => {
@@ -30,13 +32,13 @@ export class PaymentComponent implements OnInit {
         this.orderID = response.orderID;
         console.log('Order ID:', this.orderID);
 
-        this.paypalLoading=false;
+        this.paypalLoading = false;
         this.initiatePayPalPayment();
-      },(err:any)=>{
+      }, (err: any) => {
         console.log(err);
-        this.paypalLoading=false;
+        this.paypalLoading = false;
       }
-    );
+      );
     } catch (error) {
       console.error('Error creating order:', error);
     }
@@ -66,26 +68,42 @@ export class PaymentComponent implements OnInit {
           paymentStatus,
           payerID,
         }).subscribe((res: any) => {
+          this.errorVisible = false;
           this.visible = true; // Show success message or confirmation
+          console.log(res);
         }, (err: any) => {
+          this.errorVisible = true;
+          this.visible = false;
           console.error('Error storing payment details:', err);
         });
 
       },
       onError: (err: any) => {
         console.error('Payment error:', err);
-        alert('Payment failed!');
+
+        this.api.storePaymentDetails({
+          orderID: this.orderID,
+          bookingId: this.bookingId,
+          errorMessage: err.message,
+          errorDetails: err,
+          paymentStatus: 'ERROR',
+        }).subscribe({
+          next: (response: any) => {
+            console.log('Error details stored successfully:', response);
+          },
+          error: (storeError: any) => {
+            console.error('Error storing payment error details:', storeError);
+          }
+        });
+
       }
     }).render('#paypal-button-container');
   }
 
   onPayButtonClick() {
-    // Send card details to backend
-    // if (this.cardNumber && this.expiryMonth && this.expiryYear && this.cvv) {
+
     this.createOrder();
-    // } else {
-    //   alert('Please fill all card details.');
-    // }
+
   }
 
 
