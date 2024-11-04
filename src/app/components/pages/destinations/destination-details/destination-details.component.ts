@@ -46,7 +46,7 @@ export class DestinationDetailsComponent implements OnInit{
     })
   }
   getAllActivities(id:any){
-    this.api.getActivities(this.spot_id).subscribe({
+    this.api.getActivities(id).subscribe({
       next:(res:any)=>{
         console.log(res);
         this.allActivities=res;
@@ -62,6 +62,7 @@ export class DestinationDetailsComponent implements OnInit{
     });
     this.allSpots[index].show=true;
     this.spot=this.allSpots[index];
+    this.getAllActivities(this.allSpots[index]._id);
   }
   getTourDetails() {
     this.api.getSingleTourDetails(this.tourId).subscribe((res: any) => {

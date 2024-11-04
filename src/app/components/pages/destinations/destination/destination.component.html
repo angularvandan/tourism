@@ -2,17 +2,19 @@
     <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
 </div>
 
-<div *ngIf="tourDetails" class="container-1 w-full h-screen pt-10 relative"[style.background-image]="'url(' + tourDetails.images[0] + ')'">
-    
-    
-    <div class="absolute bottom-[10%] w-full flex justify-center" >
+<div *ngIf="tourDetails" class="container-1 w-full h-screen pt-10 relative"
+    [style.background-image]="'url(' + tourDetails.images[0] + ')'">
+
+
+    <div class="absolute bottom-[10%] w-full flex justify-center">
         <div class="bg-white rounded-3xl p-6 w-[90%]">
             <div class="flex justify-between mb-6">
                 <div
                     class="text-xl text-primary sm:text-[28px] md:text-[44px] leading-[30px] sm:leading-[40px] md:leading-[55px] font-semibold">
                     {{tourDetails?.name}}</div>
                 <div class="flex justify-center items-center gap-2">
-                    <div (click)="onPrev()" class="left-arrow w-10 h-10 rounded-full bg-white flex justify-center items-center cursor-pointer"
+                    <div (click)="onPrev()"
+                        class="left-arrow w-10 h-10 rounded-full bg-white flex justify-center items-center cursor-pointer"
                         style="box-shadow: 0px 4px 24px 0px #4F4B4B40;backdrop-filter: blur(12px)">
                         <svg width="20" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -21,7 +23,8 @@
                         </svg>
 
                     </div>
-                    <div (click)="onNext()" class="right-arrow w-10 h-10 rounded-full bg-white flex justify-center items-center cursor-pointer"
+                    <div (click)="onNext()"
+                        class="right-arrow w-10 h-10 rounded-full bg-white flex justify-center items-center cursor-pointer"
                         style="box-shadow: 0px 4px 24px 0px #4F4B4B40;backdrop-filter: blur(12px)">
                         <svg width="20" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -58,7 +61,8 @@
             <div class="text-black md:text-[40px] sm:text-[28px] text-lg leading-6 sm:leading-8 md:leading-[55px]">Must
                 See Spots that you can explore in <br> {{tourDetails?.name}} .</div>
             <div class="flex items-center">
-                <div class="flex p-1 sm:p-4 justify-center items-center  sm:w-[180px] sm:h-[80px] border rounded-tr-3xl sm:rounded-tr-2xl" style="border: 0.5px solid gray;           
+                <div class="flex p-1 sm:p-4 justify-center items-center  sm:w-[180px] sm:h-[80px] border rounded-tr-3xl sm:rounded-tr-2xl"
+                    style="border: 0.5px solid gray;           
                 ">
                     <div class="mr-2">
                         <svg width="30" height="30" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,48 +85,61 @@
     <div class="flex h-96 justify-center items-center " *ngIf="!allSpots.length">
         <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
     </div>
-    <div class="details h-fit px-4 sm:px-8 md:px-12 mb-12"*ngIf="allSpots.length">
+    <div class="details h-fit px-4 sm:px-8 md:px-12 mb-12" *ngIf="allSpots.length">
         <div class="flex h-full flex-col md:flex-row border rounded-3xl"
             style="box-shadow: 0px 4px 24px 0px #0000000A;">
-            <div class="left w-full h-full md:w-[40%]">
+            <div class="left w-full h-full md:w-[35%]">
                 <div class="grid grid-cols-2 gap-4 md:gap-4 p-4">
-                    <div class="p-2 rounded-2xl flex flex-col items-center justify-between"
+                    <div class=" rounded-2xl flex flex-col items-center justify-between"
                         *ngFor="let spot of allSpots;let i=index" style="box-shadow: 0px 7px 20px 0px #00000026;">
-                        <div class="image mb-2 p-1 sm:p-3">
-                            <img src="{{spot.images[0]}}" alt="image"class=rounded-xl>
-                        </div>
-                        <div class="title text-sm text-center sm:text-base md:text-lg font-medium mb-2">{{spot.name}}
-                        </div>
-                        <div class="button mb-3">
-                            <p-button label="Add spot" iconPos="right" *ngIf="!spot.added" (onClick)="addSpot(i,'add')"
-                                styleClass="px-2 sm:px-3 py-2 p-button-outlined p-button-raised text-nowrap text-xs sm:text-sm md:text-base">
-                                <ng-template pTemplate="icon">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M17.3333 9.00008C17.3333 13.6025 13.6023 17.3334 8.99996 17.3334C4.39759 17.3334 0.666626 13.6025 0.666626 9.00008C0.666626 4.39771 4.39759 0.666748 8.99996 0.666748C13.6023 0.666748 17.3333 4.39771 17.3333 9.00008ZM5.04167 9C5.04167 8.65482 5.32149 8.375 5.66667 8.375H8.375V5.66667C8.375 5.32149 8.65482 5.04167 9 5.04167C9.34518 5.04167 9.625 5.32149 9.625 5.66667V8.375H12.3333C12.6785 8.375 12.9583 8.65482 12.9583 9C12.9583 9.34518 12.6785 9.625 12.3333 9.625H9.625V12.3333C9.625 12.6785 9.34518 12.9583 9 12.9583C8.65482 12.9583 8.375 12.6785 8.375 12.3333V9.625H5.66667C5.32149 9.625 5.04167 9.34518 5.04167 9Z"
-                                            fill="#869F44" />
-                                    </svg>
+                        <div class=" image rounded-lg w-full h-[160px] " [ngStyle]="{ 'background-image': 'url(' + spot.images[0] + ')','background-repeat': 'no-repeat',
+                        'background-size': 'cover',
+                        'background-position': 'center' }">
+                            <!-- <img src="{{spot.images[0]}}" alt="image"class="absolute rounded-xl object-cover w-full h-[120px]"> -->
+                            <div class="flex flex-col justify-end items-center w-full h-full ">
+                                <div class="bg-[#0000004D] rounded-xl p-2 mb-2">
 
-                                </ng-template>
-                            </p-button>
-                            <p-button label="Added" iconPos="right" *ngIf="spot.added" (onClick)="addSpot(i,'remove')"
-                                styleClass=" px-3 sm:px-4 py-2 text-xs sm:text-sm md:text-base">
-                                <ng-template pTemplate="icon">
-                                    <svg width="17" height="18" viewBox="0 0 17 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M8.49996 17.3334C13.1023 17.3334 16.8333 13.6025 16.8333 9.00008C16.8333 4.39771 13.1023 0.666748 8.49996 0.666748C3.89759 0.666748 0.166626 4.39771 0.166626 9.00008C0.166626 13.6025 3.89759 17.3334 8.49996 17.3334ZM12.3266 6.88382C12.5386 6.61136 12.4895 6.21868 12.217 6.00676C11.9445 5.79485 11.5519 5.84393 11.34 6.1164L8.00078 10.4096C7.92653 10.5051 7.78687 10.5175 7.69697 10.4366L5.58473 8.53555C5.32817 8.30464 4.93298 8.32544 4.70207 8.58201C4.47116 8.83858 4.49196 9.23376 4.74853 9.46467L6.86076 11.3657C7.49004 11.932 8.46771 11.8453 8.98748 11.177L12.3266 6.88382Z"
-                                            fill="white" />
-                                    </svg>
+                                    <div
+                                        class="title text-white text-sm text-center sm:text-base md:text-lg font-medium mb-2">
+                                        {{spot.name}}
+                                    </div>
+                                    <div class="button mb-3">
+                                        <p-button label="Add spot" iconPos="right" *ngIf="!spot.added"
+                                            (onClick)="addSpot(i,'add')"
+                                            styleClass="px-2 sm:px-3 py-2 p-button-outlined p-button-raised text-nowrap text-xs sm:text-sm md:text-base">
+                                            <ng-template pTemplate="icon">
+                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M17.3333 9.00008C17.3333 13.6025 13.6023 17.3334 8.99996 17.3334C4.39759 17.3334 0.666626 13.6025 0.666626 9.00008C0.666626 4.39771 4.39759 0.666748 8.99996 0.666748C13.6023 0.666748 17.3333 4.39771 17.3333 9.00008ZM5.04167 9C5.04167 8.65482 5.32149 8.375 5.66667 8.375H8.375V5.66667C8.375 5.32149 8.65482 5.04167 9 5.04167C9.34518 5.04167 9.625 5.32149 9.625 5.66667V8.375H12.3333C12.6785 8.375 12.9583 8.65482 12.9583 9C12.9583 9.34518 12.6785 9.625 12.3333 9.625H9.625V12.3333C9.625 12.6785 9.34518 12.9583 9 12.9583C8.65482 12.9583 8.375 12.6785 8.375 12.3333V9.625H5.66667C5.32149 9.625 5.04167 9.34518 5.04167 9Z"
+                                                        fill="white" />
+                                                </svg>
 
-                                </ng-template>
-                            </p-button>
+                                            </ng-template>
+                                        </p-button>
+                                        <p-button label="Added" iconPos="right" *ngIf="spot.added"
+                                            (onClick)="addSpot(i,'remove')"
+                                            styleClass=" px-3 sm:px-4 py-2 text-xs sm:text-sm md:text-base">
+                                            <ng-template pTemplate="icon">
+                                                <svg width="17" height="18" viewBox="0 0 17 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M8.49996 17.3334C13.1023 17.3334 16.8333 13.6025 16.8333 9.00008C16.8333 4.39771 13.1023 0.666748 8.49996 0.666748C3.89759 0.666748 0.166626 4.39771 0.166626 9.00008C0.166626 13.6025 3.89759 17.3334 8.49996 17.3334ZM12.3266 6.88382C12.5386 6.61136 12.4895 6.21868 12.217 6.00676C11.9445 5.79485 11.5519 5.84393 11.34 6.1164L8.00078 10.4096C7.92653 10.5051 7.78687 10.5175 7.69697 10.4366L5.58473 8.53555C5.32817 8.30464 4.93298 8.32544 4.70207 8.58201C4.47116 8.83858 4.49196 9.23376 4.74853 9.46467L6.86076 11.3657C7.49004 11.932 8.46771 11.8453 8.98748 11.177L12.3266 6.88382Z"
+                                                        fill="white" />
+                                                </svg>
+
+                                            </ng-template>
+                                        </p-button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-            <div class="right w-full md:w-[60%] p-4">
+            <div class="right w-full md:w-[65%] p-4">
                 <div
                     class="heading pb-4 border-b text-lg sm:text-xl md:text-[28px] leading-5 sm:leading-6 md:leading-9 font-normal">
                     Select activities from your desired tourism spots
@@ -130,13 +147,14 @@
                 <div class="flex h-96 justify-center items-center " *ngIf="!allActivities.length">
                     <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
                 </div>
-                <div class="flex overflow-auto sm:grid  sm:grid-cols-3 gap-4 md:gap-4 p-6"*ngIf="allActivities.length">
+                <div class="flex overflow-auto sm:grid  sm:grid-cols-3 gap-4 md:gap-4 p-6" *ngIf="allActivities.length">
                     <ng-container *ngFor="let activities of allActivities;let i=index">
                         <ng-container *ngFor="let activity of activities;let j=index;">
                             <div class="p-2 min-w-[170px] rounded-2xl flex flex-col items-center justify-between"
                                 style="box-shadow: 0px 7px 20px 0px #00000026;">
                                 <div class="image mb-2 p-1 sm:p-3">
-                                    <img src="{{activity.image}}" alt="image" class="object-cover rounded-xl w-[230px] max-h-[120px]">
+                                    <img src="{{activity.image}}" alt="image"
+                                        class="object-cover rounded-xl w-[230px] max-h-[120px] ">
                                 </div>
                                 <div
                                     class="title text-primary text-center text-sm sm:text-base md:text-lg font-medium ">
@@ -179,7 +197,8 @@
             </div>
         </div>
         <div class="checkout flex justify-center pt-6">
-            <p-button (onClick)="onCheckout()" label="Proceed To Checkout" styleClass="px-8 py-3 sm:py-4 sm:px-12"></p-button>
+            <p-button (onClick)="onCheckout()" label="Proceed To Checkout"
+                styleClass="px-8 py-3 sm:py-4 sm:px-12"></p-button>
         </div>
     </div>
 </div>

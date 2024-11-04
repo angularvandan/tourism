@@ -98,9 +98,9 @@
         <p-carousel [value]="allActivities" [numVisible]="4" [numScroll]="1" [circular]="false"
             [responsiveOptions]="responsiveOptions"class="h-full"styleClass="h-full">
             <ng-template let-card pTemplate="item">
-                <div class="relative h-full">
-                    <div class=" overflow-hidden h-full">
-                        <img src="{{card.image}}" alt="banner" class="rounded-[30px] object-cover h-full  " />
+                <div class="relative h-full overflow-hidden group">
+                    <div class=" overflow-hidden h-full rounded-[30px]">
+                        <img src="{{card.image}}" alt="banner" class="rounded-[30px] object-cover h-full max-w-[300px] transition-transform duration-1000 group-hover:scale-110" />
                     </div>
                     <div class="flex flex-col  w-full absolute bottom-[10%] px-6 overflow-hidden">
                         <div class="  flex flex-col mb-6">
@@ -143,9 +143,9 @@
         <div *ngFor="let tours of allTours let i = index" class="details h-full px-4 sm:px-8 md:px-12 mb-2 sm:mb-12 ">
             <div [ngClass]=" i % 2 === 1 ? 'lg:flex-row-reverse' :'lg:flex-row'"
                 class="bg-[#FFFFFF] p-4 rounded-[20px] h-full flex flex-col  gap-8"style="box-shadow: 4px 15px 30px 0px #00000014;">
-                <div class="left w-full lg:w-[50%]">
-                    <div class="image">
-                        <img [src]="tours?.images[1]" class="rounded-[30px] w-full object-cover"
+                <div class="left w-full lg:w-[50%] overflow-hidden group">
+                    <div class="image overflow-hidden rounded-[30px]">
+                        <img [src]="tours?.images[1]" class="rounded-[30px] w-full object-cover transition-transform duration-1000 group-hover:scale-110"
                             alt="image">
                     </div>
                 </div>
@@ -794,8 +794,8 @@
             <div class="blogs flex flex-col md:flex-row gap-4 md:gap-8">
                 <div class="blog w-full bg-white cursor-pointer flex flex-col justify-between rounded-[30px] p-4 md:p-6"
                     style="box-shadow: 0px 7px 20px 0px #00000026;" *ngFor="let blog of blogs" [routerLink]="['blogs','blog',blog._id]">
-                    <div class="image mb-4 w-full">
-                        <img src="{{blog.images[0]}}" alt="image" class="w-full roundex-xl object-cover">
+                    <div class="image mb-4 w-full h-full overflow-hidden rounded-2xl group">
+                        <img src="{{blog.images[0]}}" alt="image" class="w-full h-[250px] rounded-2xl object-cover  transition-transform duration-1000 group-hover:scale-110">
                     </div>
                     <div class="title mb-2 text-lg font-semibold">{{blog.title}}</div>
                     <div class="sbuTitle mb-4 text-base font-normal text-[#475467]">{{blog.subTitle}}</div>
@@ -827,9 +827,9 @@
         <div class="relative rounded-[30px] p-4 md:p-8 md:py-12 flex flex-col md:flex-row gap-8 md:gap-16"
             style="box-shadow: 0px 7px 20px 0px #00000026;">
             <div class="left w-full  lg:w-[40%]">
-                <div class="image rounded-[30px] ">
+                <div class="image rounded-[30px] overflow-hidden group">
                     <img src="../../../../assets/home/feedbacks.png" alt="image"
-                        class="w-full min-h-[600px] rounded-[30px] object-cover">
+                        class="w-full min-h-[600px] rounded-[30px] object-cover  transition-transform duration-1000 group-hover:scale-110">
                 </div>
                 <div class="flex justify-center items-center  p-4 bg-white block lg:hidden">
                     <div class="feedbacks-form  w-[80%] absolute top-[10%] md:top-[30%] bg-white p-4 md:p-8 rounded-xl">
