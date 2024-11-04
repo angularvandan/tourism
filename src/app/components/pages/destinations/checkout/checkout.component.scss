@@ -26,8 +26,17 @@
         z-index: 10;
     }
 }
-.date-picker{
-    @media(max-width:400px){
-        left:2px;
+
+.date-picker {
+    @media(max-width:400px) {
+        left: 2px;
+    }
+}
+
+.confirm-message {
+    left: calc(50% - 200px);
+
+    @media(max-width:768px) {
+        left: calc(50% - 150px);
     }
 }

@@ -77,6 +77,7 @@ export class CheckoutComponent implements OnInit {
       this.allToursDetails[0].endDate = null;
 
       for (let i = 1; i < this.allToursDetails.length; i++) {
+        this.allToursDetails[i].date=null;
         this.allToursDetails[i].time = null; // Add time to the remaining objects
         this.selectedTimes.push(new Date());
       }
@@ -109,6 +110,26 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
+   // This method checks if the selected date is today
+   isToday(selectedDate: Date): boolean {
+    const today = new Date();
+    return (
+      selectedDate.getDate() === today.getDate() &&
+      selectedDate.getMonth() === today.getMonth() &&
+      selectedDate.getFullYear() === today.getFullYear()
+    );
+  }
+
+  // This method determines the min time based on the selected date
+  getMinTime(date:any): Date{
+    if (date && this.isToday(date)) {
+      const minTime = new Date();
+      minTime.setSeconds(0); // Reset seconds if necessary
+      return minTime; // Return current time as the minimum
+    }
+    return new Date(0); // No min time restriction if not today
+  }
+
   // Method to allow only letters (alphabets) in input fields using RegEx
   allowLettersOnly(event: KeyboardEvent): boolean {
     const inputChar = String.fromCharCode(event.charCode); // Get the character from the charCode
@@ -136,6 +157,8 @@ export class CheckoutComponent implements OnInit {
       // Store selected time
       this.allToursDetails[activityIndex].time = selectedTime;
       this.selectedTimes[activityIndex - 1] = selectedTime;
+
+      //for time not below of todays date
     }
   }
   isTimeSelected(time: Date, currentIndex: number): boolean {

@@ -173,7 +173,7 @@
                     <div class="h-full border rounded-3xl mb-6" *ngIf="i>0">
                         <div class="flex flex-col gap-2 p-4">
                             <div class="pb-4">
-                                <div class="flex flex-row justify-between">
+                                <div class="flex flex-col sm:flex-row items-start gap-4 justify-between">
                                     <div class="flex justify-center items-center gap-2">
                                         <div class="image overflow-hidden">
                                             <img class="w-12 h-12 rounded-full" src="{{activity.image}}" alt="image">
@@ -182,7 +182,22 @@
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div class="flex flex-row gap-4 justify-center items-center">
+                                        <div
+                                            class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
+                                            <!-- Left Calendar Icon -->
+                                            <i class="pi pi-calendar text-lg mr-2 text-white"></i>
+
+                                            <!-- PrimeNG Calendar with Placeholder -->
+                                            <p-calendar #calendar [(ngModel)]="activity.date"
+                                                placeholder="Select Date" class="cursor-pointer" appendTo="body"
+                                                [readonlyInput]="true" [minDate]="allToursDetails[0].startDate"[maxDate]="allToursDetails[0].endDate"
+                                                [showIcon]="true"></p-calendar>
+
+                                            <!-- Right Arrow Icon -->
+                                            <i class="absolute top-[12%] right-[5%] pi pi-chevron-down text-lg text-white"
+                                                (click)="openCalendar(calendar)"></i>
+                                        </div>
                                         <div
                                             class="relative cursor-pointer bg-primary rounded-[30px] flex items-center justify-start px-3 py-1 ">
                                             <!-- Left Calendar Icon -->
@@ -191,7 +206,7 @@
                                             <!-- PrimeNG Calendar with Placeholder -->
                                             <p-calendar #timePicker [(ngModel)]="activity.time"
                                                 (onSelect)="addTime($event,i)" [showTime]="true" hourFormat="12"
-                                                [timeOnly]="true" placeholder="Select Time" appendTo="body"
+                                                [timeOnly]="true" placeholder="Select Time" appendTo="body" [minDate]="getMinTime(activity.date)"
                                                 [readonlyInput]="true" class=""></p-calendar>
 
                                             <!-- Right Arrow Icon -->
@@ -204,7 +219,7 @@
                             </div>
                             <div class="text-sm sm:text-lg md:text-[18px] text-primary mb-3">{{activity.spot_id.name}}
                             </div>
-                            <div class="text-sm sm:text-base md:text-lg leading-8 font-normal text-[#666666]">
+                            <div class="text-sm sm:text-base md:text-lg leading-4 sm:leading-5 md:leading-8 font-normal text-[#666666]">
                                 {{activity.description}}
                             </div>
                         </div>
@@ -446,9 +461,9 @@
                 <div (click)="visible=false" class="popup-overlay fixed top-0 left-0 w-full h-full" *ngIf="visible">
                 </div>
 
-                <div class="absolute bg-white z-10 top-1/4 left-[38%] message-container w-[400px] h-[400px] rounded-[30px]"
+                <div class="absolute confirm-message bg-white z-10 top-1/4  message-container  w-[300px] h-[350px] sm:w-[400px] sm:h-[400px] rounded-[30px]"
                     *ngIf="visible && !paymentLoading">
-                    <div class="p-4">
+                    <div class="p-4 flex flex-col justify-center items-center w-full h-full">
                         <div class="flex justify-center py-10">
                             <svg width="61" height="61" viewBox="0 0 61 61" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -504,8 +519,8 @@
                             The order confirmation has been sent to customer@gmail.com
                         </div>
                         <div class="flex justify-center mt-4">
-                            <p-button label="Back to Home" routerLink="/"
-                                styleClass="px-10  text-nowrap min-w-[300px]"></p-button>
+                            <p-button label="Back to Home"class="px-4 sm:px-10" routerLink="/"
+                                styleClass="px-4 sm:px-10 py-1 sm:py-3 text-nowrap min-w-[300px]"></p-button>
                         </div>
 
                     </div>
