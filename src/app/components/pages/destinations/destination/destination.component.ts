@@ -19,6 +19,7 @@ export class DestinationComponent implements OnInit {
   allActivities:any[]=[];
   allToursDetails:any[]=[];
   currentTourIndex: number = 0;
+  spotsStatus:boolean=true;
 
 
   allDetailsForCheckout:any[]=[];
@@ -79,6 +80,7 @@ export class DestinationComponent implements OnInit {
     this.api.getSpots(this.tourId).subscribe((res: any) => {
       console.log("spots", res)
       this.allSpots = res;
+      this.spotsStatus=true;
 
       this.allSpots = this.allSpots.map((spot:any) => {
         return { ...spot, added: false };
@@ -91,6 +93,7 @@ export class DestinationComponent implements OnInit {
       console.log(err);
       this.allSpots=[];
       this.allActivities=[];
+      this.spotsStatus=false;
     })
   }
 //in this method need index for set status false when return empty array

@@ -13,8 +13,8 @@
                     class="text-xl text-primary sm:text-[28px] md:text-[44px] leading-[30px] sm:leading-[40px] md:leading-[55px] font-semibold">
                     {{tourDetails?.name}}</div>
                 <div class="flex justify-center items-center gap-2">
-                    <div (click)="onPrev()"
-                        class="left-arrow w-10 h-10 rounded-full bg-white flex justify-center items-center cursor-pointer"
+                    <div (click)="onPrev()"[ngClass]="currentTourIndex > 0?'flex':' hidden'"
+                        class="left-arrow w-10 h-10 rounded-full bg-white  justify-center items-center cursor-pointer"
                         style="box-shadow: 0px 4px 24px 0px #4F4B4B40;backdrop-filter: blur(12px)">
                         <svg width="20" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -23,8 +23,8 @@
                         </svg>
 
                     </div>
-                    <div (click)="onNext()"
-                        class="right-arrow w-10 h-10 rounded-full bg-white flex justify-center items-center cursor-pointer"
+                    <div (click)="onNext()"[ngClass]="currentTourIndex < allToursDetails.length - 1?'flex':' hidden'"
+                        class="right-arrow w-10 h-10 rounded-full bg-white  justify-center items-center cursor-pointer"
                         style="box-shadow: 0px 4px 24px 0px #4F4B4B40;backdrop-filter: blur(12px)">
                         <svg width="20" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -61,7 +61,7 @@
             <div class="text-black md:text-[40px] sm:text-[28px] text-lg leading-6 sm:leading-8 md:leading-[55px]">Must
                 See Spots that you can explore in <br> {{tourDetails?.name}} .</div>
             <div class="flex items-center">
-                <div class="flex p-1 sm:p-4 justify-center items-center  sm:w-[180px] sm:h-[80px] border rounded-tr-3xl sm:rounded-tr-2xl"
+                <div class="flex p-1 sm:p-4 justify-center items-center  sm:w-[180px] sm:h-[80px] border rounded-tr-3xl sm:rounded-tr-2xl"*ngIf="spotsStatus"
                     style="border: 0.5px solid gray;           
                 ">
                     <div class="mr-2">
@@ -82,13 +82,16 @@
         <div class="text-base sm:text-lg md:text-xl font-light">Select popular destinations & activities accordingly
             your choice.</div>
     </div>
-    <div class="flex h-96 justify-center items-center " *ngIf="!allSpots.length">
+    <div class="flex h-96 justify-center items-center " *ngIf="!allSpots.length && spotsStatus">
         <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
     </div>
+    <div class="flex h-96 justify-center items-center " *ngIf="!allSpots.length && !spotsStatus">
+        <p class="text-lg font-medium text-primary">Spots not found !</p>
+    </div>
     <div class="details h-fit px-4 sm:px-8 md:px-12 mb-12" *ngIf="allSpots.length">
-        <div class="flex h-full flex-col md:flex-row border rounded-3xl"
+        <div class="flex h-full flex-col lg:flex-row border rounded-3xl"
             style="box-shadow: 0px 4px 24px 0px #0000000A;">
-            <div class="left w-full h-full md:w-[35%]">
+            <div class="left w-full h-full lg:w-[35%]">
                 <div class="grid grid-cols-2 gap-4 md:gap-4 p-4">
                     <div class=" rounded-2xl flex flex-col items-center justify-between"
                         *ngFor="let spot of allSpots;let i=index" style="box-shadow: 0px 7px 20px 0px #00000026;">
@@ -96,8 +99,8 @@
                         'background-size': 'cover',
                         'background-position': 'center' }">
                             <!-- <img src="{{spot.images[0]}}" alt="image"class="absolute rounded-xl object-cover w-full h-[120px]"> -->
-                            <div class="flex flex-col justify-end items-center w-full h-full ">
-                                <div class="bg-[#0000004D] rounded-xl p-2 mb-2">
+                            <div class="flex flex-col justify-end items-center w-full h-full "style="box-shadow: 0px 7px 20px 0px #00000026;">
+                                <div class="bg-[#0000004D] rounded-xl px-3 pt-3 pb-2 mb-2">
 
                                     <div
                                         class="title text-white text-sm text-center sm:text-base md:text-lg font-medium mb-2">
@@ -139,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            <div class="right w-full md:w-[65%] p-4">
+            <div class="right w-full lg:w-[65%] p-4">
                 <div
                     class="heading pb-4 border-b text-lg sm:text-xl md:text-[28px] leading-5 sm:leading-6 md:leading-9 font-normal">
                     Select activities from your desired tourism spots

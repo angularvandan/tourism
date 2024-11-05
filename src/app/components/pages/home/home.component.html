@@ -21,8 +21,8 @@
                 <div
                     class="absolute bottom-[20%] md:bottom-[20%] right-[45%] sm:right-[30%] md:right-[25%] lg:right-[20%]">
                     <div class="location-point relative ">
-                        <div class="point w-6 h-6 border-4 rounded-full border-white] ">
-                            <div class="w-4 h-4 border-4 rounded-full border-[#869F44] ">
+                        <div class="point w-6 h-6 border-4 sm:border-[5px] rounded-full border-white] flex justify-center items-center">
+                            <div class="w-4 h-4 border-4 rounded-full border-[#869F44] flex justify-center items-center">
                                 <div class=" w-2 h-2 border-4 rounded-full border-[#9BFF1C] ">
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                         <div class="wave absolute inset-0 rounded-full bg-[#9BFF1C] opacity-50"></div>
 
                         <div class="">
-                            <svg class="absolute top-[30%] left-[28%]" width="87" height="32" viewBox="0 0 87 32"
+                            <svg class="absolute top-[27%] left-[26%]" width="87" height="32" viewBox="0 0 87 32"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M0.676432 5.60791C0.676432 8.55343 3.06425 10.9412 6.00977 10.9412C8.95528 10.9412 11.3431 8.55343 11.3431 5.60791C11.3431 2.66239 8.95528 0.274577 6.00977 0.274577C3.06425 0.274577 0.676432 2.66239 0.676432 5.60791ZM31.8708 30.6079L31.1758 31.3269L31.4665 31.6079H31.8708V30.6079ZM86.0098 31.6079C86.562 31.6079 87.0098 31.1602 87.0098 30.6079C87.0098 30.0556 86.562 29.6079 86.0098 29.6079V31.6079ZM5.31473 6.32688L31.1758 31.3269L32.5658 29.8889L6.7048 4.88894L5.31473 6.32688ZM31.8708 31.6079H86.0098V29.6079H31.8708V31.6079Z"
@@ -100,7 +100,7 @@
             <ng-template let-card pTemplate="item">
                 <div class="relative h-full overflow-hidden group">
                     <div class=" overflow-hidden h-full rounded-[30px]">
-                        <img src="{{card.image}}" alt="banner" class="rounded-[30px] object-cover h-full max-w-[300px] transition-transform duration-1000 group-hover:scale-110" />
+                        <img src="{{card.image}}" alt="banner" class="rounded-[30px] object-cover h-full w-full max-w-[300px] transition-transform duration-1000 group-hover:scale-110" />
                     </div>
                     <div class="flex flex-col  w-full absolute bottom-[10%] px-6 overflow-hidden">
                         <div class="  flex flex-col mb-6">
