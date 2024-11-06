@@ -21,7 +21,7 @@ export class PrivacyPolicyComponent implements OnInit{
       this.api.getPrivacyPolicy().subscribe({
         next:(res:any)=>{
           console.log(res);
-          this.content=res.content;
+          this.content=res[0].privacyContent;
           this.loading=false;
         },
         error:(err:any)=>{
