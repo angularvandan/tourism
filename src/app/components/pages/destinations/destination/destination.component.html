@@ -93,9 +93,9 @@
             style="box-shadow: 0px 4px 24px 0px #0000000A;">
             <div class="left w-full h-full lg:w-[35%]">
                 <div class="grid grid-cols-2 gap-4 md:gap-4 p-4">
-                    <div class=" rounded-2xl flex flex-col items-center justify-between"
+                    <div class=" rounded-2xl flex flex-col items-center justify-between overflow-hidden group"
                         *ngFor="let spot of allSpots;let i=index" style="box-shadow: 0px 7px 20px 0px #00000026;">
-                        <div class=" image rounded-lg w-full h-[160px] " [ngStyle]="{ 'background-image': 'url(' + spot.images[0] + ')','background-repeat': 'no-repeat',
+                        <div class=" image rounded-lg w-full h-[160px] transition-transform duration-1000 group-hover:scale-105" [ngStyle]="{ 'background-image': 'url(' + spot.images[0] + ')','background-repeat': 'no-repeat',
                         'background-size': 'cover',
                         'background-position': 'center' }">
                             <!-- <img src="{{spot.images[0]}}" alt="image"class="absolute rounded-xl object-cover w-full h-[120px]"> -->
@@ -153,11 +153,13 @@
                 <div class="flex overflow-auto sm:grid  sm:grid-cols-3 gap-4 md:gap-4 p-6" *ngIf="allActivities.length">
                     <ng-container *ngFor="let activities of allActivities;let i=index">
                         <ng-container *ngFor="let activity of activities;let j=index;">
-                            <div class="p-2 min-w-[170px] rounded-2xl flex flex-col items-center justify-between"
+                            <div class="p-2 min-w-[170px] rounded-2xl flex flex-col items-center justify-between overflow-hidden"
                                 style="box-shadow: 0px 7px 20px 0px #00000026;">
-                                <div class="image mb-2 p-1 sm:p-3">
-                                    <img src="{{activity.image}}" alt="image"
-                                        class="object-cover rounded-xl w-[230px] max-h-[120px] ">
+                                <div class="image mb-2 p-1 sm:p-3 overflow-hidden group">
+                                    <div class="overflow-hidden rounded-xl">
+                                        <img src="{{activity.image}}" alt="image"
+                                        class="object-cover rounded-xl w-[230px] max-h-[120px] transition-transform duration-1000 group-hover:scale-110">
+                                    </div>
                                 </div>
                                 <div
                                     class="title text-primary text-center text-sm sm:text-base md:text-lg font-medium ">

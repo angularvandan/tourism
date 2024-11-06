@@ -1,5 +1,5 @@
 <!-- below for inner blog  -->
-<div class="container-2 w-full h-fit pt-10" >
+<div class="container-2 w-full h-fit pt-10">
     <div class="header px-4 sm:px-8 md:px-12 pt-12 sm:pt-16 pb-6">
         <div class="title text-base sm:text-lg sm:leading-8 font-normal text-black mb-4">Home<span class="text-primary">
                 > Blogs</span>
@@ -7,7 +7,7 @@
         <div class="flex h-screen justify-center items-center " *ngIf="!blog">
             <i class="pi pi-spin pi-spinner text-[#3A5C41]" style="font-size: 2rem"></i>
         </div>
-        <div class="flex justify-between items-center relative"*ngIf="blog">
+        <div class="flex justify-between items-center relative" *ngIf="blog">
             <div class="heading  text-[22px] sm:text-[28px] md:text-[38px] leading-[30px] sm:leading-[35px] md:leading-[45px] font-medium"
                 [innerHTML]="blog?.title">
             </div>
@@ -28,34 +28,37 @@
     </div>
     <div class="details px-4 sm:px-8 md:px-12 mb-12">
         <div class="image overflow-hidden mb-6 sm:mb-8 md:mb-10 ">
-            <img class="w-full max-h-screen object-cover rounded-xl " [src]="blog?.images[0]"
-                alt="banner image">
+            <img class="w-full max-h-screen object-cover rounded-xl " [src]="blog?.images[0]" alt="banner image">
         </div>
-        <div
-            class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]">
+        <div class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]"
+            style="text-align: justify;
+    word-break: normal;">
             {{blog?.content[0].desc}}<br><br>{{blog?.content[1].desc}}
         </div>
 
         <div class="px-4 sm:px-8 md:px-12 text-lg mb-6 sm:mb-8 md:mb-10 font-normal text-[#666666]">
             <div class="px-2 sm:px-10">
-                <blockquote class="px-4 text-lg sm:text-xl md:text-[24px] font-normal border-l-4 border-[#7C4EE4] mb-4">
-                    “{{blog?.quote.content}}”
+                <blockquote class="px-4 text-lg sm:text-xl md:text-[24px] font-normal border-l-4 border-[#7C4EE4] mb-4"
+                    style="text-align: justify;
+    word-break: normal;">
+                    {{blog?.quote.content}}
                 </blockquote>
                 <footer class="text-lg text-[#333333] font-medium">– {{blog?.quote.name}}</footer>
             </div>
         </div>
-        <div
-            class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]">
+        <div class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]"
+            style="text-align: justify;
+    word-break: normal;">
             {{blog?.content[2].desc}}
         </div>
         <div class="px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10">
             <div class="image overflow-hidden px-4 sm:px-8 md:px-12 ">
-                <img class="w-full max-h-96 object-cover rounded-xl" [src]="blog?.images[1]"
-                    alt="banner image">
+                <img class="w-full max-h-96 object-cover rounded-xl" [src]="blog?.images[1]" alt="banner image">
             </div>
         </div>
-        <div
-            class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]">
+        <div class="image-details break-all px-4 sm:px-8 md:px-12 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg font-normal text-[#666666]"
+            style="text-align: justify;
+    word-break: normal;">
             {{blog?.content[3].desc}}
         </div>
 

@@ -1,5 +1,5 @@
 
-<div class="flex h-screen justify-center items-center " *ngIf="!allSpots.length && spotStatus">
+<div class="flex h-screen justify-center items-center " *ngIf="!allSpots?.length && spotStatus">
     <i class="pi pi-spin pi-spinner alimate-spin text-[#3A5C41]" style="font-size: 2rem"></i>
 </div>
 
@@ -107,7 +107,7 @@
                             {{tip.title}}
                         </div>
                     </div>
-                    <div class="heading-details sm:text-lg font-normal text-[#606060]">
+                    <div class="heading-details sm:text-lg font-normal text-[#606060] word-inline">
                         {{tip.desc}}
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                                         </div>
                                         
                                         <div
-                                            class="mt-2 w-100 sm:w-[90%] md:w-[95%] lg:w-[80%] xl:w-[70%] text-center text-[10px] sm:text-[12px] md:text-[16px] lg:text-[18px]  md:leading-5 lg:leading-6 font-normal text-white">
+                                            class="mt-2 w-100 sm:w-[90%] md:w-[95%] lg:w-[80%] xl:w-[70%] text-center text-[10px] sm:text-[12px] md:text-[16px] lg:text-[18px]  md:leading-5 lg:leading-6 font-normal text-white ">
                                             {{spot.description}}
                                         </div>
                                     </div>

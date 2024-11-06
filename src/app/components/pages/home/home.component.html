@@ -546,20 +546,20 @@
 
     <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 cursor-pointer"[routerLink]="['/tours/tour',allTours[0]?._id]">
         <div class="flex flex-col sm:flex-row gap-4 mb-8 ">
-            <div class="w-full sm:w-[40%] md:w-[35%] relative">
+            <div class="w-full sm:w-[40%] md:w-[35%] relative ">
                 <!-- this is for shadow  -->
 
                 <div class="w-full h-full absolute rounded-[20px] block sm:hidden"
                     style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.3%, rgba(0, 0, 0, 0.382923) 34.39%, rgba(0, 0, 0, 0.1) 52.41%);">
                 </div>
 
-                <div class="w-full h-full absolute rounded-[20px] hidden sm:block"
+                <div class="w-full h-full absolute rounded-[20px] hidden sm:block group"
                     style="background: linear-gradient(360deg, #000000 0.33%, rgba(0, 0, 0, 0.549556) 13.52%, rgba(0, 0, 0, 0) 66.18%)">
                 </div>
 
-                <div class="image overflow-hidden h-[300px] rounded-[20px]">
+                <div class="image overflow-hidden h-[300px] rounded-[20px] group">
                     <img src="../../../../assets/home/container4/img2.png" alt="image"
-                        class="object-cover w-full h-full">
+                        class="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-110">
                 </div>
 
                 <div class="data absolute left-[5%] bottom-[10%]">
