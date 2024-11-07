@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 
@@ -8,6 +9,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
+  providers:[MessageService]
 })
 export class CheckoutComponent implements OnInit {
 
@@ -57,7 +59,7 @@ export class CheckoutComponent implements OnInit {
   payLaterStatus:boolean=false;
 
 
-  constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
+  constructor(private fb: FormBuilder, private api: ApiService, private router: Router,private messageService: MessageService) {
     this.minDate = new Date();
   }
 
@@ -265,7 +267,9 @@ export class CheckoutComponent implements OnInit {
       },
       error: (err: any) => {
         console.log(err);
-        this.paymentLoading=false;
+        this.paymentLoading=true;
+        this.payLaterStatus=false;
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Booking Faild' });
 
       }
     })

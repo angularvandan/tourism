@@ -7,6 +7,7 @@ import { DestinationDetailsComponent } from './destination-details/destination-d
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -14,12 +15,13 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
     DestinationComponent,
     DestinationDetailsComponent,
     CheckoutComponent,
-    PaymentComponent
+    PaymentComponent 
   ],
   imports: [
     CommonModule,
     DestinationsRoutingModule,
-    SharedModule
+    SharedModule,
+    ToastModule
   ]
 })
 export class DestinationsModule { }

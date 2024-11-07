@@ -457,8 +457,9 @@
                         </div>
                     </form>
                 </div>
+                <p-toast></p-toast>
                 <!-- Popup Overlay -->
-                <div (click)="visible=false" class="popup-overlay fixed top-0 left-0 w-full h-full" *ngIf="visible">
+                <div (click)="visible=false" class="popup-overlay fixed top-0 left-0 w-full h-full" *ngIf="visible && !paymentLoading">
                 </div>
 
                 <div class="absolute confirm-message bg-white z-10 top-1/4  message-container  w-[300px] h-[350px] sm:w-[400px] sm:h-[400px] rounded-[30px]"
