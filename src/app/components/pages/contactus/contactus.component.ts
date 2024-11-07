@@ -26,6 +26,7 @@ export class ContactusComponent implements OnInit {
     this.contactForm = this.fb.group({
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
       checked:['',Validators.required]
