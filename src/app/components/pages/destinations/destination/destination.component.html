@@ -72,7 +72,7 @@
                         </svg>
 
                     </div>
-                    <div [routerLink]="['/tours/tour-details', tourId]"
+                    <div  (click)="onTourDetailsPage()"
                         class="cursor-pointer text-primary font-normal text-base sm:text-lg underline underline-offset-4 text-nowrap">
                         know about<br>this location ?
                     </div>

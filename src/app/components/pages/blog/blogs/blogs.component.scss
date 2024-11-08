@@ -10,3 +10,10 @@
 .my-pagination ::ng-deep .ngx-pagination .pagination-previous {
     display: none;
 }
+.pi {
+    line-height: unset;
+}
+
+.pi-spin {
+    animation: fa-spin 1s infinite linear;
+}

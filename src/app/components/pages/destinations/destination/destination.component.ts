@@ -157,4 +157,8 @@ export class DestinationComponent implements OnInit {
     this.api.setData(this.allDetailsForCheckout);
     this.router.navigate(['tours/checkout']);
   }
+  onTourDetailsPage(){
+    this.api.setData(this.allDetailsForCheckout);
+    this.router.navigate(['tours/tour-details',this.tourId]);
+  }
 }

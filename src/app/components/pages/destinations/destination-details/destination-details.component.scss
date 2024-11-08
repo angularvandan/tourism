@@ -21,3 +21,10 @@
     text-align: justify;
     word-break: normal;
 }
+.pi {
+    line-height: unset;
+}
+
+.pi-spin {
+    animation: fa-spin 1s infinite linear;
+}
