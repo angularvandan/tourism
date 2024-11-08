@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
-  providers:[MessageService]
+  providers: [MessageService]
 })
 export class CheckoutComponent implements OnInit {
 
@@ -54,12 +54,13 @@ export class CheckoutComponent implements OnInit {
   };
 
   selectedTimes: Date[] = []; // To track selected times
-  paymentLoading:boolean=false;
-  payNowStatus:boolean=false;
-  payLaterStatus:boolean=false;
+  paymentLoading: boolean = false;
+  payNowStatus: boolean = false;
+  payLaterStatus: boolean = false;
+  paymentLatterSuccess:boolean=false;
 
 
-  constructor(private fb: FormBuilder, private api: ApiService, private router: Router,private messageService: MessageService) {
+  constructor(private fb: FormBuilder, private api: ApiService, private router: Router, private messageService: MessageService) {
     this.minDate = new Date();
   }
 
@@ -79,7 +80,7 @@ export class CheckoutComponent implements OnInit {
       this.allToursDetails[0].endDate = null;
 
       for (let i = 1; i < this.allToursDetails.length; i++) {
-        this.allToursDetails[i].date=null;
+        this.allToursDetails[i].date = null;
         this.allToursDetails[i].time = null; // Add time to the remaining objects
         this.selectedTimes.push(new Date());
       }
@@ -90,8 +91,8 @@ export class CheckoutComponent implements OnInit {
     });
 
   }
-   // Enforce max length of 10 digits
-   restrictToTenDigits(event: KeyboardEvent) {
+  // Enforce max length of 10 digits
+  restrictToTenDigits(event: KeyboardEvent) {
     const input = event.target as HTMLInputElement;
 
     // Allow only numbers (0-9) and limit to 10 digits
@@ -112,8 +113,8 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-   // This method checks if the selected date is today
-   isToday(selectedDate: Date): boolean {
+  // This method checks if the selected date is today
+  isToday(selectedDate: Date): boolean {
     const today = new Date();
     return (
       selectedDate.getDate() === today.getDate() &&
@@ -123,7 +124,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   // This method determines the min time based on the selected date
-  getMinTime(date:any): Date{
+  getMinTime(date: any): Date {
     if (date && this.isToday(date)) {
       const minTime = new Date();
       minTime.setSeconds(0); // Reset seconds if necessary
@@ -223,8 +224,8 @@ export class CheckoutComponent implements OnInit {
   onPayment() {
     if (this.userForm.valid) {
       console.log(this.userForm.value);
-      this.payNowStatus=true;
-      this.payLaterStatus=false;
+      this.payNowStatus = true;
+      this.payLaterStatus = false;
       this.createBooking(true);
     }
     else {
@@ -235,8 +236,8 @@ export class CheckoutComponent implements OnInit {
     this.visible = true;
     if (this.userForm.valid) {
       console.log(this.userForm.value);
-      this.payNowStatus=false;
-      this.payLaterStatus=true;
+      this.payNowStatus = false;
+      this.payLaterStatus = true;
       this.createBooking(false);
     }
     else {
@@ -245,7 +246,7 @@ export class CheckoutComponent implements OnInit {
   }
   createBooking(payNow: boolean) {
 
-    this.paymentLoading=true;
+    this.paymentLoading = true;
 
     let payload = {
       ...this.userForm.value,
@@ -255,10 +256,20 @@ export class CheckoutComponent implements OnInit {
       payNow: payNow,
       paymentStatus: 'Pending',
     };
+    if (payload.totalPrice <= 0) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Select at least one people' });
+      this.paymentLoading = true;
+      this.payLaterStatus = false;
+      this.paymentLatterSuccess=false;
+      this.payNowStatus = false;
+
+      return;
+    }
     this.api.createBooking(payload).subscribe({
       next: (res: any) => {
         console.log(res);
-        this.paymentLoading=false;
+        this.paymentLoading = false;
+        this.paymentLatterSuccess=true;
         if (res.payNow) {
           this.router.navigate(['tours/payment']);
         }
@@ -267,8 +278,9 @@ export class CheckoutComponent implements OnInit {
       },
       error: (err: any) => {
         console.log(err);
-        this.paymentLoading=true;
-        this.payLaterStatus=false;
+        this.paymentLoading = true;
+        this.payLaterStatus = false;
+        this.paymentLatterSuccess=false;
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Booking Faild' });
 
       }

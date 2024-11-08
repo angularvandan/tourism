@@ -466,11 +466,11 @@
                 </div>
                 <p-toast></p-toast>
                 <!-- Popup Overlay -->
-                <div (click)="visible=false" class="popup-overlay fixed top-0 left-0 w-full h-full" *ngIf="visible && !paymentLoading">
+                <div (click)="visible=false" class="popup-overlay fixed top-0 left-0 w-full h-full" *ngIf="visible && paymentLatterSuccess">
                 </div>
 
                 <div class="absolute confirm-message bg-white z-10 top-1/4  message-container  w-[300px] h-[350px] sm:w-[400px] sm:h-[400px] rounded-[30px]"
-                    *ngIf="visible && !paymentLoading">
+                    *ngIf="visible && paymentLatterSuccess">
                     <div class="p-4 flex flex-col justify-center items-center w-full h-full">
                         <div class="flex justify-center py-10">
                             <svg width="61" height="61" viewBox="0 0 61 61" fill="none"
