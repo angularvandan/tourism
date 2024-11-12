@@ -7,7 +7,7 @@
             <div class="relative h-full">
                 <div class="max-h-screen h-full overflow-hidden">
                     <img [src]="banner.image" alt="banner"
-                        class="w-full max-h-screen h-full object-cover" />
+                        class="w-full max-h-[75vh] h-full object-cover" />
                 </div>
                 <div class="absolute top-[18%] sm:top-[30%] md:top-[25%] lg:top-[20%] px-4 sm:px-8 md:px-12">
                     <div class="text-[16px] sm:text-[20px] leading-8 font-normal tracking-[2%] text-white">
@@ -544,30 +544,30 @@
         </div>
     </div>
 
-    <div class="details h-full px-4 sm:px-8 md:px-12 mb-12 cursor-pointer"[routerLink]="['/tours/tour',allTours[0]?._id]">
+    <div class="details  h-full px-4 sm:px-8 md:px-12 mb-12 cursor-pointer"[routerLink]="['/tours/tour',allTours[0]?._id]">
         <div class="flex flex-col sm:flex-row gap-4 mb-8 ">
-            <div class="w-full sm:w-[40%] md:w-[35%] relative ">
+            <div class="w-full sm:w-[40%] md:w-[35%] relative group ">
                 <!-- this is for shadow  -->
 
                 <div class="w-full h-full absolute rounded-[20px] block sm:hidden"
                     style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 18.3%, rgba(0, 0, 0, 0.382923) 34.39%, rgba(0, 0, 0, 0.1) 52.41%);">
                 </div>
 
-                <div class="w-full h-full absolute rounded-[20px] hidden sm:block group"
+                <div class="w-full h-full absolute rounded-[20px] hidden sm:block "
                     style="background: linear-gradient(360deg, #000000 0.33%, rgba(0, 0, 0, 0.549556) 13.52%, rgba(0, 0, 0, 0) 66.18%)">
                 </div>
 
-                <div class="image overflow-hidden h-[300px] rounded-[20px] group">
+                <div class="image overflow-hidden h-[300px] rounded-[20px] ">
                     <img src="../../../../assets/home/container4/img2.png" alt="image"
-                        class="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-110">
+                        class="object-cover w-full h-full ">
                 </div>
 
                 <div class="data absolute left-[5%] bottom-[10%]">
                     <div class="flex flex-wrap mb-4">
-                        <div class="title font-bold text-lg sm:text-[28px] text-white mr-2 ">Fort Santiago
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary  mr-2 ">Fort Santiago
                         </div>
 
-                        <div class="text-base font-normal flex  items-center text-white">
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
                             <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -583,12 +583,12 @@
                         <div class="w-[50%] border"></div>
                     </div>
 
-                    <div class="subTitle font-normal text-sm sm:text-base text-white w-full sm:w-[75%]">Boracay is a
+                    <div class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">Boracay is a
                         small island in the central Philippines...</div>
                 </div>
 
             </div>
-            <div class="w-full sm:w-[60%] md:w-[65%] relative">
+            <div class="w-full sm:w-[60%] md:w-[65%] relative group">
 
                 <!-- this is for shadow  -->
 
@@ -608,10 +608,10 @@
                 <div class="data absolute left-[5%] bottom-[10%]">
 
                     <div class="flex flex-wrap mb-4">
-                        <div class="title font-bold text-lg sm:text-[28px] text-white mr-2 ">Boracay
+                        <div class="title font-bold text-lg sm:text-[28px] text-white mr-2 group-hover:text-primary ">Boracay
                         </div>
 
-                        <div class="text-base font-normal flex  items-center text-white">
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
                             <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -627,7 +627,7 @@
                         <div class="w-[50%] border"></div>
                     </div>
 
-                    <div class="subTitle font-normal text-sm sm:text-base text-white w-full sm:w-[75%]">Boracay is a
+                    <div class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">Boracay is a
                         small island in the central Philippines. It's known for its resorts and Along the beaches. Along
                         the west coast,</div>
                 </div>
@@ -636,7 +636,7 @@
 
         </div>
         <div class="flex flex-col sm:flex-row gap-4 ">
-            <div class="w-full relative">
+            <div class="w-full relative group">
 
                 <!-- this is for shadow  -->
 
@@ -656,10 +656,10 @@
                 <div class="data absolute left-[5%] bottom-[10%]">
 
                     <div class="flex flex-wrap mb-4">
-                        <div class="title font-bold text-lg sm:text-[28px] text-white mr-2 ">Puka Beach
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary  mr-2 ">Puka Beach
                         </div>
 
-                        <div class="text-base font-normal flex  items-center text-white">
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
                             <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -675,12 +675,12 @@
                         <div class="w-[50%] border"></div>
                     </div>
 
-                    <div class="subTitle font-normal text-sm sm:text-base text-white w-full sm:w-[75%]">Boracay is a
+                    <div class="subTitle font-normal text-sm sm:text-base text-white w-full sm:w-[75%] group-hover:text-primary ">Boracay is a
                         small island in the central Philippines. It's known for its resorts and beaches. ......</div>
                 </div>
 
             </div>
-            <div class="w-full relative">
+            <div class="w-full relative group">
 
                 <!-- this is for shadow  -->
 
@@ -699,10 +699,10 @@
                 <div class="data absolute left-[5%] bottom-[10%]">
 
                     <div class="flex flex-wrap mb-4">
-                        <div class="title font-bold text-lg sm:text-[28px] text-white mr-2 ">Lind Boraca
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary mr-2 ">Lind Boraca
                         </div>
 
-                        <div class="text-base font-normal flex  items-center text-white">
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
                             <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -718,12 +718,12 @@
                         <div class="w-[50%] border"></div>
                     </div>
 
-                    <div class="subTitle font-normal text-sm sm:text-base text-white w-full sm:w-[75%]">Boracay is a
+                    <div class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">Boracay is a
                         small island in the central Philippines. It's known for its resorts and .....</div>
                 </div>
 
             </div>
-            <div class="w-full relative">
+            <div class="w-full relative group">
 
                 <!-- this is for shadow  -->
 
@@ -743,10 +743,10 @@
                 <div class="data absolute left-[5%] bottom-[10%]">
 
                     <div class="flex flex-wrap mb-4">
-                        <div class="title font-bold text-lg sm:text-[28px] text-white mr-2 ">Banaue Rice
+                        <div class="title font-bold text-lg sm:text-[28px] text-white group-hover:text-primary  mr-2 ">Banaue Rice
                             Terraces
                         </div>
-                        <div class="text-base font-normal flex  items-center text-white">
+                        <div class="text-base font-normal flex  items-center text-white group-hover:text-primary ">
                             <svg style="width:20px" width="15" height="15" viewBox="0 0 15 15" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -762,7 +762,7 @@
                         <div class="w-[50%] border"></div>
                     </div>
 
-                    <div class="subTitle font-normal text-sm sm:text-base text-white w-full sm:w-[75%]">Banaue is a
+                    <div class="subTitle font-normal text-sm sm:text-base text-white group-hover:text-primary  w-full sm:w-[75%]">Banaue is a
                         small island in the central Philippines. It's known for its resorts and beaches....</div>
                 </div>
 

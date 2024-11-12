@@ -22,7 +22,7 @@
                 itemsPerPage: itemsPerpage,
                 currentPage: currentPage,
                 totalItems: totalItems }">
-                    <div class="blog border bg-white flex flex-col justify-between rounded-lg p-2 md:p-4 cursor-pointer"
+                    <div class="blog border bg-white flex flex-col justify-between rounded-xl p-2 md:p-4 cursor-pointer"
                         [routerLink]="['/blogs/blog',blog._id]">
                         <div class="image mb-4 relative overflow-hidden group rounded-lg">
                             <img src="{{blog.images[0]}}" alt="image" class="w-full h-[250px] object-cover rounded-lg  transition-transform duration-1000 group-hover:scale-110">

@@ -54,10 +54,11 @@ export class CheckoutComponent implements OnInit {
   };
 
   selectedTimes: Date[] = []; // To track selected times
+  timeWarningMessage:string[]=[];
   paymentLoading: boolean = false;
   payNowStatus: boolean = false;
   payLaterStatus: boolean = false;
-  paymentLatterSuccess:boolean=false;
+  paymentLatterSuccess: boolean = false;
 
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router, private messageService: MessageService) {
@@ -156,14 +157,30 @@ export class CheckoutComponent implements OnInit {
       // setTimeout(() => {
       //   this.allToursDetails[activityIndex].time = null; // Or you can restore the previous value
       // }, 0);
+
+      // //this  is  for when time is same then need to increase by one hour
+      // setTimeout(() => {
+      //   // Add 1 hour to the selected time
+      //   const updatedTime = new Date(event);
+      //   updatedTime.setHours(event.getHours() + 1);
+      //   this.allToursDetails[activityIndex].time = updatedTime;
+
+      // }, 0);
+      this.timeWarningMessage[activityIndex-1]="Time is already selected !";
     } else {
       // Store selected time
       this.allToursDetails[activityIndex].time = selectedTime;
       this.selectedTimes[activityIndex - 1] = selectedTime;
+      this.timeWarningMessage[activityIndex-1]="";
+
 
       //for time not below of todays date
     }
   }
+  get timeWarningStatus(){
+    return this.timeWarningMessage.some(message => message?.trim() !== "");
+  }
+
   isTimeSelected(time: Date, currentIndex: number): boolean {
     return this.selectedTimes.some((selectedTime, index) => {
       // Check if the selected time belongs to a different activity
@@ -260,7 +277,7 @@ export class CheckoutComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Select at least one people' });
       this.paymentLoading = true;
       this.payLaterStatus = false;
-      this.paymentLatterSuccess=false;
+      this.paymentLatterSuccess = false;
       this.payNowStatus = false;
 
       return;
@@ -269,7 +286,7 @@ export class CheckoutComponent implements OnInit {
       next: (res: any) => {
         console.log(res);
         this.paymentLoading = false;
-        this.paymentLatterSuccess=true;
+        this.paymentLatterSuccess = true;
         if (res.payNow) {
           this.router.navigate(['tours/payment']);
         }
@@ -280,7 +297,7 @@ export class CheckoutComponent implements OnInit {
         console.log(err);
         this.paymentLoading = true;
         this.payLaterStatus = false;
-        this.paymentLatterSuccess=false;
+        this.paymentLatterSuccess = false;
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Booking Faild' });
 
       }

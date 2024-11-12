@@ -141,8 +141,8 @@ app-home {
         }
 
         .p-button.p-button-secondary.p-button-outlined:enabled:hover {
-            border: 1px solid #9BFF1C;
-            color: #9BFF1C;
+            border: 1px solid white;
+            color: white;
         }
 
         .p-button.p-button-secondary:enabled:focus {
@@ -183,6 +183,14 @@ app-home {
             .p-button-label {
                 font-weight: 500;
             }
+        }
+
+        .p-button:hover {
+            color: $bg-primary;
+            border-radius: 50px;
+            border:1px solid $bg-primary;
+            background: transparent;
+
         }
     }
 
@@ -240,6 +248,10 @@ app-blogs {
         .p-button.p-button-outlined:enabled:active {
             color: $bg-primary;
         }
+        .p-button.p-button-outlined:enabled:hover {
+            color: white;
+            background-color: $bg-primary;
+        }
     }
 }
 
@@ -296,6 +308,12 @@ app-destination {
 
         .p-button {
             box-shadow: none;
+        }
+
+        .p-button:hover{
+            color: $bg-primary;
+            background-color: transparent;
+            border: 1px solid $bg-primary;
         }
 
         .left{
