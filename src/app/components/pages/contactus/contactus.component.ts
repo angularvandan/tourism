@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,7 @@ import { MessageService } from 'primeng/api';
   templateUrl: './contactus.component.html',
   styleUrls: ['./contactus.component.scss'],
   standalone: true,  // Mark the component as standalone
-  imports: [CommonModule,SharedModule,ToastModule],
+  imports: [CommonModule,SharedModule,ToastModule,RouterModule],
   providers:[MessageService]
 })
 export class ContactusComponent implements OnInit {
