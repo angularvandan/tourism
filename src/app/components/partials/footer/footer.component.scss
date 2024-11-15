@@ -7,6 +7,6 @@
 .links-container{
     flex-direction: row;
     @media(max-width:470px){
-        flex-direction: column;
+        flex-wrap: wrap;
     }
 }
