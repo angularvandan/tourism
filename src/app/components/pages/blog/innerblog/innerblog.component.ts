@@ -34,12 +34,12 @@ export class InnerblogComponent implements OnInit {
       }
     })
   }
-  shareLink() {
+  shareLink(id:any) {
     if (navigator.share) {
       navigator.share({
         title: 'Check out this link!',
         text: 'Here is something interesting for you.',
-        url: 'https://example.com' // Replace with the actual link you want to share
+        url: `https://tourism-one-omega.vercel.app/blogs/blog/${id}` // Replace with the actual link you want to share
       }).then(() => {
         console.log('Link shared successfully.');
       }).catch((error) => {
@@ -47,7 +47,7 @@ export class InnerblogComponent implements OnInit {
       });
     } else {
       // Fallback: Copy link to clipboard or use mailto for sharing via email
-      this.copyToClipboard('https://example.com');
+      this.copyToClipboard(`https://tourism-one-omega.vercel.app/blogs/blog/${id}`);
       alert('Sharing not supported on this browser. Link copied to clipboard.');
     }
   }

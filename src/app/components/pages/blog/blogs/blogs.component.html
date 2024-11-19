@@ -28,7 +28,7 @@
                             <img src="{{blog.images[0]}}" alt="image" class="w-full h-[250px] object-cover rounded-lg  transition-transform duration-1000 group-hover:scale-110">
                             <div class="share absolute right-[5%] top-[5%]">
                                 <div class="bg-white rounded-2xl px-3 py-1 flex items-center text-primary cursor-pointer"
-                                    (click)="shareLink()">
+                                    (click)="shareLink(blog._id)">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
