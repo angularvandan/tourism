@@ -20,6 +20,7 @@ export class DestinationComponent implements OnInit {
   allToursDetails:any[]=[];
   currentTourIndex: number = 0;
   spotsStatus:boolean=true;
+  activityStatus:boolean=true;
 
 
   allDetailsForCheckout:any[]=[];
@@ -101,6 +102,7 @@ export class DestinationComponent implements OnInit {
     this.api.getActivities(this.spotId).subscribe({
       next:(res:any)=>{
         console.log(res);
+        this.activityStatus=false;
         res=res.map((item:any)=>{
           return {...item,added:false}
         })
@@ -114,7 +116,7 @@ export class DestinationComponent implements OnInit {
         console.log(this.allActivities);
       },error:(err)=>{
         console.log(err);
-        
+        this.activityStatus=true;
       }
     })
   }
