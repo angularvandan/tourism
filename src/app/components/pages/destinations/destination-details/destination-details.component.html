@@ -113,7 +113,7 @@
                 </div>
                 <div class="flex flex-col justify-center items-start ">
                     <div class="title text-[#606060] font-bold text-lg sm:text-xl md:text-[28px] mb-2 sm:mb-8">Activities that you’d enjoy</div>
-                    <div class="h-[350px] sm:h-auto max-h-[600px] w-full sm:px-10">
+                    <div class="h-[350px] sm:h-auto max-h-[600px] w-full sm:px-10"*ngIf="allActivities.length">
                         <p-carousel [value]="allActivities" [numVisible]="1" [numScroll]="1" [circular]="true"class="h-full w-full relative"styleClass="h-full w-full">
                             
                             <ng-template pTemplate="item" let-spot class="h-full w-full"styleClass="h-full w-full" >
